@@ -1,124 +1,107 @@
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Kontakt – Faris El Mokhtari Webentwicklung",
-  description: "Kostenloses 15-minütiges Erstgespräch buchen. Ich melde mich innerhalb von 24 Stunden.",
-};
+"use client";
+import { motion } from "framer-motion";
 
 export default function Kontakt() {
   return (
     <>
-      {/* Header */}
-      <section className="bg-zinc-50 border-b border-zinc-200">
-        <div className="max-w-5xl mx-auto px-6 py-20 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-zinc-900 mb-4">Lass uns sprechen</h1>
-          <p className="text-lg text-zinc-500 max-w-xl mx-auto">
-            15 Minuten, kostenlos. Ich schaue mir deine Situation an und sage dir ehrlich, ob und wie ich helfen kann.
-          </p>
-        </div>
+      <section className="pt-32 pb-16 max-w-6xl mx-auto px-6">
+        <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+          className="text-blue-500 text-xs font-mono tracking-widest uppercase block mb-6">
+          Kontakt
+        </motion.span>
+        <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-5xl md:text-7xl font-black text-slate-900 tracking-tight leading-none mb-6">
+          Lass uns deployen.
+        </motion.h1>
+        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}
+          className="text-slate-500 text-lg max-w-lg">
+          15 Minuten Gespräch, kostenlos. Wir schauen uns deine Situation an und sagen dir direkt, was machbar ist.
+        </motion.p>
       </section>
 
-      {/* Form + Info */}
-      <section className="max-w-5xl mx-auto px-6 py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+      <section className="max-w-6xl mx-auto px-6 pb-32">
+        <div className="grid md:grid-cols-2 gap-16">
 
-          {/* Form */}
-          <form className="flex flex-col gap-5">
-            <div className="flex flex-col gap-1.5">
-              <label className="text-sm font-medium text-zinc-700">Name</label>
-              <input
-                type="text"
-                placeholder="Max Mustermann"
-                className="border border-zinc-300 rounded-xl px-4 py-3 text-sm text-zinc-900 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-transparent transition"
-              />
+          <motion.form
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="flex flex-col gap-5"
+          >
+            {[
+              { label: "Name", type: "text", placeholder: "Faris Mustermann" },
+              { label: "E-Mail", type: "email", placeholder: "hallo@meinbetrieb.de" },
+              { label: "Betrieb / Website", type: "text", placeholder: "Café Alte Schule / cafe-alte-schule.com" },
+            ].map((f) => (
+              <div key={f.label} className="flex flex-col gap-2">
+                <label className="text-xs font-medium text-slate-500 uppercase tracking-widest">{f.label}</label>
+                <input type={f.type} placeholder={f.placeholder}
+                  className="bg-white border border-black/10 rounded-xl px-4 py-3.5 text-sm text-slate-900 placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-400 transition-colors" />
+              </div>
+            ))}
+
+            <div className="flex flex-col gap-2">
+              <label className="text-xs font-medium text-slate-500 uppercase tracking-widest">Was brauchst du?</label>
+              <textarea rows={4} placeholder="Wir brauchen ein Reservierungssystem, unsere aktuelle Website ist veraltet..."
+                className="bg-white border border-black/10 rounded-xl px-4 py-3.5 text-sm text-slate-900 placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-400 transition-colors resize-none" />
             </div>
 
-            <div className="flex flex-col gap-1.5">
-              <label className="text-sm font-medium text-zinc-700">E-Mail</label>
-              <input
-                type="email"
-                placeholder="max@meinrestaurant.de"
-                className="border border-zinc-300 rounded-xl px-4 py-3 text-sm text-zinc-900 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-transparent transition"
-              />
-            </div>
-
-            <div className="flex flex-col gap-1.5">
-              <label className="text-sm font-medium text-zinc-700">Betrieb / Webseite</label>
-              <input
-                type="text"
-                placeholder="Restaurant Bella Vita / bella-vita.de"
-                className="border border-zinc-300 rounded-xl px-4 py-3 text-sm text-zinc-900 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-transparent transition"
-              />
-            </div>
-
-            <div className="flex flex-col gap-1.5">
-              <label className="text-sm font-medium text-zinc-700">Was ist dein größtes Problem gerade?</label>
-              <textarea
-                rows={4}
-                placeholder="Meine Website ist veraltet, keine Online-Reservierung, kaum Anfragen über Google..."
-                className="border border-zinc-300 rounded-xl px-4 py-3 text-sm text-zinc-900 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-transparent transition resize-none"
-              />
-            </div>
-
-            <div className="flex flex-col gap-1.5">
-              <label className="text-sm font-medium text-zinc-700">Welches Paket interessiert dich?</label>
-              <select className="border border-zinc-300 rounded-xl px-4 py-3 text-sm text-zinc-900 focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-transparent transition bg-white">
+            <div className="flex flex-col gap-2">
+              <label className="text-xs font-medium text-slate-500 uppercase tracking-widest">Interesse an</label>
+              <select className="bg-white border border-black/10 rounded-xl px-4 py-3.5 text-sm text-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-400 transition-colors">
                 <option value="">Noch nicht sicher</option>
-                <option value="starter">Starter – 1.490 €</option>
-                <option value="standard">Standard – 2.990 €</option>
-                <option value="premium">Premium – 4.990 €</option>
+                <option value="reservierung">Reservierungssystem</option>
+                <option value="website">Website / Webdesign</option>
+                <option value="beides">Beides</option>
+                <option value="seo">SEO & Analytics</option>
               </select>
             </div>
 
-            <button
-              type="submit"
-              className="bg-zinc-900 hover:bg-zinc-700 text-white font-semibold py-4 rounded-xl transition-colors text-sm mt-2"
-            >
+            <button type="submit"
+              className="mt-2 bg-slate-900 hover:bg-slate-700 text-white font-semibold py-4 rounded-xl transition-colors text-sm">
               Anfrage absenden
             </button>
-            <p className="text-xs text-zinc-400 text-center">
-              Ich melde mich innerhalb von 24 Stunden. Kein Spam, kein Druck.
-            </p>
-          </form>
+            <p className="text-xs text-slate-300 text-center">Antwort innerhalb von 24 Stunden. Kein Spam.</p>
+          </motion.form>
 
-          {/* Info */}
-          <div className="flex flex-col gap-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            className="flex flex-col gap-8 pt-2"
+          >
             <div>
-              <h2 className="text-xl font-bold text-zinc-900 mb-4">Was passiert nach deiner Anfrage?</h2>
+              <h2 className="text-slate-900 font-bold mb-5">Was danach passiert</h2>
               <ol className="flex flex-col gap-5">
                 {[
-                  "Ich melde mich innerhalb von 24 Stunden per E-Mail.",
-                  "Wir vereinbaren ein 15-minütiges kostenloses Gespräch.",
-                  "Ich analysiere deine aktuelle Situation und schicke dir ein konkretes Angebot.",
-                  "Du entscheidest – ohne Druck und ohne versteckte Kosten.",
+                  "Ich melde mich innerhalb von 24 Stunden.",
+                  "Wir vereinbaren ein 15-minütiges Gespräch.",
+                  "Ich analysiere deine Situation und schicke ein konkretes Angebot.",
+                  "Du entscheidest – ohne Druck.",
                 ].map((step, i) => (
-                  <li key={i} className="flex gap-4">
-                    <span className="flex-shrink-0 w-7 h-7 rounded-full bg-zinc-100 text-zinc-700 text-sm font-bold flex items-center justify-center">
+                  <li key={i} className="flex gap-4 items-start">
+                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-blue-50 border border-blue-200 text-blue-600 text-xs font-bold flex items-center justify-center mt-0.5">
                       {i + 1}
                     </span>
-                    <p className="text-zinc-500 text-sm leading-relaxed pt-0.5">{step}</p>
+                    <p className="text-slate-500 text-sm leading-relaxed">{step}</p>
                   </li>
                 ))}
               </ol>
             </div>
 
-            <div className="border-t border-zinc-100 pt-8">
-              <h3 className="font-semibold text-zinc-900 mb-3">Direkt schreiben</h3>
-              <a
-                href="mailto:hallo@farisdev.de"
-                className="text-zinc-900 hover:text-zinc-500 text-sm font-medium transition-colors underline underline-offset-4"
-              >
-                hallo@farisdev.de
+            <div className="border-t border-black/5 pt-8">
+              <p className="text-xs text-slate-400 mb-2 uppercase tracking-widest font-mono">Direkt schreiben</p>
+              <a href="mailto:hallo@deploy-web.de"
+                className="text-slate-900 hover:text-blue-600 transition-colors font-medium text-sm underline underline-offset-4 decoration-slate-200">
+                hallo@deploy-web.de
               </a>
             </div>
 
-            <div className="bg-zinc-50 border border-zinc-200 rounded-2xl p-6">
-              <p className="text-sm text-zinc-600 leading-relaxed">
-                <span className="font-semibold text-zinc-900">Tipp:</span> Schreib kurz, welche Website du aktuell hast (oder ob du noch keine hast).
-                Das spart Zeit im Gespräch und ich kann dir direkt konkrete Ideen mitbringen.
+            <div className="bg-slate-50 border border-black/5 rounded-2xl p-6">
+              <p className="text-sm text-slate-500 leading-relaxed">
+                <span className="text-slate-900 font-semibold">Tipp:</span> Schreib kurz, ob du bereits eine Website hast und was dein größtes Problem gerade ist. Das spart Zeit im Gespräch.
               </p>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
     </>
