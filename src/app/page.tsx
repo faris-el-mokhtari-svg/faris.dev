@@ -40,7 +40,7 @@ export default function Home() {
   return (
     <>
       {/* ─── Hero ─────────────────────────────────────────────────── */}
-      <section ref={heroRef} className="bg-[#FFFCF3] min-h-[115vh] flex flex-col relative overflow-hidden">
+      <section ref={heroRef} className="bg-[#FFFCF3] min-h-screen lg:min-h-[115vh] flex flex-col relative overflow-hidden">
         <div className="max-w-[1366px] mx-auto px-6 md:px-12 lg:px-16 flex-1 flex flex-col w-full pt-16 md:pt-20">
 
 
@@ -49,12 +49,8 @@ export default function Home() {
             <div className="w-full grid lg:grid-cols-[1fr_auto] gap-8 xl:gap-14 items-center">
 
               <h1
-                className="font-medium"
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontSize: "clamp(4rem, 11vw, 12.5rem)",
-                  lineHeight: 0.9,
-                }}
+                className="font-medium text-[clamp(4.2rem,21vw,10rem)] lg:text-[clamp(4rem,11vw,12.5rem)] text-center lg:text-left"
+                style={{ fontFamily: "var(--font-display)", lineHeight: 0.9 }}
               >
                 {[
                   { text: "Smarte", orange: false },
@@ -75,7 +71,7 @@ export default function Home() {
               </h1>
 
               {/* Café preview + reservation badge */}
-              <div className="hero-device absolute right-0 top-[14%] opacity-[0.18] pointer-events-none lg:relative lg:top-auto lg:opacity-100 lg:pointer-events-auto lg:flex-shrink-0 isolate">
+              <div className="hero-device hidden lg:block lg:flex-shrink-0 relative isolate">
 
                 {/* Soft shadow — animates in behind the devices */}
                 <div className="hero-shadow pointer-events-none absolute -z-10 right-[-14%] top-[8%] w-[88%] h-[78%] rounded-full blur-[100px] bg-black/[0.09]" />
