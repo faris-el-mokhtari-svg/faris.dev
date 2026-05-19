@@ -40,7 +40,7 @@ export default function Home() {
   return (
     <>
       {/* ─── Hero ─────────────────────────────────────────────────── */}
-      <section ref={heroRef} className="bg-[#FFFCF3] min-h-[115vh] flex flex-col">
+      <section ref={heroRef} className="bg-[#FFFCF3] min-h-[115vh] flex flex-col relative overflow-hidden">
         <div className="max-w-[1366px] mx-auto px-6 md:px-12 lg:px-16 flex-1 flex flex-col w-full pt-16 md:pt-20">
 
 
@@ -75,7 +75,7 @@ export default function Home() {
               </h1>
 
               {/* Café preview + reservation badge */}
-              <div className="hero-device hidden lg:block flex-shrink-0 relative isolate">
+              <div className="hero-device absolute right-[-12%] top-1/2 -translate-y-[48%] opacity-[0.10] pointer-events-none -z-[1] lg:relative lg:top-auto lg:translate-y-0 lg:opacity-100 lg:pointer-events-auto lg:flex-shrink-0 isolate">
 
                 {/* Soft shadow — animates in behind the devices */}
                 <div className="hero-shadow pointer-events-none absolute -z-10 right-[-14%] top-[8%] w-[88%] h-[78%] rounded-full blur-[100px] bg-black/[0.09]" />
@@ -106,7 +106,7 @@ export default function Home() {
                   href="https://cafe-alte-schule.com/reservierung"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hero-badge absolute -bottom-[4%] -right-[18%] z-10 cursor-pointer"
+                  className="hero-badge hidden lg:block absolute -bottom-[4%] -right-[18%] z-10 cursor-pointer"
                   whileHover={{ scale: 1.12 }}
                   whileTap={{ scale: 0.93 }}
                   transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
