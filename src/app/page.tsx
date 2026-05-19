@@ -75,7 +75,7 @@ export default function Home() {
               </h1>
 
               {/* Café preview + reservation badge */}
-              <div className="hero-device absolute right-0 top-[12%] opacity-[0.22] pointer-events-none -z-[1] lg:relative lg:top-auto lg:opacity-100 lg:pointer-events-auto lg:flex-shrink-0 isolate">
+              <div className="hero-device absolute right-0 top-[14%] opacity-[0.18] pointer-events-none lg:relative lg:top-auto lg:opacity-100 lg:pointer-events-auto lg:flex-shrink-0 isolate">
 
                 {/* Soft shadow — animates in behind the devices */}
                 <div className="hero-shadow pointer-events-none absolute -z-10 right-[-14%] top-[8%] w-[88%] h-[78%] rounded-full blur-[100px] bg-black/[0.09]" />
