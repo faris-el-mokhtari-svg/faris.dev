@@ -1,115 +1,254 @@
 "use client";
+import Link from "next/link";
 import ContactSection from "@/components/ContactSection";
+import RevealText from "@/components/RevealText";
+import FadeUp from "@/components/FadeUp";
+import AnimatedCounter from "@/components/AnimatedCounter";
+import GetPackedSection from "@/components/GetPackedSection";
+
+const CAFE_IMG =
+  "/cafe-alte-schule-preview.png";
+
+// ─── Data ────────────────────────────────────────────────────────────────────
 
 const services = [
   {
-    title: "Reservierungssysteme",
-    desc: "Ihr verwaltet alle Buchungen in Echtzeit – mit Live-Auslastung, Walk-in-Erfassung und Tagesübersicht pro Schicht.",
-    features: ["Live-Auslastung pro Schicht", "Walk-in Erfassung", "Tischplan-Verwaltung", "Gästehistorie"],
+    id: "01",
+    title: "Webdesign &\nEntwicklung",
+    desc: "Eine Website, die zum Betrieb passt — nicht zu einem Template. Custom entwickelt, mobile-first, und direkt editierbar ohne technisches Vorwissen.",
+    features: [
+      "Custom Design — kein Template",
+      "Mobile-First Development",
+      "SEO-Grundoptimierung",
+      "Schnelle Ladezeiten",
+      "No-Code Editor inklusive",
+    ],
+    stat: { to: 4, suffix: " Tage", label: "bis zum Live-Launch" },
+    bg: "cream" as const,
   },
   {
-    title: "Menü & Öffnungszeiten Management",
-    desc: "Speisekarte und Öffnungszeiten lassen sich ohne technisches Wissen im Admin-Bereich anpassen.",
-    features: ["No-Code Admin-Interface", "Menü-Editor", "Schicht- & Öffnungszeiten", "Sofort-Aktualisierung"],
+    id: "02",
+    title: "Reservierungs-\nsystem",
+    desc: "Alle Buchungen in Echtzeit — mit Live-Auslastung, Walk-in-Erfassung und Tagesübersicht pro Schicht. Kein Telefonklingeln mehr.",
+    features: [
+      "Live-Auslastung pro Schicht",
+      "Walk-in Erfassung & Tischverwaltung",
+      "Gästehistorie",
+      "Automatische Buchungsbestätigung",
+      "Kalenderintegration",
+    ],
+    stat: { to: 100, suffix: "%", label: "digitale Buchungen" },
+    bg: "orange" as const,
   },
   {
-    title: "Modernes Webdesign",
-    desc: "Wir entwickeln gemeinsam auf Basis deiner Vorstellung ein modernes und passendes Design.",
-    features: ["Custom Design", "Mobile-First", "SEO-optimiert", "Schnelle Ladezeiten"],
+    id: "03",
+    title: "Admin-Dashboard\n& Menü-Editor",
+    desc: "Speisekarte und Öffnungszeiten selbst aktualisieren — in zehn Sekunden, ohne technisches Vorwissen. Was sich ändert, ist sofort live.",
+    features: [
+      "No-Code Admin-Interface",
+      "Menü-Editor & Kategorien",
+      "Schicht- & Öffnungszeitverwaltung",
+      "Sofort-Aktualisierung live",
+      "Mehrsprachige Inhalte",
+    ],
+    stat: { to: 10, suffix: " Sek.", label: "bis die Änderung live ist" },
+    bg: "cream" as const,
+  },
+  {
+    id: "04",
+    title: "Kassensystem-\nIntegration",
+    desc: "Lightspeed, Square und weitere POS-Systeme werden nahtlos eingebunden — Umsatz, Inventar und Tagesbericht in einer einzigen Ansicht.",
+    features: [
+      "Lightspeed POS Integration",
+      "Echtzeit-Bestandstracking",
+      "Tageseinnahmen & Berichte sofort sichtbar",
+      "Automatisierte Inventurübersicht",
+    ],
+    stat: null,
+    bg: "dark" as const,
   },
 ];
 
-const comparison = [
-  { feature: "Branchenspezifische Software", deploy: true, others: false },
-  { feature: "Admin-Tool mitgeliefert", deploy: true, others: false },
-  { feature: "Website + Backend", deploy: true, others: true },
-  { feature: "Echtzeit-Bestandstracking", deploy: true, others: false },
-  { feature: "Reservierungssystem mit Live-Auslastung", deploy: true, others: false },
-];
+
+// ─── Section components ───────────────────────────────────────────────────────
+
+function ServiceSection({
+  service,
+}: {
+  service: (typeof services)[number];
+}) {
+  const cream = service.bg === "cream";
+  const dark = service.bg === "dark";
+  const orange = service.bg === "orange";
+
+  const numColor = dark
+    ? "text-[#FF5500]"
+    : orange
+    ? "text-white/15"
+    : "text-[#FF5500]";
+
+  const titleColor = dark || orange ? "text-white" : "text-[oklch(20%_0.015_30)]";
+  const dividerColor = dark ? "border-white/10" : orange ? "border-white/20" : "border-black/12";
+  const descColor = dark || orange ? "text-white/80" : "text-[oklch(20%_0.015_30)]";
+  const featureTextColor = dark || orange ? "text-white/60" : "text-black/55";
+  const featureBorderColor = dark ? "border-white/8" : orange ? "border-white/15" : "border-black/8";
+  const arrowColor = dark || orange ? "text-white/30" : "text-[#FF5500]/50";
+  const ctaClass = dark
+    ? "border-white/30 text-white hover:bg-white/10"
+    : orange
+    ? "border-white/60 text-white hover:bg-white/15"
+    : "border-black/25 text-[oklch(20%_0.015_30)] hover:bg-black hover:text-white";
+
+  const bg = dark
+    ? "bg-[oklch(12%_0.015_30)]"
+    : orange
+    ? "bg-[#FF5500]"
+    : "bg-[#FFFCF3]";
+
+  return (
+    <section className={`${bg} py-20 md:py-32`}>
+      <div className="max-w-[1366px] mx-auto px-6 md:px-12">
+        {/* Number + Title row */}
+        <div className="mb-10 md:mb-14">
+          <RevealText>
+            <span
+              className={`block font-black tracking-tight leading-[0.85] ${numColor}`}
+              style={{ fontSize: "clamp(5rem, 11vw, 11rem)", fontFamily: "var(--font-display)" }}
+            >
+              {service.id}
+            </span>
+          </RevealText>
+          <RevealText delay={0.08}>
+            <h2
+              className={`font-medium leading-[0.88] whitespace-pre-line ${titleColor}`}
+              style={{ fontSize: "clamp(3rem, 6.5vw, 6rem)" }}
+            >
+              {service.title}
+            </h2>
+          </RevealText>
+        </div>
+
+        {/* Divider */}
+        <div className={`border-t ${dividerColor} mb-10 md:mb-14`} />
+
+        {/* Content grid */}
+        <div className="grid md:grid-cols-2 gap-10 md:gap-20 items-start">
+          {/* Left: description + CTA */}
+          <FadeUp>
+            <p
+              className={`leading-snug mb-10 ${descColor}`}
+              style={{ fontSize: "clamp(1.25rem, 2vw, 1.625rem)" }}
+            >
+              {service.desc}
+            </p>
+            <Link
+              href="/kontakt"
+              className={`inline-block border rounded-full px-7 py-3 text-sm font-semibold transition-colors ${ctaClass}`}
+            >
+              Gespräch buchen →
+            </Link>
+          </FadeUp>
+
+          {/* Right: stat + features */}
+          <div className="flex flex-col gap-8">
+            {service.stat && (
+              <FadeUp>
+                <AnimatedCounter
+                  to={service.stat.to}
+                  suffix={service.stat.suffix}
+                  label={service.stat.label}
+                />
+              </FadeUp>
+            )}
+
+            <FadeUp delay={0.08} className="flex flex-col">
+              {service.features.map((f) => (
+                <div
+                  key={f}
+                  className={`flex items-start gap-4 border-t py-3.5 ${featureBorderColor}`}
+                >
+                  <span className={`text-xs mt-1 flex-shrink-0 ${arrowColor}`}>→</span>
+                  <span className={`text-base leading-snug ${featureTextColor}`}>{f}</span>
+                </div>
+              ))}
+            </FadeUp>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function Leistungen() {
   return (
     <>
-      <section className="bg-[#FF5500] pt-24 md:pt-28 pb-16 md:pb-20">
+      {/* Hero */}
+      <section className="bg-[#FF5500] pt-28 md:pt-36 pb-20 md:pb-28">
         <div className="max-w-[1366px] mx-auto px-6 md:px-12">
-          <div className="flex items-start justify-between mb-12 md:mb-14">
-            <h1 className="text-white text-6xl md:text-8xl leading-none font-bold">
-              Unsere Leistungen
+          <p className="text-white/50 text-xs font-semibold tracking-widest uppercase mb-10">
+            Leistungen
+          </p>
+          <RevealText wrapClass="mb-10">
+            <h1
+              className="text-white font-medium leading-[0.88]"
+              style={{ fontSize: "clamp(3rem, 7.5vw, 7.5rem)" }}
+            >
+              Das vollständige Betriebssystem für Ihren Betrieb.
             </h1>
-            <span className="text-white text-7xl md:text-8xl leading-none">↙</span>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-3 md:gap-4">
-            {services.map((s) => (
-              <div key={s.title} className="border border-white/80 p-8 md:p-10 min-h-[560px] flex flex-col">
-                <h2 className="text-white text-6xl leading-[0.95] mb-auto">{s.title}</h2>
-                <p className="text-white text-4xl leading-tight">{s.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#FF5500] pb-16 md:pb-24">
-        <div className="max-w-[1366px] mx-auto px-6 md:px-12">
-          <div className="border border-white/80 overflow-hidden">
-            <div className="grid grid-cols-3 bg-[#FFFCF3] border-b border-white/80">
-              <div className="p-5 text-4xl" />
-              <div className="p-5 text-center text-[#FF5500] text-5xl border-l border-white/80">Deploy</div>
-              <div className="p-5 text-center text-[#FF5500] text-5xl border-l border-white/80">Lokale Webagenturen</div>
-            </div>
-
-            {comparison.map((row) => (
-              <div key={row.feature} className="grid grid-cols-3 border-b border-white/80 last:border-b-0">
-                <div className="p-5 text-white text-5xl leading-tight">{row.feature}</div>
-                <div className="p-5 border-l border-white/80 flex justify-center items-center">
-                  {row.deploy ? (
-                    <span className="w-16 h-16 rounded-full bg-[#FFFCF3] text-[#FF5500] text-5xl flex items-center justify-center font-bold">✓</span>
-                  ) : (
-                    <span className="w-16 h-16 rounded-full bg-black text-white text-5xl flex items-center justify-center font-bold">✕</span>
-                  )}
-                </div>
-                <div className="p-5 border-l border-white/80 flex justify-center items-center">
-                  {row.others ? (
-                    <span className="w-16 h-16 rounded-full bg-[#FFFCF3] text-[#FF5500] text-5xl flex items-center justify-center font-bold">✓</span>
-                  ) : (
-                    <span className="w-16 h-16 rounded-full bg-black text-white text-5xl flex items-center justify-center font-bold">✕</span>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#FFFCF3] py-16 md:py-20">
-        <div className="max-w-[1366px] mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-10 items-start">
-          <h2 className="text-[#FF5500] text-8xl md:text-8xl leading-[0.9] font-semibold">
-            Echte
-            <br />
-            messbare
-            <br />
-            Wirkung
-          </h2>
-          <div className="bg-[#FF5500] rounded-[2.5rem] min-h-[680px] p-10 md:p-12 text-white flex flex-col">
-            <p className="text-[10rem] md:text-[12rem] leading-none font-bold">100%</p>
-            <p className="mt-auto text-6xl leading-[0.95]">
-              der Kunden konnten spürbare Verbesserungen im Betrieb vermerken.
+          </RevealText>
+          <FadeUp delay={0.2}>
+            <p
+              className="text-white/60 leading-snug max-w-2xl"
+              style={{ fontSize: "clamp(1.125rem, 1.75vw, 1.5rem)" }}
+            >
+              Wir bauen keine Websites als Einzelprodukt. Wir bauen operative Systeme — Website, Reservierung, Dashboard und Integration in einem.
             </p>
-          </div>
+          </FadeUp>
         </div>
       </section>
 
-      <section className="bg-[#FFFCF3] pb-16 md:pb-20">
-        <div className="max-w-[1366px] mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-8 items-stretch">
-          <div className="rounded-[2.5rem] border border-[#FF5500] p-10 md:p-12 flex flex-col justify-between min-h-[640px]">
-            <p className="text-[#FF5500] text-[10rem] md:text-[12rem] leading-none font-bold">64%</p>
-            <p className="text-[#FF5500] text-7xl leading-[0.95]">mehr Besucher auf deiner Website .</p>
-          </div>
-          <div
-            className="rounded-[2.5rem] bg-cover bg-center min-h-[640px]"
-            style={{ backgroundImage: "url('/bg/teaser-square.jpg')" }}
-          />
+      {/* Four service sections */}
+      {services.map((s) => (
+        <ServiceSection key={s.id} service={s} />
+      ))}
+
+      <GetPackedSection />
+
+      {/* Project example */}
+      <section className="bg-[#FFFCF3] py-20 md:py-28 border-t border-black/8">
+        <div className="max-w-[1366px] mx-auto px-6 md:px-12">
+          <p className="text-black/30 text-xs font-semibold tracking-widest uppercase mb-10">
+            In der Praxis
+          </p>
+          <FadeUp className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
+            <div className="flex flex-col gap-6">
+              <RevealText>
+                <h2
+                  className="text-[#FF5500] font-medium leading-[0.92]"
+                  style={{ fontSize: "clamp(2.5rem, 5vw, 4.5rem)" }}
+                >
+                  Café Alte Schule.
+                </h2>
+              </RevealText>
+              <p className="text-black text-xl md:text-2xl leading-snug">
+                Reservierungssystem mit Live-Auslastung. Speisekarte selbst editierbar. Kassensystem-Integration mit Lightspeed. Live in 4 Tagen.
+              </p>
+              <a
+                href="https://cafe-alte-schule.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block border-2 border-black text-black rounded-full px-7 py-3 text-sm font-semibold hover:bg-black hover:text-white transition-colors self-start"
+              >
+                Live ansehen →
+              </a>
+            </div>
+            <div
+              className="w-full aspect-[4/3] rounded-[2rem] bg-cover bg-top"
+              style={{ backgroundImage: `url('${CAFE_IMG}')` }}
+            />
+          </FadeUp>
         </div>
       </section>
 

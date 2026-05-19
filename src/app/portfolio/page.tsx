@@ -1,95 +1,158 @@
 "use client";
-import Link from "next/link";
-import { motion } from "framer-motion";
+import ContactSection from "@/components/ContactSection";
+import FadeUp from "@/components/FadeUp";
+import RevealText from "@/components/RevealText";
+
+const cafeDetails = [
+  "Website mit No-Code-Editor",
+  "Reservierungssystem (Echtzeit)",
+  "Admin-Dashboard",
+  "Kassensystem-Integration (Lightspeed)",
+  "Live in 4 Tagen",
+];
+
+const bachbaeckerDetails = [
+  "Website mit No-Code-Editor",
+  "Produktkatalog & Kategorien",
+  "Admin-Dashboard (Neuigkeiten, Jobs, Produkte)",
+  "Standortübersicht",
+  "Live in 4 Tagen",
+];
 
 export default function Portfolio() {
   return (
     <>
-      <section className="pt-32 pb-16 max-w-6xl mx-auto px-6">
-        <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-          className="text-blue-500 text-xs font-mono tracking-widest uppercase block mb-6">
-          Portfolio
-        </motion.span>
-        <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="text-5xl md:text-7xl font-black text-slate-900 tracking-tight leading-none mb-6">
-          Projekte, die laufen.
-        </motion.h1>
-        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}
-          className="text-slate-500 text-lg max-w-xl">
-          Keine Mockups. Echte Projekte, live im Einsatz.
-        </motion.p>
+      {/* Hero */}
+      <section className="bg-[#FFFCF3] pt-28 md:pt-36 pb-16 border-b border-black/8">
+        <div className="max-w-[1366px] mx-auto px-6 md:px-12 lg:px-16">
+          <p className="text-black/22 text-[0.65rem] font-semibold tracking-widest uppercase mb-6">
+            Portfolio
+          </p>
+          <RevealText>
+            <h1
+              className="font-medium leading-[0.9] text-[oklch(12%_0.015_30)]"
+              style={{ fontSize: "clamp(3.5rem, 8vw, 8rem)" }}
+            >
+              Projekte,<br />die laufen.
+            </h1>
+          </RevealText>
+          <FadeUp delay={0.15}>
+            <p className="text-black/38 text-lg leading-snug max-w-xl mt-8">
+              Keine Mockups. Systeme, die täglich im Einsatz sind.
+            </p>
+          </FadeUp>
+        </div>
       </section>
 
-      <section className="max-w-6xl mx-auto px-6 pb-20">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }} transition={{ duration: 0.6, ease: "easeOut" }}
-          className="rounded-2xl border border-black/5 bg-white overflow-hidden shadow-sm"
-        >
-          <div className="w-full h-72 md:h-96 bg-slate-50 border-b border-black/5 flex items-center justify-center relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-slate-50" />
-            <div className="text-center relative z-10">
-              <p className="text-slate-300 text-sm mb-2">Screenshot folgt</p>
-              <a href="https://cafe-alte-schule.com" target="_blank" rel="noopener noreferrer"
-                className="text-blue-500 text-sm hover:underline">
-                cafe-alte-schule.com ↗
-              </a>
-            </div>
-          </div>
+      {/* Project: Café Alte Schule */}
+      <section className="bg-[#FFFCF3] py-20 md:py-28 border-b border-black/8">
+        <div className="max-w-[1366px] mx-auto px-6 md:px-12 lg:px-16">
 
-          <div className="p-8 md:p-12 grid md:grid-cols-2 gap-10">
-            <div>
-              <span className="text-blue-500 text-xs font-mono tracking-widest uppercase mb-3 block">Gastronomie</span>
-              <h2 className="text-3xl font-black text-slate-900 tracking-tight mb-3">Café Alte Schule</h2>
-              <p className="text-slate-500 text-sm leading-relaxed mb-6">
-                Vollständiges Reservierungssystem mit Echtzeit-Tischverwaltung, Lightspeed POS Integration und No-Code-Dashboard. Der Inhaber verwaltet Speisekarte, Schichten und Öffnungszeiten selbst – täglich, ohne uns.
+          <FadeUp>
+            <a
+              href="https://cafe-alte-schule.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block group overflow-hidden rounded-2xl mb-14"
+            >
+              <div
+                className="w-full aspect-[16/8] bg-cover bg-top group-hover:scale-[1.015] transition-transform duration-700"
+                style={{
+                  backgroundImage: "url('/cafe-alte-schule-preview.png')",
+                }}
+              />
+            </a>
+          </FadeUp>
+
+          <div className="grid md:grid-cols-[1fr_0.75fr] gap-12 md:gap-20 items-start">
+            <FadeUp>
+              <p className="text-black/22 text-[0.65rem] font-semibold tracking-widest uppercase mb-4">
+                Gastronomie
               </p>
-              <a href="https://cafe-alte-schule.com" target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm text-slate-600 hover:text-blue-600 border border-black/10 hover:border-blue-200 px-5 py-2.5 rounded-lg transition-all">
+              <h2
+                className="font-medium leading-[0.9] text-[oklch(12%_0.015_30)] mb-6"
+                style={{ fontSize: "clamp(2.5rem, 5vw, 5rem)" }}
+              >
+                Café Alte Schule
+              </h2>
+              <p className="text-black/48 text-lg leading-relaxed mb-8 max-w-[50ch]">
+                Vollständiges Betriebssystem: Website mit No-Code-Editor, Reservierungssystem mit Live-Auslastung, Admin-Dashboard für Schichten und Menü, Kassensystem-Integration. Der Inhaber pflegt alles selbst — täglich, ohne uns.
+              </p>
+              <a
+                href="https://cafe-alte-schule.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block border border-black/18 text-black/50 rounded-full px-6 py-2.5 text-sm font-medium hover:border-black/40 hover:text-black transition-colors"
+              >
                 Live ansehen ↗
               </a>
-            </div>
+            </FadeUp>
 
-            <div className="flex flex-col gap-6">
-              <div className="grid grid-cols-3 gap-4">
-                {[{ value: "14", label: "Tage bis Launch" }, { value: "+68%", label: "Reservierungen" }, { value: "Live", label: "Lightspeed Sync" }].map((s) => (
-                  <div key={s.label} className="bg-slate-50 rounded-xl p-4 border border-black/5">
-                    <div className="text-slate-900 font-black text-2xl">{s.value}</div>
-                    <div className="text-slate-400 text-xs mt-1">{s.label}</div>
+            <FadeUp delay={0.1}>
+              <div className="border-t border-black/8">
+                {cafeDetails.map((item) => (
+                  <div key={item} className="flex items-center gap-4 border-b border-black/8 py-4">
+                    <span className="text-[#FF5500] text-sm flex-shrink-0">✓</span>
+                    <span className="text-black/60 text-base">{item}</span>
                   </div>
                 ))}
               </div>
-              <div className="bg-slate-50 rounded-xl p-6 border border-black/5">
-                <p className="text-xs font-mono text-blue-500 mb-3 uppercase tracking-widest">Stack</p>
-                <div className="flex flex-wrap gap-2">
-                  {["Next.js", "Tailwind CSS", "Lightspeed API", "Supabase", "Vercel"].map((t) => (
-                    <span key={t} className="text-xs text-slate-500 border border-black/8 bg-white px-3 py-1 rounded-full">{t}</span>
-                  ))}
-                </div>
-              </div>
-            </div>
+            </FadeUp>
           </div>
-        </motion.div>
-      </section>
-
-      <section className="max-w-6xl mx-auto px-6 pb-32">
-        <div className="rounded-2xl border border-dashed border-black/10 p-16 text-center">
-          <p className="text-slate-300 text-sm mb-1">Weitere Projekte</p>
-          <p className="text-slate-200 text-xs">Demnächst</p>
         </div>
       </section>
 
-      <section className="max-w-6xl mx-auto px-6 pb-32">
-        <div className="rounded-2xl border border-blue-100 bg-gradient-to-br from-blue-50 to-white p-12 text-center">
-          <h2 className="text-3xl font-black text-slate-900 mb-3">Dein Projekt als nächstes?</h2>
-          <p className="text-slate-500 mb-8 max-w-sm mx-auto text-sm">15 Minuten Gespräch – kostenlos.</p>
-          <Link href="/kontakt"
-            className="inline-block px-8 py-4 rounded-xl bg-slate-900 hover:bg-slate-700 text-white font-semibold transition-colors">
-            Projekt starten
-          </Link>
+      {/* Project: Bachbäcker */}
+      <section className="bg-[#FFFCF3] py-20 md:py-28 border-b border-black/8">
+        <div className="max-w-[1366px] mx-auto px-6 md:px-12 lg:px-16">
+
+          <FadeUp>
+            <div className="block overflow-hidden rounded-2xl mb-14">
+              <div
+                className="w-full aspect-[16/8] bg-cover bg-top"
+                style={{ backgroundImage: "url('/bachbaecker-preview.png')" }}
+              />
+            </div>
+          </FadeUp>
+
+          <div className="grid md:grid-cols-[1fr_0.75fr] gap-12 md:gap-20 items-start">
+            <FadeUp>
+              <p className="text-black/22 text-[0.65rem] font-semibold tracking-widest uppercase mb-4">
+                Bäckerei
+              </p>
+              <h2
+                className="font-medium leading-[0.9] text-[oklch(12%_0.015_30)] mb-6"
+                style={{ fontSize: "clamp(2.5rem, 5vw, 5rem)" }}
+              >
+                Bachbäcker
+              </h2>
+              <p className="text-black/48 text-lg leading-relaxed mb-8 max-w-[50ch]">
+                Website für eine Traditionsbäckerei aus dem Taunus — seit über 260 Jahren im Betrieb. Produktkatalog, Standortübersicht, Neuigkeiten und ein Admin-Dashboard, das das Team selbst bedient.
+              </p>
+            </FadeUp>
+
+            <FadeUp delay={0.1}>
+              <div className="border-t border-black/8">
+                {bachbaeckerDetails.map((item) => (
+                  <div key={item} className="flex items-center gap-4 border-b border-black/8 py-4">
+                    <span className="text-[#FF5500] text-sm flex-shrink-0">✓</span>
+                    <span className="text-black/60 text-base">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </FadeUp>
+          </div>
         </div>
       </section>
+
+      {/* More coming */}
+      <section className="bg-[#FFFCF3] py-16 md:py-20">
+        <div className="max-w-[1366px] mx-auto px-6 md:px-12 lg:px-16">
+          <p className="text-black/15 text-xl md:text-2xl font-medium">Weitere Projekte folgen.</p>
+        </div>
+      </section>
+
+      <ContactSection />
     </>
   );
 }

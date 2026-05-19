@@ -1,86 +1,305 @@
 "use client";
 import Link from "next/link";
+import { useRef } from "react";
+import { motion } from "framer-motion";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ContactSection from "@/components/ContactSection";
+import FadeUp from "@/components/FadeUp";
+import ProcessSection from "@/components/ProcessSection";
+import MarqueeStrip from "@/components/MarqueeStrip";
+import RevealText from "@/components/RevealText";
 
-const featureRows = [
-  { title: "Schnelle Umsetzung", desc: "Kein langes warten - eure Website geht  in 14 Tagen live." },
-  { title: "Individuelle Lösungen", desc: "Strategie und Umsetzung – fokussiert auf Ihre Geschäftsziele." },
-  { title: "Nachgewiesene Wirkung", desc: "Messbare Ergebnisse in Wachstum, Effizienz und Rentabilität." },
+gsap.registerPlugin(useGSAP, ScrollTrigger);
+
+const CAFE_IMG =
+  "/cafe-alte-schule-preview.png";
+
+const services = [
+  { n: "01", title: "Webdesign & Entwicklung", desc: "Custom gebaut, mobile-first. Kein Template, keine Einschränkungen." },
+  { n: "02", title: "Reservierungssystem", desc: "Live-Auslastung, Walk-in-Erfassung, Kalenderintegration." },
+  { n: "03", title: "Admin-Dashboard & Menü-Editor", desc: "Speisekarte und Öffnungszeiten selbst pflegen — in 10 Sekunden live." },
+  { n: "04", title: "Kassensystem-Integration", desc: "Lightspeed, Square und mehr nahtlos eingebunden." },
 ];
 
 export default function Home() {
+  const heroRef = useRef<HTMLElement>(null);
+
+  useGSAP(() => {
+    const tl = gsap.timeline({ delay: 0.1 });
+
+    tl.from(".hero-label", { opacity: 0, y: 10, duration: 0.55, ease: "power3.out" })
+      .from(".hero-word", { yPercent: 112, duration: 1.05, ease: "power4.out", stagger: 0.09 }, "-=0.25")
+      .from(".hero-bottom", { opacity: 0, y: 20, duration: 0.7, ease: "power3.out" }, "-=0.5");
+  }, { scope: heroRef });
+
   return (
     <>
-      <section
-        className="relative min-h-screen overflow-hidden"
-      >
-        <div className="absolute inset-0 bg-gradient-to-br from-[#d7dccf] via-[#ffd2b0] to-[#c8cec5]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#ff7a00]/90 via-[#ff8a2c]/55 to-transparent" />
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-60 scale-110"
-          style={{ backgroundImage: "url('/bg/teaser-square.jpg')" }}
-        />
-        <div className="absolute inset-0 bg-white/15" />
+      {/* ─── Hero ─────────────────────────────────────────────────── */}
+      <section ref={heroRef} className="bg-[#FFFCF3] min-h-screen flex flex-col">
+        <div className="max-w-[1366px] mx-auto px-6 md:px-12 lg:px-16 flex-1 flex flex-col w-full pt-16 md:pt-20">
 
-        <div className="max-w-[1366px] mx-auto px-6 md:px-12 lg:px-16 min-h-screen pt-24 pb-10 flex flex-col">
-          <p className="text-white/90 text-lg">Deploy - Web Devolpment</p>
 
-          <h2 className="absolute top-20 right-5 md:right-12 text-white text-6xl md:text-8xl leading-[0.95] font-medium text-right">
-            Smarte
-            <br />
-            Strategien
-          </h2>
+          {/* Headline + café preview */}
+          <div className="flex-1 flex items-center py-8 md:py-10">
+            <div className="w-full grid lg:grid-cols-[1fr_auto] gap-8 xl:gap-14 items-center">
 
-          <div className="mt-28 md:mt-36">
-            <h1 className="text-[6rem] md:text-[12rem] leading-none font-black tracking-tight bg-gradient-to-r from-[#5B5BFF] to-[#E27CF7] bg-clip-text text-transparent">
-              Deploy
-            </h1>
-          </div>
-
-          <div className="mt-auto grid md:grid-cols-2 gap-8 items-end">
-            <h3 className="text-white text-7xl md:text-8xl leading-[0.9] font-medium">
-              Starkes
-              <br />
-              Business
-            </h3>
-            <div className="justify-self-end max-w-md text-right">
-              <p className="text-white text-3xl leading-tight mb-8">
-                Wir helfen Unternehmen, effizient zu werden und unsere lösungen schnell und sicher zu nutzen.
-              </p>
-              <Link
-                href="/kontakt"
-                className="inline-block border border-white/80 text-white rounded-full px-12 py-4 text-3xl hover:bg-white/15 transition-colors"
+              <h1
+                className="font-medium"
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: "clamp(4.5rem, 10vw, 11rem)",
+                  lineHeight: 0.9,
+                }}
               >
-                BERATUNG BUCHEN
+                {[
+                  { text: "Smarte", orange: false },
+                  { text: "Systeme.", orange: true },
+                  { text: "Starke", orange: false },
+                  { text: "Betriebe.", orange: true },
+                ].map(({ text, orange }) => (
+                  <span key={text} className="block overflow-hidden pb-[0.07em]">
+                    <span
+                      className={`hero-word block ${
+                        orange ? "text-[#FF5500]" : "text-[oklch(12%_0.015_30)]"
+                      }`}
+                    >
+                      {text}
+                    </span>
+                  </span>
+                ))}
+              </h1>
+
+              {/* Café preview + reservation badge */}
+              <div className="hero-word hidden lg:block flex-shrink-0 relative">
+
+                {/* Laptop — links to homepage */}
+                <motion.a
+                  href="https://cafe-alte-schule.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
+                >
+                  <img
+                    src="/cafe-preview.svg"
+                    alt="Café Alte Schule — Live-Website"
+                    className="w-[520px] xl:w-[620px] 2xl:w-[700px] block"
+                    draggable={false}
+                  />
+                </motion.a>
+
+                {/* Circular reservation badge — lower-right corner of laptop */}
+                <motion.a
+                  href="https://cafe-alte-schule.com/reservierung"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute -bottom-[4%] -right-[18%] z-10 cursor-pointer"
+                  whileHover={{ scale: 1.12 }}
+                  whileTap={{ scale: 0.93 }}
+                  transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
+                >
+                  <img
+                    src="/reservation-badge.svg"
+                    alt="Tisch reservieren"
+                    className="w-[260px] xl:w-[300px] 2xl:w-[340px] select-none"
+                    draggable={false}
+                  />
+                </motion.a>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom: desc + CTA + stats */}
+          <div className="hero-bottom">
+            <div className="grid md:grid-cols-[1fr_auto] gap-6 items-center border-t border-black/8 py-6">
+              <p
+                className="text-black/45 leading-relaxed max-w-[54ch]"
+                style={{ fontSize: "clamp(0.9rem, 1.35vw, 1.05rem)" }}
+              >
+                Wir bauen operative Systeme für Gastronomie und lokale KMU — Website, Reservierung und Dashboard in einem.
+              </p>
+              <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
+                <Link
+                  href="/kontakt"
+                  className="inline-block border border-[oklch(12%_0.015_30)] text-[oklch(12%_0.015_30)] rounded-full px-7 py-3 text-sm font-semibold hover:bg-[oklch(12%_0.015_30)] hover:text-[#FFFCF3] transition-colors whitespace-nowrap"
+                >
+                  Beratung buchen →
+                </Link>
+              </motion.div>
+            </div>
+
+            {/* Inline stats */}
+            <div className="grid grid-cols-2 md:grid-cols-4 border-t border-black/8 pb-8">
+              {[
+                { n: "4", suffix: " Tage", label: "bis Launch" },
+                { n: "10+", suffix: "", label: "Projekte" },
+                { n: "3", suffix: "", label: "Länder" },
+                { n: "100%", suffix: "", label: "editierbar" },
+              ].map(({ n, suffix, label }, i) => (
+                <div key={label} className={`pt-6 pb-2 ${i > 0 ? "md:pl-8 md:border-l md:border-black/8" : ""}`}>
+                  <p
+                    className="font-black tracking-tight leading-none text-[oklch(12%_0.015_30)]"
+                    style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)" }}
+                  >
+                    {n}
+                    {suffix && <span className="text-[#FF5500]">{suffix}</span>}
+                  </p>
+                  <p className="text-black/28 text-[0.6rem] font-semibold tracking-widest uppercase mt-2">
+                    {label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Marquee ──────────────────────────────────────────────── */}
+      <MarqueeStrip />
+
+      {/* ─── Services ─────────────────────────────────────────────── */}
+      <section className="bg-[#FFFCF3] border-b border-black/8">
+        <div className="max-w-[1366px] mx-auto px-6 md:px-12 lg:px-16 py-24 md:py-32">
+
+          <div className="flex items-end justify-between pb-10 border-b border-black/8">
+            <RevealText>
+              <h2
+                className="font-medium leading-[0.9] text-[oklch(12%_0.015_30)]"
+                style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.5rem, 5.5vw, 5.5rem)" }}
+              >
+                Was wir bauen.
+              </h2>
+            </RevealText>
+            <FadeUp delay={0.05}>
+              <Link
+                href="/leistungen"
+                className="text-black/28 text-sm hover:text-black transition-colors hidden md:block"
+              >
+                Alle Leistungen →
               </Link>
-            </div>
+            </FadeUp>
+          </div>
+
+          <div>
+            {services.map((s, i) => (
+              <FadeUp key={s.n} delay={i * 0.06}>
+                <Link
+                  href="/leistungen"
+                  className="group flex items-center gap-6 md:gap-10 border-b border-black/8 py-7 md:py-8"
+                >
+                  <span className="text-black/18 text-xs font-semibold w-6 flex-shrink-0">{s.n}</span>
+                  <div className="flex-1 min-w-0">
+                    <p
+                      className="text-[oklch(12%_0.015_30)] font-medium group-hover:text-[#FF5500] transition-colors duration-200 leading-tight"
+                      style={{ fontSize: "clamp(1.05rem, 1.8vw, 1.4rem)" }}
+                    >
+                      {s.title}
+                    </p>
+                    <p className="text-black/32 text-sm mt-1 leading-snug">{s.desc}</p>
+                  </div>
+                  <span className="text-black/15 group-hover:text-[#FF5500] group-hover:translate-x-1 transition-all duration-200 text-base flex-shrink-0">
+                    →
+                  </span>
+                </Link>
+              </FadeUp>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-[#FFFCF3] border-y border-black/35">
-        <div className="max-w-[1366px] mx-auto divide-y divide-black/35">
-          {featureRows.map((row) => (
-            <div key={row.title} className="grid md:grid-cols-2 items-center gap-6 px-6 md:px-12 py-16 md:py-20">
-              <h3 className="text-[#FF5500] text-5xl md:text-6xl">{row.title}</h3>
-              <p className="text-black text-4xl leading-tight">{row.desc}</p>
+      {/* ─── Portfolio teaser ─────────────────────────────────────── */}
+      <section className="bg-[#FFFCF3] border-b border-black/8">
+        <div className="max-w-[1366px] mx-auto px-6 md:px-12 lg:px-16 py-24 md:py-32">
+
+          <div className="flex items-end justify-between mb-10">
+            <div>
+              <p className="text-black/22 text-[0.65rem] font-semibold tracking-widest uppercase mb-3">
+                Referenzprojekt
+              </p>
+              <RevealText>
+                <h2
+                  className="font-medium leading-[0.9] text-[oklch(12%_0.015_30)]"
+                  style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.5rem, 5.5vw, 5.5rem)" }}
+                >
+                  Café Alte Schule.
+                </h2>
+              </RevealText>
             </div>
-          ))}
+            <FadeUp delay={0.05}>
+              <a
+                href="https://cafe-alte-schule.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-black/28 text-sm hover:text-black transition-colors hidden md:block"
+              >
+                Live ansehen ↗
+              </a>
+            </FadeUp>
+          </div>
+
+          <FadeUp>
+            <a
+              href="https://cafe-alte-schule.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block group overflow-hidden rounded-2xl"
+            >
+              <div
+                className="w-full aspect-[16/8] bg-cover bg-top group-hover:scale-[1.015] transition-transform duration-700"
+                style={{ backgroundImage: `url('${CAFE_IMG}')` }}
+              />
+            </a>
+          </FadeUp>
+
+          <FadeUp delay={0.08}>
+            <div className="flex flex-wrap gap-2 mt-5">
+              {[
+                "Website + Admin-Dashboard",
+                "Reservierungssystem",
+                "Lightspeed-Integration",
+                "Live in 4 Tagen",
+              ].map((tag) => (
+                <span
+                  key={tag}
+                  className="border border-black/10 rounded-full px-4 py-1.5 text-xs text-black/38 font-medium"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </FadeUp>
         </div>
       </section>
 
-      <section className="bg-[#FFFCF3]">
-        <div className="max-w-[1366px] mx-auto px-6 md:px-12 py-16 md:py-20">
-          <div className="grid md:grid-cols-2 gap-10 items-start">
-            <p className="text-black text-4xl md:text-[2.5rem] leading-tight max-w-xl">
-              Ob Gastronomie, Handwerksbetrieb oder oder Kleinunternehmen, wir bieten Lösungen, die Ihnen hilft, sich
-              auf das Wesentliche zu konzentrieren.
-            </p>
-            <div className="md:justify-self-end w-full max-w-[640px] aspect-square rounded-[2.5rem] bg-cover bg-center" style={{ backgroundImage: "url('/bg/teaser-square.jpg')" }} />
-          </div>
-          <h2 className="mt-16 md:mt-20 text-[#FF5500] text-6xl md:text-7xl leading-[0.95] max-w-4xl">
-            Unser Team arbeitet mit Ihnen von der Konzeption bis zur Ausführung.
-          </h2>
+      {/* ─── Process ──────────────────────────────────────────────── */}
+      <ProcessSection />
+
+      {/* ─── Testimonial ──────────────────────────────────────────── */}
+      <section className="bg-[#FFFCF3] border-t border-black/8 border-b border-black/8">
+        <div className="max-w-[1366px] mx-auto px-6 md:px-12 lg:px-16 py-24 md:py-32">
+          <p className="text-black/22 text-[0.65rem] font-semibold tracking-widest uppercase mb-12">
+            Kundenstimmen
+          </p>
+          <RevealText wrapClass="mb-10">
+            <blockquote
+              className="text-[oklch(12%_0.015_30)] font-medium leading-[1.05]"
+              style={{ fontSize: "clamp(1.75rem, 4vw, 4rem)" }}
+            >
+              „Deploy hat es uns ermöglicht, eine professionelle Website zu erstellen, die auf unseren Betrieb zugeschnitten ist — ganz unkompliziert, mit toller Beratung."
+            </blockquote>
+          </RevealText>
+          <FadeUp delay={0.1}>
+            <div className="flex items-center gap-4">
+              <div className="w-px h-7 bg-black/12" />
+              <p className="text-black/38 text-sm font-medium">
+                Arne Linke, Gastronom · Café Alte Schule
+              </p>
+            </div>
+          </FadeUp>
         </div>
       </section>
 

@@ -32,11 +32,11 @@ export default function MeshGradient() {
       const w = canvas.width;
       const h = canvas.height;
       blobs = colors.map((color, i) => ({
-        x: w * (0.3 + Math.random() * 0.6),
-        y: h * (0.1 + Math.random() * 0.5),
-        vx: (Math.random() - 0.5) * 0.35,
-        vy: (Math.random() - 0.5) * 0.35,
-        r: Math.min(w, h) * (0.28 + i * 0.06),
+        x: w * (0.05 + Math.random() * 0.9),
+        y: h * (0.05 + Math.random() * 0.9),
+        vx: (Math.random() - 0.5) * 0.28,
+        vy: (Math.random() - 0.5) * 0.28,
+        r: Math.min(w, h) * (0.32 + i * 0.07),
         color,
       }));
     };

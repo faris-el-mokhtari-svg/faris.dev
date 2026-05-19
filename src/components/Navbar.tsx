@@ -26,12 +26,12 @@ export default function Navbar() {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled ? "bg-white/90 backdrop-blur-md border-b border-black/5 shadow-sm" : ""
+      (scrolled || pathname !== "/") ? "bg-white/90 backdrop-blur-md border-b border-black/5 shadow-[0_1px_3px_rgba(0,0,0,0.06)]" : ""
     }`}>
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
         <Link href="/" className="flex items-center gap-1 group">
-          <span className={`text-xs font-semibold tracking-widest uppercase mr-1 ${isHomeTop ? "text-white/80" : "text-black/30"}`}>Deploy</span>
-          <span className={`text-xl font-black tracking-[-0.04em] uppercase leading-none ${isHomeTop ? "text-white" : "text-[#FF5500]"}`}>Web Development</span>
+          <span className="text-xl font-black tracking-[-0.04em] uppercase leading-none text-[#FF5500]">Deploy</span>
+          <span className="text-xl font-black tracking-[-0.04em] uppercase leading-none text-[#FF5500]/60">&thinsp;Change</span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
@@ -39,8 +39,8 @@ export default function Navbar() {
             <Link key={l.href} href={l.href}
               className={`text-sm transition-colors ${
                 pathname === l.href
-                  ? (isHomeTop ? "text-white font-medium" : "text-[#FF5500] font-medium")
-                  : (isHomeTop ? "text-white/80 hover:text-white" : "text-black/40 hover:text-black")
+                  ? "text-[#FF5500] font-medium"
+                  : "text-black/40 hover:text-black"
               }`}>
               {l.label}
             </Link>
@@ -50,13 +50,13 @@ export default function Navbar() {
         <div className="hidden md:block">
           <Link href="/kontakt"
             className={`text-sm font-semibold px-5 py-2.5 rounded-full border-2 transition-colors ${
-              isHomeTop ? "border-white text-white hover:bg-white hover:text-black" : "border-black text-black hover:bg-black hover:text-white"
+              "border-black text-black hover:bg-black hover:text-white"
             }`}>
             Beratung buchen
           </Link>
         </div>
 
-        <button className={`md:hidden ${isHomeTop ? "text-white/80 hover:text-white" : "text-black/50 hover:text-black"}`} onClick={() => setOpen(!open)}>
+        <button className="md:hidden text-black/50 hover:text-black" onClick={() => setOpen(!open)}>
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             {open
               ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -69,15 +69,17 @@ export default function Navbar() {
         {open && (
           <motion.div
             initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.2 }}
+            exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.2, ease: [0, 0, 0.2, 1] }}
             className="md:hidden bg-white border-b border-black/5 px-6 py-6 flex flex-col gap-5"
           >
             {links.map((l) => (
               <Link key={l.href} href={l.href} onClick={() => setOpen(false)}
-                className="text-sm text-black/50 hover:text-black transition-colors">{l.label}</Link>
+                className={`text-sm transition-colors ${pathname === l.href ? "text-[#FF5500] font-medium" : "text-black/50 hover:text-black"}`}>
+                {l.label}
+              </Link>
             ))}
             <Link href="/kontakt" onClick={() => setOpen(false)}
-              className="text-sm font-semibold px-5 py-2.5 rounded-full border-2 border-black text-black text-center">
+              className="text-sm font-semibold px-5 py-2.5 rounded-full border-2 border-black text-black text-center hover:bg-black hover:text-white transition-colors">
               Beratung buchen
             </Link>
           </motion.div>
