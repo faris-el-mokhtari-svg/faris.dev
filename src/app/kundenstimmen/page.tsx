@@ -1,4 +1,4 @@
-"use client";
+import type { Metadata } from "next";
 import ContactSection from "@/components/ContactSection";
 import FadeUp from "@/components/FadeUp";
 import RevealText from "@/components/RevealText";
@@ -9,6 +9,14 @@ const industries = [
   { label: "Einzelhandel", desc: "Lokale Läden & Boutiquen" },
   { label: "E-Commerce", desc: "Kleine Online-Shops" },
 ];
+
+
+export const metadata: Metadata = {
+  title: "Kundenstimmen & Referenzen",
+  description: "Was unsere Kunden über Deploy Change sagen. Referenzen aus Gastronomie, Bäckerei und E-Commerce im DACH-Raum.",
+  alternates: { canonical: "https://deploy-change.de/kundenstimmen" },
+  openGraph: { url: "https://deploy-change.de/kundenstimmen" },
+};
 
 export default function Kundenstimmen() {
   return (

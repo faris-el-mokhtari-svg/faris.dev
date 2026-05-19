@@ -12,9 +12,10 @@ interface Props {
   prefix?: string;
   label: string;
   duration?: number;
+  color?: "orange" | "white";
 }
 
-export default function AnimatedCounter({ to, suffix = "", prefix = "", label, duration = 1.8 }: Props) {
+export default function AnimatedCounter({ to, suffix = "", prefix = "", label, duration = 1.8, color = "orange" }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const numRef = useRef<HTMLSpanElement>(null);
 
@@ -40,12 +41,12 @@ export default function AnimatedCounter({ to, suffix = "", prefix = "", label, d
   return (
     <div ref={containerRef} className="flex flex-col">
       <div
-        className="text-[#FF5500] font-black tracking-tight leading-none"
+        className={`font-black tracking-tight leading-none ${color === "white" ? "text-white" : "text-[#FF5500]"}`}
         style={{ fontSize: "clamp(3.5rem, 7vw, 6rem)" }}
       >
         {prefix}<span ref={numRef}>0</span>{suffix}
       </div>
-      <p className="text-black/40 text-xs font-semibold tracking-widest uppercase mt-3 leading-snug max-w-[12ch]">
+      <p className={`text-xs font-semibold tracking-widest uppercase mt-3 leading-snug max-w-[12ch] ${color === "white" ? "text-white/60" : "text-black/40"}`}>
         {label}
       </p>
     </div>

@@ -32,19 +32,19 @@ export default function GetPackedSection() {
           >
             <h2
               className="font-black tracking-[-0.04em] leading-none mb-8"
-              style={{ fontSize: "clamp(4rem, 8vw, 8rem)" }}
+              style={{ fontSize: "clamp(3rem, 8vw, 8rem)" }}
             >
               <span className="text-white">Get</span>
               <span className="text-[#1AB65D]">Packed</span>
             </h2>
-            <p className="text-white/55 leading-tight mb-10" style={{ fontSize: "clamp(1.25rem, 2.5vw, 1.875rem)" }}>
+            <p className="text-white/55 leading-tight mb-10" style={{ fontSize: "clamp(1rem, 2.5vw, 1.875rem)" }}>
               Die führende SaaS-Plattform für Bäckereien, Metzgereien und Direktvertriebler. Nahtlos in Ihre Deploy-Website integrierbar — ein System, das alles verbindet.
             </p>
             <a
               href="https://www.getpacked.de"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-[#1AB65D] text-white rounded-full px-10 py-4 text-xl font-semibold hover:bg-[#17a352] transition-colors"
+              className="inline-block bg-[#1AB65D] text-white rounded-full px-7 py-3.5 text-base md:text-xl font-semibold hover:bg-[#17a352] transition-colors w-full md:w-auto text-center"
             >
               GetPacked entdecken →
             </a>

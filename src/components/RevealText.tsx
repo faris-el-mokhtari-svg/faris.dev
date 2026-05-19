@@ -44,7 +44,7 @@ export default function RevealText({
   return (
     <div
       ref={wrapRef}
-      className={`overflow-hidden pb-[0.18em]${wrapClass ? ` ${wrapClass}` : ""}`}
+      className={`overflow-hidden pb-6 -mb-6${wrapClass ? ` ${wrapClass}` : ""}`}
     >
       {children}
     </div>

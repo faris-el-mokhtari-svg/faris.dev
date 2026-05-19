@@ -22,10 +22,24 @@ export default function Footer() {
               Digitale Systeme für Gastronomie und lokale KMU im DACH-Raum.
             </p>
             <a
-              href="mailto:hallo@deploy-web.de"
+              href="mailto:info@deploy-change.de"
               className="text-white/50 text-sm hover:text-white transition-colors"
             >
-              hallo@deploy-web.de
+              info@deploy-change.de
+            </a>
+            <a
+              href="tel:+4915151045345"
+              className="text-white/50 text-sm hover:text-white transition-colors"
+            >
+              +49 151 51045345
+            </a>
+            <a
+              href="https://www.instagram.com/deploy.change/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/50 text-sm hover:text-white transition-colors"
+            >
+              Instagram ↗
             </a>
           </div>
 
@@ -69,10 +83,10 @@ export default function Footer() {
             © {new Date().getFullYear()} Faris El Mokhtari — Deploy Web Development
           </p>
           <div className="flex gap-6 text-[0.7rem] text-white/18">
-            <Link href="/kontakt" className="hover:text-white/40 transition-colors">
+            <Link href="/impressum" className="hover:text-white/40 transition-colors">
               Impressum
             </Link>
-            <Link href="/kontakt" className="hover:text-white/40 transition-colors">
+            <Link href="/datenschutz" className="hover:text-white/40 transition-colors">
               Datenschutz
             </Link>
           </div>

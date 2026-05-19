@@ -31,13 +31,16 @@ export default function Home() {
 
     tl.from(".hero-label", { opacity: 0, y: 10, duration: 0.55, ease: "power3.out" })
       .from(".hero-word", { yPercent: 112, duration: 1.05, ease: "power4.out", stagger: 0.09 }, "-=0.25")
-      .from(".hero-bottom", { opacity: 0, y: 20, duration: 0.7, ease: "power3.out" }, "-=0.5");
+      .from(".hero-device", { opacity: 0, scale: 0.95, duration: 1.0, ease: "power3.out" }, "-=0.7")
+      .from(".hero-badge", { opacity: 0, scale: 0.88, duration: 0.7, ease: "power3.out" }, "-=0.4")
+      .from(".hero-shadow", { opacity: 0, x: 24, duration: 2.0, ease: "power2.out" }, "-=0.9")
+      .from(".hero-bottom", { opacity: 0, y: 20, duration: 0.7, ease: "power3.out" }, "-=1.6");
   }, { scope: heroRef });
 
   return (
     <>
       {/* ─── Hero ─────────────────────────────────────────────────── */}
-      <section ref={heroRef} className="bg-[#FFFCF3] min-h-screen flex flex-col">
+      <section ref={heroRef} className="bg-[#FFFCF3] min-h-[115vh] flex flex-col">
         <div className="max-w-[1366px] mx-auto px-6 md:px-12 lg:px-16 flex-1 flex flex-col w-full pt-16 md:pt-20">
 
 
@@ -49,7 +52,7 @@ export default function Home() {
                 className="font-medium"
                 style={{
                   fontFamily: "var(--font-display)",
-                  fontSize: "clamp(4.5rem, 10vw, 11rem)",
+                  fontSize: "clamp(4rem, 11vw, 12.5rem)",
                   lineHeight: 0.9,
                 }}
               >
@@ -59,7 +62,7 @@ export default function Home() {
                   { text: "Starke", orange: false },
                   { text: "Betriebe.", orange: true },
                 ].map(({ text, orange }) => (
-                  <span key={text} className="block overflow-hidden pb-[0.07em]">
+                  <span key={text} className="block overflow-hidden pb-[0.14em]">
                     <span
                       className={`hero-word block ${
                         orange ? "text-[#FF5500]" : "text-[oklch(12%_0.015_30)]"
@@ -72,7 +75,13 @@ export default function Home() {
               </h1>
 
               {/* Café preview + reservation badge */}
-              <div className="hero-word hidden lg:block flex-shrink-0 relative">
+              <div className="hero-device hidden lg:block flex-shrink-0 relative isolate">
+
+                {/* Soft shadow — animates in behind the devices */}
+                <div className="hero-shadow pointer-events-none absolute -z-10 right-[-14%] top-[8%] w-[88%] h-[78%] rounded-full blur-[100px] bg-black/[0.09]" />
+
+                {/* Contact shadow — laptop resting on surface */}
+                <div className="pointer-events-none absolute -z-[1] bottom-[10%] left-[6%] w-[74%] h-[18px] rounded-full blur-[18px] bg-black/[0.22]" />
 
                 {/* Laptop — links to homepage */}
                 <motion.a
@@ -97,7 +106,7 @@ export default function Home() {
                   href="https://cafe-alte-schule.com/reservierung"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="absolute -bottom-[4%] -right-[18%] z-10 cursor-pointer"
+                  className="hero-badge absolute -bottom-[4%] -right-[18%] z-10 cursor-pointer"
                   whileHover={{ scale: 1.12 }}
                   whileTap={{ scale: 0.93 }}
                   transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
@@ -140,7 +149,11 @@ export default function Home() {
                 { n: "3", suffix: "", label: "Länder" },
                 { n: "100%", suffix: "", label: "editierbar" },
               ].map(({ n, suffix, label }, i) => (
-                <div key={label} className={`pt-6 pb-2 ${i > 0 ? "md:pl-8 md:border-l md:border-black/8" : ""}`}>
+                <div key={label} className={`pt-6 pb-2 ${
+                    i === 1 ? "pl-6 border-l border-black/8 md:pl-8" :
+                    i === 2 ? "md:pl-8 md:border-l md:border-black/8" :
+                    i === 3 ? "pl-6 border-l border-black/8 md:pl-8" : ""
+                  }`}>
                   <p
                     className="font-black tracking-tight leading-none text-[oklch(12%_0.015_30)]"
                     style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)" }}
@@ -289,7 +302,7 @@ export default function Home() {
               className="text-[oklch(12%_0.015_30)] font-medium leading-[1.05]"
               style={{ fontSize: "clamp(1.75rem, 4vw, 4rem)" }}
             >
-              „Deploy hat es uns ermöglicht, eine professionelle Website zu erstellen, die auf unseren Betrieb zugeschnitten ist — ganz unkompliziert, mit toller Beratung."
+              „Professionell, auf unseren Betrieb zugeschnitten — unkompliziert und mit toller Beratung."
             </blockquote>
           </RevealText>
           <FadeUp delay={0.1}>

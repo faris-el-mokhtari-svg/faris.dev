@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rm *)",
+      "Bash(rm -rf *)",
+      "Bash(npm run build)",
+      "Bash(npm run dev *)",
+      "Bash(npm install *)",
+      "Bash(npx tsc --noEmit)"
+    ]
+  }
+}

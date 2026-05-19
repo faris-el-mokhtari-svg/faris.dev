@@ -1,4 +1,4 @@
-"use client";
+import type { Metadata } from "next";
 import Link from "next/link";
 import ContactSection from "@/components/ContactSection";
 import RevealText from "@/components/RevealText";
@@ -90,9 +90,9 @@ function ServiceSection({
   const titleColor = dark || orange ? "text-white" : "text-[oklch(20%_0.015_30)]";
   const dividerColor = dark ? "border-white/10" : orange ? "border-white/20" : "border-black/12";
   const descColor = dark || orange ? "text-white/80" : "text-[oklch(20%_0.015_30)]";
-  const featureTextColor = dark || orange ? "text-white/60" : "text-black/55";
-  const featureBorderColor = dark ? "border-white/8" : orange ? "border-white/15" : "border-black/8";
-  const arrowColor = dark || orange ? "text-white/30" : "text-[#FF5500]/50";
+  const featureTextColor = dark ? "text-white/72" : orange ? "text-white/90" : "text-black/55";
+  const featureBorderColor = dark ? "border-white/8" : orange ? "border-white/25" : "border-black/8";
+  const arrowColor = dark ? "text-white/35" : orange ? "text-white/70" : "text-[#FF5500]/50";
   const ctaClass = dark
     ? "border-white/30 text-white hover:bg-white/10"
     : orange
@@ -157,6 +157,7 @@ function ServiceSection({
                   to={service.stat.to}
                   suffix={service.stat.suffix}
                   label={service.stat.label}
+                  color={orange ? "white" : "orange"}
                 />
               </FadeUp>
             )}
@@ -181,6 +182,14 @@ function ServiceSection({
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
+
+export const metadata: Metadata = {
+  title: "Leistungen – Website, Reservierung & Dashboard",
+  description: "Webdesign, Reservierungssystem, Admin-Dashboard und Kassensystem-Integration – alles aus einer Hand. Für Gastronomie und lokale Betriebe.",
+  alternates: { canonical: "https://deploy-change.de/leistungen" },
+  openGraph: { url: "https://deploy-change.de/leistungen" },
+};
+
 export default function Leistungen() {
   return (
     <>
@@ -203,7 +212,7 @@ export default function Leistungen() {
               className="text-white/60 leading-snug max-w-2xl"
               style={{ fontSize: "clamp(1.125rem, 1.75vw, 1.5rem)" }}
             >
-              Wir bauen keine Websites als Einzelprodukt. Wir bauen operative Systeme — Website, Reservierung, Dashboard und Integration in einem.
+              Website, Reservierung, Dashboard, Kasse — alles aus einer Hand, alles aufeinander abgestimmt.
             </p>
           </FadeUp>
         </div>

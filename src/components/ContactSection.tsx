@@ -36,7 +36,7 @@ export default function ContactSection() {
   return (
     <section className="w-full grid md:grid-cols-2">
       {/* Left: editorial */}
-      <div className="relative min-h-[540px] text-white overflow-hidden">
+      <div className="relative min-h-[420px] md:min-h-[540px] text-white overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#ff6b2f] via-[#ff7a00] to-[#ffc08a]" />
         <div
           className="absolute inset-0 opacity-55 bg-cover bg-center scale-110"
@@ -50,18 +50,20 @@ export default function ContactSection() {
           <p className="text-white/70 text-xs font-semibold tracking-widest uppercase mb-12">
             Deploy — Web Development
           </p>
-          <h2 className="text-4xl md:text-6xl leading-[0.95] font-medium max-w-sm">
+          <h2 className="text-3xl md:text-6xl leading-[0.95] font-medium max-w-sm">
             Jede Herausforderung ist individuell. Sprechen wir über Ihre.
           </h2>
           <div className="mt-auto flex items-end justify-between text-sm">
             <a
-              href="mailto:hallo@deploy-web.de"
+              href="mailto:info@deploy-change.de"
               className="underline decoration-white/40 underline-offset-4 hover:decoration-white transition-colors"
             >
-              hallo@deploy-web.de
+              info@deploy-change.de
             </a>
             <a
-              href="#"
+              href="https://www.instagram.com/deploy.change/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="underline decoration-white/40 underline-offset-4 hover:decoration-white transition-colors"
             >
               Instagram
@@ -71,7 +73,7 @@ export default function ContactSection() {
       </div>
 
       {/* Right: form */}
-      <div className="bg-[#FF5500] min-h-[540px] flex items-center">
+      <div className="bg-[#FF5500] min-h-[480px] md:min-h-[540px] flex items-center">
         {status === "sent" ? (
           <div className="w-full px-8 md:px-12 py-10 flex flex-col gap-3">
             <p className="text-white text-3xl md:text-4xl font-medium">Nachricht erhalten.</p>
@@ -82,7 +84,7 @@ export default function ContactSection() {
             onSubmit={handleSubmit}
             className="w-full px-8 md:px-12 py-10 md:py-12 flex flex-col gap-4"
           >
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
                 <label htmlFor="fullName" className={labelClass}>Name</label>
                 <input

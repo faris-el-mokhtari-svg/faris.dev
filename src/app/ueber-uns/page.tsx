@@ -1,4 +1,4 @@
-"use client";
+import type { Metadata } from "next";
 import Link from "next/link";
 import ContactSection from "@/components/ContactSection";
 import FadeUp from "@/components/FadeUp";
@@ -6,18 +6,26 @@ import RevealText from "@/components/RevealText";
 
 const values = [
   {
-    title: "Kein Bullshit",
-    desc: "Wir sagen, was wir liefern. Und dann liefern wir es. Keine vagen Versprechen, kein Scope Creep.",
+    title: "Menschen, nicht Projekte",
+    desc: "Ich arbeite gerne mit Leuten, die etwas aufgebaut haben und es weiterbringen wollen. Das Gespräch davor ist genauso wichtig wie der Code danach.",
   },
   {
-    title: "Schnell oder gar nicht",
-    desc: "4 Tage ist kein Marketingversprechen. Es ist unsere Arbeitsweise.",
+    title: "Weniger Aufwand, mehr Betrieb",
+    desc: "Wenn jemand nach dem Launch aufhört, mich zu brauchen — dann hat es funktioniert. Das ist das Ziel.",
   },
   {
-    title: "Gebaut zum Laufen",
-    desc: "Keine Showcase-Projekte. Alles was wir bauen, ist im echten Einsatz getestet.",
+    title: "Direkt und unkompliziert",
+    desc: "Ich mag es, wenn Dinge einfach laufen. Kein Hin und Her, keine langen Abstimmungsschleifen. Kurze Wege, klare Ergebnisse.",
   },
 ];
+
+
+export const metadata: Metadata = {
+  title: "Über uns – Faris El Mokhtari, Deploy Change",
+  description: "Faris El Mokhtari baut Systeme für Gastronomie und lokale KMU: Websites, Reservierungen, Dashboards. Schnell, direkt, ohne Bullshit.",
+  alternates: { canonical: "https://deploy-change.de/ueber-uns" },
+  openGraph: { url: "https://deploy-change.de/ueber-uns" },
+};
 
 export default function UeberUns() {
   return (
@@ -43,7 +51,14 @@ export default function UeberUns() {
       <section className="bg-[#FFFCF3] py-20 md:py-28 border-b border-black/8">
         <div className="max-w-[1366px] mx-auto px-6 md:px-12 lg:px-16 grid md:grid-cols-[0.6fr_1fr] gap-12 md:gap-20 items-start">
           <FadeUp>
-            <div className="w-full aspect-[3/4] rounded-2xl bg-[oklch(90%_0.02_50)]" />
+            <div className="w-full aspect-[3/4] rounded-2xl overflow-hidden">
+              <img
+                src="/faris-portrait.png"
+                alt="Faris El Mokhtari"
+                className="w-full h-full object-cover object-top scale-[1.08]"
+                draggable={false}
+              />
+            </div>
           </FadeUp>
 
           <FadeUp delay={0.1} className="flex flex-col gap-5 md:pt-4">

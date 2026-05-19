@@ -1,4 +1,4 @@
-"use client";
+import type { Metadata } from "next";
 import ContactSection from "@/components/ContactSection";
 import FadeUp from "@/components/FadeUp";
 import RevealText from "@/components/RevealText";
@@ -9,6 +9,14 @@ const steps = [
   "Ich analysiere deine Situation und schicke ein konkretes Angebot.",
   "Du entscheidest — ohne Druck.",
 ];
+
+
+export const metadata: Metadata = {
+  title: "Kontakt – Kostenlose Beratung buchen",
+  description: "15 Minuten Gespräch, kostenlos. Wir schauen uns deine Situation an und sagen dir direkt, was machbar ist.",
+  alternates: { canonical: "https://deploy-change.de/kontakt" },
+  openGraph: { url: "https://deploy-change.de/kontakt" },
+};
 
 export default function Kontakt() {
   return (

@@ -34,12 +34,45 @@
     color: var(--foreground);
     font-family: var(--font-sans), system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
 }
 
 @layer utilities {
   .font-display {
     font-family: var(--font-display), system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .prose-deploy h2 {
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    font-weight: 600;
+    color: oklch(12% 0.015 30);
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .prose-deploy h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: oklch(12% 0.015 30);
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .prose-deploy p {
+    font-size: 0.9rem;
+    line-height: 1.75;
+    color: rgba(0,0,0,0.5);
+    margin-bottom: 1rem;
+  }
+  .prose-deploy a {
+    color: #FF5500;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .prose-deploy strong {
+    color: oklch(12% 0.015 30);
+    font-weight: 600;
   }
 }
 
