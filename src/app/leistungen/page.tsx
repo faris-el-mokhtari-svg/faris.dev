@@ -15,11 +15,11 @@ const services = [
   {
     id: "01",
     title: "Webdesign &\nEntwicklung",
-    desc: "Eine Website, die zum Betrieb passt — nicht zu einem Template. Custom entwickelt, mobile-first, und direkt editierbar ohne technisches Vorwissen.",
+    desc: "Eine Website, die zum Betrieb passt — nicht einfach nur ein Template. Für dich entwickelt, mobile-first und direkt editierbar ohne technisches Vorwissen.",
     features: [
       "Custom Design — kein Template",
       "Mobile-First Development",
-      "SEO-Grundoptimierung",
+      "SEO-Optimierung",
       "Schnelle Ladezeiten",
       "No-Code Editor inklusive",
     ],
