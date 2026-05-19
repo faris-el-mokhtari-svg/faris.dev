@@ -1,17 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
+import { Resend } from "resend";
 
-// TODO: npm install resend
-// Then replace this handler with:
-//
-// import { Resend } from "resend";
-// const resend = new Resend(process.env.RESEND_API_KEY);
-//
-// await resend.emails.send({
-//   from: "Deploy Kontaktformular <noreply@yourdomain.com>",
-//   to: "faris.elmokhtari@icloud.com",
-//   subject: `Neue Anfrage von ${data.fullName}`,
-//   text: `Name: ${data.fullName}\nE-Mail: ${data.email}\nTel: ${data.phone}\n\n${data.message}`,
-// });
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: NextRequest) {
   try {
@@ -22,11 +12,17 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Fehlende Pflichtfelder" }, { status: 400 });
     }
 
-    // Remove this log and uncomment the Resend block above once installed
-    console.log("Kontaktanfrage:", { fullName, email, phone, message });
+    await resend.emails.send({
+      from: "Deploy Change <info@deploy-change.de>",
+      to: "info@deploy-change.de",
+      replyTo: email,
+      subject: `Neue Anfrage von ${fullName}`,
+      text: `Name: ${fullName}\nE-Mail: ${email}\nTelefon: ${phone || "–"}\n\n${message}`,
+    });
 
     return NextResponse.json({ ok: true });
-  } catch {
+  } catch (err) {
+    console.error("Resend error:", err);
     return NextResponse.json({ error: "Serverfehler" }, { status: 500 });
   }
 }
