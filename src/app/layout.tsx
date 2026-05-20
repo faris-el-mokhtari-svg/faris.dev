@@ -3,6 +3,7 @@ import { Barlow, Barlow_Condensed } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { Analytics } from "@vercel/analytics/next";
 
 const barlow = Barlow({
   subsets: ["latin"],
@@ -96,6 +97,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
