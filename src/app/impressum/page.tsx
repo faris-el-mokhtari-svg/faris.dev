@@ -30,7 +30,6 @@ export default function Impressum() {
           <p>
             Faris El Mokhtari<br />
             Deploy Web Development<br />
-            {/* TODO: Straße und Hausnummer eintragen */}
             Holm 17<br />
             24107 Kiel<br />
             Deutschland
@@ -38,6 +37,7 @@ export default function Impressum() {
 
           <h2>Kontakt</h2>
           <p>
+            Telefon: <a href="tel:+4915151045345">+49 151 51045345</a><br />
             E-Mail: <a href="mailto:info@deploy-change.de">info@deploy-change.de</a>
           </p>
 

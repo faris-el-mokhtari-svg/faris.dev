@@ -1,0 +1,30 @@
+# Deploy Change
+
+> Web-Entwicklungsstudio für Gastronomie und lokale KMU im DACH-Raum (Deutschland, Österreich, Schweiz).
+
+Gründer: Faris El Mokhtari
+Kontakt: info@deploy-change.de
+Telefon: +49 151 51045345
+Adresse: Holm 17, 24107 Kiel, Deutschland
+Sprache: Deutsch (de-DE)
+
+## Leistungen
+
+- /leistungen — Webdesign & Entwicklung, Reservierungssystem, Admin-Dashboard & Menü-Editor, Kassensystem-Integration (Lightspeed, Square)
+- /portfolio — Referenzprojekte: Café Alte Schule, Bachbäcker, Ephesia
+- /ueber-uns — Über den Gründer und die Unternehmensphilosophie
+- /kundenstimmen — Kundenstimmen und Referenzen
+- /kontakt — Kostenloses 15-Minuten-Erstgespräch buchen
+
+## Kernfakten
+
+- Live-Launch in durchschnittlich 4 Tagen
+- 10+ abgeschlossene Projekte
+- Aktiv in Deutschland, Österreich und der Schweiz
+- Spezialisierung auf Gastronomie, Bäckereien und lokalen Einzelhandel
+- Kein Template — alle Systeme individuell entwickelt
+- Keine Laufzeitverträge
+
+## Partner
+
+- GetPacked (getpacked.de) — SaaS-Plattform für Bäckereien, Metzgereien und Direktvertriebler

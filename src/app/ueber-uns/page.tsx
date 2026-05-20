@@ -23,13 +23,41 @@ const values = [
 export const metadata: Metadata = {
   title: "Über uns – Faris El Mokhtari, Deploy Change",
   description: "Faris El Mokhtari baut Systeme für Gastronomie und lokale KMU: Websites, Reservierungen, Dashboards. Schnell, direkt, ohne Bullshit.",
-  alternates: { canonical: "https://deploy-change.de/ueber-uns" },
+  alternates: {
+    canonical: "https://deploy-change.de/ueber-uns",
+    languages: { "de": "https://deploy-change.de/ueber-uns", "x-default": "https://deploy-change.de/ueber-uns" },
+  },
   openGraph: { url: "https://deploy-change.de/ueber-uns" },
+};
+
+const schemaPerson = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://deploy-change.de" },
+        { "@type": "ListItem", "position": 2, "name": "Über uns", "item": "https://deploy-change.de/ueber-uns" },
+      ],
+    },
+    {
+      "@type": "Person",
+      "@id": "https://deploy-change.de/ueber-uns#faris",
+      "name": "Faris El Mokhtari",
+      "jobTitle": "Gründer & Entwickler",
+      "worksFor": { "@id": "https://deploy-change.de/#business" },
+      "url": "https://deploy-change.de/ueber-uns",
+      "image": "https://deploy-change.de/faris-portrait.png",
+      "sameAs": ["https://www.instagram.com/deploy.change/"],
+      "knowsAbout": ["Webentwicklung", "Webdesign", "Reservierungssysteme", "Gastronomie-Software"],
+    },
+  ],
 };
 
 export default function UeberUns() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaPerson) }} />
       {/* Hero */}
       <section className="bg-[#FFFCF3] pt-28 md:pt-36 pb-16 border-b border-black/8">
         <div className="max-w-[1366px] mx-auto px-6 md:px-12 lg:px-16">

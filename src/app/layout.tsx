@@ -27,8 +27,7 @@ export const metadata: Metadata = {
     default: "Deploy Change – Webentwicklung für Gastronomie & KMU",
     template: "%s | Deploy Change",
   },
-  description: "Maßgeschneiderte Websites, Reservierungssysteme und Dashboards für Gastronomie und lokale KMU im DACH-Raum. Live in 4 Tagen.",
-  keywords: ["Webentwicklung", "Webdesign", "Gastronomie", "Reservierungssystem", "KMU", "DACH", "Website", "Dashboard"],
+  description: "Maßgeschneiderte Websites, Reservierungssysteme und Dashboards für Gastronomie und lokale KMU in Kiel und im DACH-Raum. Live in 4 Tagen.",
   authors: [{ name: "Faris El Mokhtari" }],
   creator: "Deploy Change",
   publisher: "Deploy Change",
@@ -48,6 +47,10 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: BASE_URL,
+    languages: {
+      "de": BASE_URL,
+      "x-default": BASE_URL,
+    },
   },
 };
 
@@ -66,16 +69,25 @@ const schemaOrg = {
       "@type": ["LocalBusiness", "ProfessionalService"],
       "@id": `${BASE_URL}/#business`,
       "name": "Deploy Change",
+      "legalName": "Deploy Web Development",
+      "description": "Webentwicklung und digitale Systeme für Gastronomie und lokale KMU im DACH-Raum.",
       "url": BASE_URL,
+      "telephone": "+49-151-51045345",
       "email": "info@deploy-change.de",
       "founder": { "@type": "Person", "name": "Faris El Mokhtari" },
       "areaServed": ["DE", "AT", "CH"],
       "serviceType": ["Webentwicklung", "Webdesign", "Reservierungssystem", "Admin-Dashboard"],
       "priceRange": "€€",
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 54.32340,
+        "longitude": 10.13489,
+      },
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Holm 17",
         "addressLocality": "Kiel",
+        "addressRegion": "Schleswig-Holstein",
         "postalCode": "24107",
         "addressCountry": "DE",
       },

@@ -127,7 +127,7 @@ export default function ContactSection() {
                 id="message"
                 name="message"
                 rows={5}
-                placeholder="Womit kann ich Ihnen helfen?"
+                placeholder="Womit kann ich dir helfen?"
                 className="w-full rounded-lg border border-white/30 bg-transparent px-3 py-2.5 text-sm text-white placeholder:text-white/45 focus:border-white/70 focus:outline-none transition-colors resize-none"
               />
             </div>

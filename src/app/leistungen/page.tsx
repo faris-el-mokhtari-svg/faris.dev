@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import ContactSection from "@/components/ContactSection";
 import RevealText from "@/components/RevealText";
@@ -186,13 +187,74 @@ function ServiceSection({
 export const metadata: Metadata = {
   title: "Leistungen – Website, Reservierung & Dashboard",
   description: "Webdesign, Reservierungssystem, Admin-Dashboard und Kassensystem-Integration – alles aus einer Hand. Für Gastronomie und lokale Betriebe.",
-  alternates: { canonical: "https://deploy-change.de/leistungen" },
+  alternates: {
+    canonical: "https://deploy-change.de/leistungen",
+    languages: { "de": "https://deploy-change.de/leistungen", "x-default": "https://deploy-change.de/leistungen" },
+  },
   openGraph: { url: "https://deploy-change.de/leistungen" },
+};
+
+const schemaService = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://deploy-change.de" },
+        { "@type": "ListItem", "position": 2, "name": "Leistungen", "item": "https://deploy-change.de/leistungen" },
+      ],
+    },
+    {
+      "@type": "Service",
+      "@id": "https://deploy-change.de/leistungen#webdesign",
+      "name": "Webdesign & Entwicklung",
+      "description": "Custom entwickelte Websites für Gastronomie und lokale KMU — mobile-first, SEO-optimiert und direkt editierbar ohne technisches Vorwissen.",
+      "url": "https://deploy-change.de/leistungen",
+      "provider": { "@id": "https://deploy-change.de/#business" },
+      "areaServed": ["DE", "AT", "CH"],
+      "serviceType": "Webentwicklung",
+      "inLanguage": "de-DE",
+    },
+    {
+      "@type": "Service",
+      "@id": "https://deploy-change.de/leistungen#reservierungssystem",
+      "name": "Reservierungssystem",
+      "description": "Digitales Reservierungssystem mit Live-Auslastung, Walk-in-Erfassung und Tagesübersicht pro Schicht. Für Gastronomie und Cafés.",
+      "url": "https://deploy-change.de/leistungen",
+      "provider": { "@id": "https://deploy-change.de/#business" },
+      "areaServed": ["DE", "AT", "CH"],
+      "serviceType": "Reservierungssystem",
+      "inLanguage": "de-DE",
+    },
+    {
+      "@type": "Service",
+      "@id": "https://deploy-change.de/leistungen#admin-dashboard",
+      "name": "Admin-Dashboard & Menü-Editor",
+      "description": "No-Code Admin-Interface für Speisekarte, Öffnungszeiten und Schichtverwaltung. Änderungen sind sofort live.",
+      "url": "https://deploy-change.de/leistungen",
+      "provider": { "@id": "https://deploy-change.de/#business" },
+      "areaServed": ["DE", "AT", "CH"],
+      "serviceType": "Admin-Dashboard",
+      "inLanguage": "de-DE",
+    },
+    {
+      "@type": "Service",
+      "@id": "https://deploy-change.de/leistungen#kassensystem",
+      "name": "Kassensystem-Integration",
+      "description": "Nahtlose Integration von Lightspeed, Square und weiteren POS-Systemen. Umsatz, Inventar und Tagesberichte in einer Ansicht.",
+      "url": "https://deploy-change.de/leistungen",
+      "provider": { "@id": "https://deploy-change.de/#business" },
+      "areaServed": ["DE", "AT", "CH"],
+      "serviceType": "Kassensystem-Integration",
+      "inLanguage": "de-DE",
+    },
+  ],
 };
 
 export default function Leistungen() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaService) }} />
       {/* Hero */}
       <section className="bg-[#FF5500] pt-28 md:pt-36 pb-20 md:pb-28">
         <div className="max-w-[1366px] mx-auto px-6 md:px-12">
@@ -253,10 +315,14 @@ export default function Leistungen() {
                 Live ansehen →
               </a>
             </div>
-            <div
-              className="w-full aspect-[4/3] rounded-[2rem] bg-cover bg-top"
-              style={{ backgroundImage: `url('${CAFE_IMG}')` }}
-            />
+            <div className="relative w-full aspect-[4/3] rounded-[2rem] overflow-hidden">
+              <Image
+                src={CAFE_IMG}
+                alt="Café Alte Schule — vollständiges Betriebssystem live im Einsatz"
+                fill
+                className="object-cover object-top"
+              />
+            </div>
           </FadeUp>
         </div>
       </section>

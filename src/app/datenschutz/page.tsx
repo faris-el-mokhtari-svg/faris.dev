@@ -102,8 +102,17 @@ export default function Datenschutz() {
 
           <h2>5. Keine Cookies, kein Tracking</h2>
           <p>
-            Diese Website verwendet keine Tracking-Cookies und kein Analytics-Tool. Es werden keine Daten
-            an Dritte zu Werbezwecken weitergegeben.
+            Diese Website verwendet keine Tracking-Cookies. Es werden keine Daten an Dritte zu Werbezwecken
+            weitergegeben.
+          </p>
+          <p>
+            Wir nutzen Vercel Analytics (Vercel Inc., 340 Pine Street, Suite 701, San Francisco, CA 94104, USA),
+            um anonymisierte Seitenaufrufe zu erfassen. Vercel Analytics arbeitet ohne Cookies und ohne
+            Speicherung personenbezogener Daten — es werden keine IP-Adressen gespeichert. Weitere Informationen
+            finden Sie unter{" "}
+            <a href="https://vercel.com/docs/analytics/privacy-policy" target="_blank" rel="noopener noreferrer">
+              vercel.com/docs/analytics/privacy-policy
+            </a>.
           </p>
 
         </div>

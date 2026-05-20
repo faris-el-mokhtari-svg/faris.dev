@@ -14,13 +14,38 @@ const industries = [
 export const metadata: Metadata = {
   title: "Kundenstimmen & Referenzen",
   description: "Was unsere Kunden über Deploy Change sagen. Referenzen aus Gastronomie, Bäckerei und E-Commerce im DACH-Raum.",
-  alternates: { canonical: "https://deploy-change.de/kundenstimmen" },
+  alternates: {
+    canonical: "https://deploy-change.de/kundenstimmen",
+    languages: { "de": "https://deploy-change.de/kundenstimmen", "x-default": "https://deploy-change.de/kundenstimmen" },
+  },
   openGraph: { url: "https://deploy-change.de/kundenstimmen" },
+};
+
+const schemaReview = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://deploy-change.de" },
+        { "@type": "ListItem", "position": 2, "name": "Kundenstimmen", "item": "https://deploy-change.de/kundenstimmen" },
+      ],
+    },
+    {
+      "@type": "Review",
+      "itemReviewed": { "@id": "https://deploy-change.de/#business" },
+      "author": { "@type": "Person", "name": "Arne Linke" },
+      "reviewBody": "Deploy hat es uns ermöglicht, eine professionelle Website zu erstellen, die auf unseren Betrieb zugeschnitten ist — ganz unkompliziert, mit toller Beratung.",
+      "datePublished": "2025-12-01",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+    },
+  ],
 };
 
 export default function Kundenstimmen() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaReview) }} />
       {/* Hero */}
       <section className="bg-[#FFFCF3] pt-28 md:pt-36 pb-16 border-b border-black/8">
         <div className="max-w-[1366px] mx-auto px-6 md:px-12 lg:px-16">

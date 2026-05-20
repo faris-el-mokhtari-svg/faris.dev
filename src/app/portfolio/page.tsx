@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import ContactSection from "@/components/ContactSection";
 import FadeUp from "@/components/FadeUp";
 import RevealText from "@/components/RevealText";
@@ -31,13 +32,26 @@ const ephesiaDetails = [
 export const metadata: Metadata = {
   title: "Portfolio – Referenzprojekte",
   description: "Café Alte Schule, Bachbäcker, Ephesia — drei Systeme, die täglich im Einsatz sind.",
-  alternates: { canonical: "https://deploy-change.de/portfolio" },
+  alternates: {
+    canonical: "https://deploy-change.de/portfolio",
+    languages: { "de": "https://deploy-change.de/portfolio", "x-default": "https://deploy-change.de/portfolio" },
+  },
   openGraph: { url: "https://deploy-change.de/portfolio" },
+};
+
+const schemaBreadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://deploy-change.de" },
+    { "@type": "ListItem", "position": 2, "name": "Portfolio", "item": "https://deploy-change.de/portfolio" },
+  ],
 };
 
 export default function Portfolio() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaBreadcrumb) }} />
       {/* Hero */}
       <section className="bg-[#FFFCF3] pt-28 md:pt-36 pb-16 border-b border-black/8">
         <div className="max-w-[1366px] mx-auto px-6 md:px-12 lg:px-16">
@@ -71,12 +85,14 @@ export default function Portfolio() {
               rel="noopener noreferrer"
               className="block group overflow-hidden rounded-2xl mb-14"
             >
-              <div
-                className="w-full aspect-[16/8] bg-cover bg-top group-hover:scale-[1.015] transition-transform duration-700"
-                style={{
-                  backgroundImage: "url('/cafe-alte-schule-preview.png')",
-                }}
-              />
+              <div className="relative w-full aspect-[16/8]">
+                <Image
+                  src="/cafe-alte-schule-preview.png"
+                  alt="Café Alte Schule — Website und Reservierungssystem"
+                  fill
+                  className="object-cover object-top group-hover:scale-[1.015] transition-transform duration-700"
+                />
+              </div>
             </a>
           </FadeUp>
 
@@ -123,11 +139,15 @@ export default function Portfolio() {
         <div className="max-w-[1366px] mx-auto px-6 md:px-12 lg:px-16">
 
           <FadeUp>
-            <div className="block overflow-hidden rounded-2xl mb-14">
-              <div
-                className="w-full aspect-[16/8] bg-cover bg-top"
-                style={{ backgroundImage: "url('/bachbaecker-preview.png')" }}
-              />
+            <div className="overflow-hidden rounded-2xl mb-14">
+              <div className="relative w-full aspect-[16/8]">
+                <Image
+                  src="/bachbaecker-preview.png"
+                  alt="Bachbäcker — Website und Admin-Dashboard"
+                  fill
+                  className="object-cover object-top"
+                />
+              </div>
             </div>
           </FadeUp>
 
@@ -172,10 +192,14 @@ export default function Portfolio() {
               rel="noopener noreferrer"
               className="block group overflow-hidden rounded-2xl mb-14"
             >
-              <div
-                className="w-full aspect-[16/8] bg-cover bg-top group-hover:scale-[1.015] transition-transform duration-700"
-                style={{ backgroundImage: "url('/ephesia-preview.png')" }}
-              />
+              <div className="relative w-full aspect-[16/8]">
+                <Image
+                  src="/ephesia-preview.png"
+                  alt="Ephesia — Online-Shop für Olivenöl"
+                  fill
+                  className="object-cover object-top group-hover:scale-[1.015] transition-transform duration-700"
+                />
+              </div>
             </a>
           </FadeUp>
 

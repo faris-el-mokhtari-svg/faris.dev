@@ -14,13 +14,26 @@ const steps = [
 export const metadata: Metadata = {
   title: "Kontakt – Kostenlose Beratung buchen",
   description: "15 Minuten Gespräch, kostenlos. Wir schauen uns deine Situation an und sagen dir direkt, was machbar ist.",
-  alternates: { canonical: "https://deploy-change.de/kontakt" },
+  alternates: {
+    canonical: "https://deploy-change.de/kontakt",
+    languages: { "de": "https://deploy-change.de/kontakt", "x-default": "https://deploy-change.de/kontakt" },
+  },
   openGraph: { url: "https://deploy-change.de/kontakt" },
+};
+
+const schemaBreadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://deploy-change.de" },
+    { "@type": "ListItem", "position": 2, "name": "Kontakt", "item": "https://deploy-change.de/kontakt" },
+  ],
 };
 
 export default function Kontakt() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaBreadcrumb) }} />
       {/* Hero */}
       <section className="bg-[#FFFCF3] pt-28 md:pt-36 border-b border-black/8">
         <div className="max-w-[1366px] mx-auto px-6 md:px-12 lg:px-16 pb-20 md:pb-28">
