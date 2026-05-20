@@ -354,7 +354,7 @@ export default function Leistungen() {
                 </h2>
               </RevealText>
               <p className="text-black text-xl md:text-2xl leading-snug">
-                Reservierungssystem mit Live-Auslastung. Speisekarte selbst editierbar. Kassensystem-Integration mit Lightspeed. Live in 4 Tagen.
+                2.000+ Besucher im ersten Monat. Vierstelliger Zusatzumsatz. ROI nach 1 Monat. Reservierungsanfragen per Telefon: nahezu null.
               </p>
               <a
                 href="https://cafe-alte-schule.com"
