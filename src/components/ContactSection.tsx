@@ -45,9 +45,9 @@ export default function ContactSection() {
               "url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80')",
           }}
         />
-        <div className="absolute inset-0 bg-white/10" />
+        <div className="absolute inset-0 bg-black/40" />
         <div className="relative h-full flex flex-col px-8 md:px-12 py-10 md:py-12">
-          <p className="text-white/70 text-xs font-semibold tracking-widest uppercase mb-12">
+          <p className="text-white/90 text-xs font-semibold tracking-widest uppercase mb-12">
             Deploy — Web Development
           </p>
           <h2 className="text-3xl md:text-6xl leading-[0.95] font-medium max-w-sm">
