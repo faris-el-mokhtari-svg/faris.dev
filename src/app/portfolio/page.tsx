@@ -168,16 +168,21 @@ export default function Portfolio() {
         <div className="max-w-[1366px] mx-auto px-6 md:px-12 lg:px-16">
 
           <FadeUp>
-            <div className="overflow-hidden rounded-2xl mb-14">
+            <a
+              href="https://www.bachbaecker.de/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block group overflow-hidden rounded-2xl mb-14"
+            >
               <div className="relative w-full aspect-[16/8]">
                 <Image
                   src="/bachbaecker-preview.png"
                   alt="Bachbäcker — Website und Admin-Dashboard"
                   fill
-                  className="object-cover object-top"
+                  className="object-cover object-top group-hover:scale-[1.015] transition-transform duration-700"
                 />
               </div>
-            </div>
+            </a>
           </FadeUp>
 
           <div className="grid md:grid-cols-[1fr_0.75fr] gap-12 md:gap-20 items-start">
