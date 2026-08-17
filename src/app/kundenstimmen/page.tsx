@@ -10,6 +10,42 @@ const industries = [
   { label: "Reise & Tourismus", desc: "Anbieter mit Beratungsgeschäft" },
 ];
 
+const testimonials = [
+  {
+    quote:
+      "Deploy hat es uns ermöglicht, eine professionelle Website zu erstellen, die auf unseren Betrieb zugeschnitten ist — ganz unkompliziert, mit toller Beratung.",
+    name: "Arne Linke",
+    role: "Gastronom · Café Alte Schule",
+    img: "/arne-linke.jpg",
+    alt: "Arne Linke und Emma vor dem Café Alte Schule",
+    lang: undefined as string | undefined,
+    date: "2025-12-01",
+    objectPosition: "center 30%",
+  },
+  {
+    quote:
+      "Ich wollte, dass Leute uns finden, wenn sie in Kiel nach einem Barbershop suchen. Genau das passiert jetzt — und um Instagram und TikTok muss ich mich nicht selbst kümmern.",
+    name: "Shayan Borumand",
+    role: "Inhaber · ShaYo Barber Shop Kiel",
+    img: "/shayan-borumand.jpg",
+    alt: "Shayan Borumand im ShaYo Barber Shop in Kiel",
+    lang: undefined as string | undefined,
+    date: "2026-08-01",
+    objectPosition: "center center",
+  },
+  {
+    quote:
+      "Faris understood our business before he touched the design. Our trips are now grouped the way guests actually think about them, and our team in Maun can update everything themselves.",
+    name: "Erica",
+    role: "Safari Specialists · Maun, Botswana",
+    img: "/erica-safari-specialists.jpg",
+    alt: "Erica von Safari Specialists an einem Safari-Zelt in Botswana",
+    lang: "en",
+    date: "2026-08-01",
+    objectPosition: "center center",
+  },
+];
+
 
 export const metadata: Metadata = {
   title: "Kundenstimmen & Referenzen",
@@ -31,14 +67,15 @@ const schemaReview = {
         { "@type": "ListItem", "position": 2, "name": "Kundenstimmen", "item": "https://deploy-change.de/kundenstimmen" },
       ],
     },
-    {
+    ...testimonials.map((t) => ({
       "@type": "Review",
       "itemReviewed": { "@id": "https://deploy-change.de/#business" },
-      "author": { "@type": "Person", "name": "Arne Linke" },
-      "reviewBody": "Deploy hat es uns ermöglicht, eine professionelle Website zu erstellen, die auf unseren Betrieb zugeschnitten ist — ganz unkompliziert, mit toller Beratung.",
-      "datePublished": "2025-12-01",
+      "author": { "@type": "Person", "name": t.name },
+      "reviewBody": t.quote,
+      "datePublished": t.date,
+      "inLanguage": t.lang === "en" ? "en" : "de-DE",
       "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-    },
+    })),
   ],
 };
 
@@ -63,40 +100,52 @@ export default function Kundenstimmen() {
         </div>
       </section>
 
-      {/* Main testimonial */}
-      <section className="bg-[#FFFCF3] py-20 md:py-28 border-b border-black/8">
-        <div className="max-w-[1366px] mx-auto px-6 md:px-12 lg:px-16">
-          <div className="grid md:grid-cols-[1.1fr_0.9fr] gap-12 md:gap-20 items-start">
-            <FadeUp>
-              <RevealText wrapClass="mb-8">
-                <blockquote
-                  className="text-[oklch(12%_0.015_30)] font-medium leading-[1.05]"
-                  style={{ fontSize: "clamp(1.6rem, 3.5vw, 3.5rem)" }}
-                >
-                  „Deploy hat es uns ermöglicht, eine professionelle Website zu erstellen, die auf unseren Betrieb zugeschnitten ist — ganz unkompliziert, mit toller Beratung."
-                </blockquote>
-              </RevealText>
-              <div className="flex items-center gap-4">
-                <div className="w-px h-8 bg-black/12" />
-                <div>
-                  <p className="text-black/55 text-sm font-semibold">Arne Linke</p>
-                  <p className="text-black/28 text-xs mt-0.5">Gastronom · Café Alte Schule</p>
+      {/* Testimonials */}
+      {testimonials.map((t, i) => (
+        <section
+          key={t.name}
+          className="bg-[#FFFCF3] py-20 md:py-28 border-b border-black/8"
+        >
+          <div className="max-w-[1366px] mx-auto px-6 md:px-12 lg:px-16">
+            <div
+              className={`grid md:grid-cols-[1.1fr_0.9fr] gap-12 md:gap-20 items-start ${
+                i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""
+              }`}
+            >
+              <FadeUp>
+                <RevealText wrapClass="mb-8">
+                  <blockquote
+                    lang={t.lang}
+                    className="text-[oklch(12%_0.015_30)] font-medium leading-[1.05]"
+                    style={{ fontSize: "clamp(1.6rem, 3.5vw, 3.5rem)" }}
+                  >
+                    „{t.quote}"
+                  </blockquote>
+                </RevealText>
+                <div className="flex items-center gap-4">
+                  <div className="w-px h-8 bg-black/12" />
+                  <div>
+                    <p className="text-black/55 text-sm font-semibold">{t.name}</p>
+                    <p className="text-black/28 text-xs mt-0.5">{t.role}</p>
+                  </div>
                 </div>
-              </div>
-            </FadeUp>
+              </FadeUp>
 
-            <FadeUp delay={0.1}>
-              <div className="overflow-hidden rounded-2xl">
-                <img
-                  src="/cafe-alte-schule-preview.png"
-                  alt="Café Alte Schule"
-                  className="w-full aspect-[4/5] object-cover object-top"
-                />
-              </div>
-            </FadeUp>
+              <FadeUp delay={0.1}>
+                <div className="overflow-hidden rounded-2xl">
+                  <img
+                    src={t.img}
+                    alt={t.alt}
+                    className="w-full aspect-[4/5] object-cover"
+                    style={{ objectPosition: t.objectPosition }}
+                    loading={i === 0 ? undefined : "lazy"}
+                  />
+                </div>
+              </FadeUp>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ))}
 
       {/* Industries */}
       <section className="bg-[#FFFCF3] py-20 md:py-28 border-b border-black/8">
