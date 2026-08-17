@@ -3,6 +3,35 @@ import Image from "next/image";
 import ContactSection from "@/components/ContactSection";
 import FadeUp from "@/components/FadeUp";
 import RevealText from "@/components/RevealText";
+import SocialCards, { type CardItem } from "@/components/ui/card-fan-carousel";
+
+/** Fan overview above the detailed case studies. Safari Specialists and
+ *  Schöne have no public link — they render without one. */
+const fanCards: CardItem[] = [
+  {
+    imgUrl: "/fan-schoene.jpg",
+    alt: "David Schöne Brotmanufaktur — Auswertungen im internen Bestellsystem",
+  },
+  {
+    imgUrl: "/fan-bachbaecker.jpg",
+    alt: "Bachbäcker — Website für eine Traditionsbäckerei im Taunus",
+    linkUrl: "https://www.bachbaecker.de/",
+  },
+  {
+    imgUrl: "/fan-cafe-alte-schule.jpg",
+    alt: "Café Alte Schule — Website mit Reservierungssystem",
+    linkUrl: "https://cafe-alte-schule.com",
+  },
+  {
+    imgUrl: "/fan-shayo.jpg",
+    alt: "ShaYo Barbershop — SEO- und GEO-optimierte Website",
+    linkUrl: "https://www.shayo-barbershop.de",
+  },
+  {
+    imgUrl: "/fan-safari-specialists.jpg",
+    alt: "Safari Specialists — Website-Redesign für einen Safari-Anbieter in Botswana",
+  },
+];
 
 const cafeDetails = [
   "Website mit No-Code-Editor",
@@ -102,6 +131,11 @@ export default function Portfolio() {
             </p>
           </FadeUp>
         </div>
+      </section>
+
+      {/* Fan overview */}
+      <section className="bg-[#FFFCF3] pt-10 pb-16 md:pt-16 md:pb-24 border-b border-black/8 overflow-hidden">
+        <SocialCards cards={fanCards} />
       </section>
 
       {/* Project: Café Alte Schule */}
