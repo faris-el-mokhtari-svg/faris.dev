@@ -37,17 +37,9 @@ export default function ContactSection() {
     <section className="w-full grid md:grid-cols-2">
       {/* Left: editorial */}
       <div className="relative min-h-[420px] md:min-h-[540px] text-white overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#ff6b2f] via-[#ff7a00] to-[#ffc08a]" />
-        <div
-          className="absolute inset-0 opacity-55 bg-cover bg-center scale-110"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80')",
-          }}
-        />
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#ff5500] via-[#ff6b2f] to-[#ff8a3d]" />
         <div className="relative h-full flex flex-col px-8 md:px-12 py-10 md:py-12">
-          <p className="text-white/90 text-xs font-semibold tracking-widest uppercase mb-12">
+          <p className="text-white/80 text-xs font-semibold tracking-widest uppercase mb-12">
             Deploy — Web Development
           </p>
           <h2 className="text-3xl md:text-6xl leading-[0.95] font-medium max-w-sm">
