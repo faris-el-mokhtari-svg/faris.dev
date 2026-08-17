@@ -106,7 +106,7 @@ export default function HeroSection() {
               className="text-black/45 leading-relaxed max-w-[54ch]"
               style={{ fontSize: "clamp(0.9rem, 1.35vw, 1.05rem)" }}
             >
-              Wir bauen operative Systeme für Gastronomie und lokale KMU — Website, Reservierung und Dashboard in einem.
+              Wir bauen operative Systeme für lokale Betriebe — Website, Bestellung und Dashboard in einem. Dazu SEO, GEO und Social Media.
             </p>
             <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
               <Link
@@ -123,7 +123,7 @@ export default function HeroSection() {
             {[
               { n: "4", suffix: " Tage", label: "bis Launch" },
               { n: "10+", suffix: "", label: "Projekte" },
-              { n: "3", suffix: "", label: "Länder" },
+              { n: "2", suffix: "", label: "Kontinente" },
               { n: "100%", suffix: "", label: "editierbar" },
             ].map(({ n, suffix, label }, i) => (
               <div key={label} className={`pt-6 pb-2 ${

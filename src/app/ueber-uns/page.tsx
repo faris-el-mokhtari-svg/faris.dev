@@ -22,7 +22,7 @@ const values = [
 
 export const metadata: Metadata = {
   title: "Über uns – Faris El Mokhtari, Deploy Change",
-  description: "Faris El Mokhtari baut Systeme für Gastronomie und lokale KMU: Websites, Reservierungen, Dashboards. Schnell, direkt, ohne Bullshit.",
+  description: "Faris El Mokhtari baut Systeme für lokale Betriebe: Websites, Bestell- und Reservierungssysteme, Dashboards. Schnell, direkt, ohne Bullshit.",
   alternates: {
     canonical: "https://deploy-change.de/ueber-uns",
     languages: { "de": "https://deploy-change.de/ueber-uns", "x-default": "https://deploy-change.de/ueber-uns" },
@@ -49,7 +49,17 @@ const schemaPerson = {
       "url": "https://deploy-change.de/ueber-uns",
       "image": "https://deploy-change.de/faris-portrait.png",
       "sameAs": ["https://www.instagram.com/deploy.change/"],
-      "knowsAbout": ["Webentwicklung", "Webdesign", "Reservierungssysteme", "Gastronomie-Software"],
+      "knowsAbout": [
+        "Webentwicklung",
+        "Webdesign",
+        "Reservierungssysteme",
+        "Bestellsysteme",
+        "Gastronomie-Software",
+        "Local SEO",
+        "Suchmaschinenoptimierung",
+        "Generative Engine Optimization",
+        "Social-Media-Betreuung",
+      ],
     },
   ],
 };
@@ -109,7 +119,11 @@ export default function UeberUns() {
             </p>
 
             <p className="text-black/40 text-base leading-relaxed max-w-[52ch]">
-              Mit Gastronomen und lokalen Betrieben arbeite ich, weil man dort direkt sieht, ob etwas funktioniert.
+              Inzwischen gehören ein Bestellsystem für eine Bio-Bäckerei, ein Barbershop in Kiel und ein Safari-Anbieter in Botswana dazu. Die Software, mit der ich meine eigenen Aufträge, Rechnungen und die GEO-Sichtbarkeit meiner Kunden verwalte, habe ich ebenfalls selbst gebaut.
+            </p>
+
+            <p className="text-black/40 text-base leading-relaxed max-w-[52ch]">
+              Mit lokalen Betrieben arbeite ich, weil man dort direkt sieht, ob etwas funktioniert.
             </p>
 
             <div className="flex flex-wrap gap-3 pt-2">

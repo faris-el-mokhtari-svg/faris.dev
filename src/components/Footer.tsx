@@ -19,7 +19,7 @@ export default function Footer() {
               <span className="text-base font-black tracking-[-0.04em] text-[#FF5500]/55 uppercase leading-none">&thinsp;Change</span>
             </div>
             <p className="text-white/35 text-sm leading-relaxed max-w-[22ch]">
-              Digitale Systeme für Gastronomie und lokale KMU im DACH-Raum.
+              Digitale Systeme für lokale Betriebe. Kiel und darüber hinaus.
             </p>
             <a
               href="mailto:info@deploy-change.de"

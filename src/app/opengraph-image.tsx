@@ -41,7 +41,7 @@ export default function OGImage() {
 
         {/* Subline */}
         <p style={{ fontSize: 26, color: "rgba(0,0,0,0.42)", margin: 0, lineHeight: 1.4 }}>
-          Webentwicklung für Gastronomie und lokale KMU im DACH-Raum. Live in 4 Tagen.
+          Websites, Bestellsysteme und Dashboards für lokale Betriebe. Live in 4 Tagen.
         </p>
       </div>
     ),

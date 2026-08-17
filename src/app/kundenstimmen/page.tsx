@@ -5,15 +5,15 @@ import RevealText from "@/components/RevealText";
 
 const industries = [
   { label: "Gastronomie", desc: "Cafés, Restaurants, Bars" },
-  { label: "Handwerk", desc: "Betriebe mit Kundenkontakt" },
-  { label: "Einzelhandel", desc: "Lokale Läden & Boutiquen" },
-  { label: "E-Commerce", desc: "Kleine Online-Shops" },
+  { label: "Bäckerei & Handwerk", desc: "Betriebe mit Verkauf und Abholung" },
+  { label: "Dienstleistung", desc: "Barbershops, Studios, Praxen" },
+  { label: "Reise & Tourismus", desc: "Anbieter mit Beratungsgeschäft" },
 ];
 
 
 export const metadata: Metadata = {
   title: "Kundenstimmen & Referenzen",
-  description: "Was unsere Kunden über Deploy Change sagen. Referenzen aus Gastronomie, Bäckerei und E-Commerce im DACH-Raum.",
+  description: "Was unsere Kunden über Deploy Change sagen. Referenzen aus Gastronomie, Bäckerei, Dienstleistung und Tourismus.",
   alternates: {
     canonical: "https://deploy-change.de/kundenstimmen",
     languages: { "de": "https://deploy-change.de/kundenstimmen", "x-default": "https://deploy-change.de/kundenstimmen" },

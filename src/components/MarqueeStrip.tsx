@@ -1,14 +1,14 @@
 const items = [
   "Deploy — Web Development",
   "4 Tage bis Launch",
-  "Gastronomie & KMU",
+  "Lokale Betriebe",
   "GetPacked Partner",
-  "DACH-Region",
+  "Kiel & international",
   "Systeme die laufen",
   "Webdesign & Entwicklung",
-  "Reservierungssysteme",
+  "Bestell- & Reservierungssysteme",
   "Admin-Dashboards",
-  "E-Commerce",
+  "SEO & GEO",
 ];
 
 // Double for seamless loop — 10 items × ~200px = 2000px per set > any viewport

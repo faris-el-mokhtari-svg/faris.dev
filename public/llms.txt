@@ -1,6 +1,6 @@
 # Deploy Change
 
-> Web-Entwicklungsstudio für Gastronomie und lokale KMU im DACH-Raum (Deutschland, Österreich, Schweiz).
+> Web-Entwicklungsstudio für lokale Betriebe: Websites, Bestell- und Reservierungssysteme, Admin-Dashboards, SEO, GEO und Social Media. Sitz in Kiel, Deutschland — Kunden in Deutschland und international.
 
 Gründer: Faris El Mokhtari
 Kontakt: info@deploy-change.de
@@ -10,8 +10,8 @@ Sprache: Deutsch (de-DE)
 
 ## Leistungen
 
-- /leistungen — Webdesign & Entwicklung, Reservierungssystem, Admin-Dashboard & Menü-Editor, Kassensystem-Integration (Lightspeed, Square)
-- /portfolio — Referenzprojekte: Café Alte Schule, Bachbäcker, Ephesia
+- /leistungen — Webdesign & Entwicklung, Bestell- & Reservierungssystem, Admin-Dashboard & Menü-Editor, Kassensystem-Integration (Lightspeed, Square), SEO/GEO & Social Media
+- /portfolio — Referenzprojekte: Café Alte Schule, Safari Specialists, David Schöne Brotmanufaktur, ShaYo Barbershop, Bachbäcker
 - /ueber-uns — Über den Gründer und die Unternehmensphilosophie
 - /kundenstimmen — Kundenstimmen und Referenzen
 - /kontakt — Kostenloses 15-Minuten-Erstgespräch buchen
@@ -20,10 +20,12 @@ Sprache: Deutsch (de-DE)
 
 - Live-Launch in durchschnittlich 4 Tagen
 - 10+ abgeschlossene Projekte
-- Aktiv in Deutschland, Österreich und der Schweiz
-- Spezialisierung auf Gastronomie, Bäckereien und lokalen Einzelhandel
+- Sitz in Kiel; Projekte in Deutschland und in Botswana
+- Branchen: Gastronomie, Bäckerei & Handwerk, Dienstleistung (Barbershops, Studios, Praxen), Reise & Tourismus
+- SEO und GEO (Sichtbarkeit in KI-Antworten) als eigene Leistung, gemessen mit dem selbst entwickelten Werkzeug GeoScope
+- Instagram- und TikTok-Betreuung sowie Pflege von Google- und Apple-Unternehmensprofilen
 - Kein Template — alle Systeme individuell entwickelt
-- Keine Laufzeitverträge
+- Keine Laufzeitverträge; Projektpreis wird vorab fixiert, laufende Leistungen sind monatlich kündbar
 
 ## Partner
 

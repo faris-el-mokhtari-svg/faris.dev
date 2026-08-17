@@ -9,8 +9,8 @@ import RevealText from "@/components/RevealText";
 import HeroSection from "@/components/HeroSection";
 
 export const metadata: Metadata = {
-  title: "Deploy Change – Smarte Systeme für Gastronomie und lokale KMU",
-  description: "Wir bauen Websites, Reservierungssysteme und Admin-Dashboards für Gastronomie und lokale KMU in Kiel und im DACH-Raum. Live in 4 Tagen.",
+  title: "Deploy Change – Smarte Systeme für lokale Betriebe",
+  description: "Wir bauen Websites, Bestell- und Reservierungssysteme, Admin-Dashboards und übernehmen SEO, GEO und Social Media. Für lokale Betriebe in Kiel und darüber hinaus.",
   alternates: {
     canonical: "https://deploy-change.de",
     languages: { "de": "https://deploy-change.de", "x-default": "https://deploy-change.de" },
@@ -20,9 +20,10 @@ export const metadata: Metadata = {
 
 const services = [
   { n: "01", title: "Webdesign & Entwicklung", desc: "Custom gebaut, mobile-first. Kein Template, keine Einschränkungen." },
-  { n: "02", title: "Reservierungssystem", desc: "Live-Auslastung, Walk-in-Erfassung, Kalenderintegration." },
+  { n: "02", title: "Bestell- & Reservierungssysteme", desc: "Live-Auslastung, Abholzeiten, Walk-ins, Kalenderintegration." },
   { n: "03", title: "Admin-Dashboard & Menü-Editor", desc: "Speisekarte und Öffnungszeiten selbst pflegen — in 10 Sekunden live." },
   { n: "04", title: "Kassensystem-Integration", desc: "Lightspeed, Square und mehr nahtlos eingebunden." },
+  { n: "05", title: "SEO, GEO & Social Media", desc: "Gefunden werden bei Google und in KI-Antworten. Instagram und TikTok inklusive." },
 ];
 
 export default function Home() {
@@ -102,14 +103,12 @@ export default function Home() {
               </RevealText>
             </div>
             <FadeUp delay={0.05}>
-              <a
-                href="https://cafe-alte-schule.com"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/portfolio"
                 className="text-black/28 text-sm hover:text-black transition-colors hidden md:block"
               >
-                Live ansehen ↗
-              </a>
+                Alle Projekte →
+              </Link>
             </FadeUp>
           </div>
 

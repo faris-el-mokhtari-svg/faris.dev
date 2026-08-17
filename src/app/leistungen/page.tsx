@@ -29,13 +29,13 @@ const services = [
   },
   {
     id: "02",
-    title: "Reservierungs-\nsystem",
-    desc: "Alle Buchungen in Echtzeit — mit Live-Auslastung, Walk-in-Erfassung und Tagesübersicht pro Schicht. Kein Telefonklingeln mehr.",
+    title: "Bestell- &\nReservierungssystem",
+    desc: "Reservierungen und Bestellungen in Echtzeit — mit Live-Auslastung, Abhol-Zeitfenstern und Tagesübersicht pro Schicht. Kein Telefonklingeln mehr.",
     features: [
       "Live-Auslastung pro Schicht",
+      "Click & Collect mit Abhol-Zeitfenstern",
       "Walk-in Erfassung & Tischverwaltung",
-      "Gästehistorie",
-      "Automatische Buchungsbestätigung",
+      "Automatische Bestätigung per Mail",
       "Kalenderintegration",
     ],
     stat: { to: 100, suffix: "%", label: "digitale Buchungen" },
@@ -67,6 +67,20 @@ const services = [
     ],
     stat: null,
     bg: "dark" as const,
+  },
+  {
+    id: "05",
+    title: "SEO, GEO &\nSocial Media",
+    desc: "Gefunden werden — bei Google und in KI-Antworten. Wir optimieren die Seite dafür, pflegen Ihre Unternehmensprofile und betreuen auf Wunsch Instagram und TikTok mit.",
+    features: [
+      "Lokale Google-Optimierung (SEO)",
+      "Strukturierte Daten & FAQ-Markup",
+      "GEO: Sichtbarkeit in KI-Suchen messbar gemacht",
+      "Google- & Apple-Unternehmensprofil",
+      "Instagram- & TikTok-Betreuung",
+    ],
+    stat: { to: 50, suffix: ".000", label: "organische Profilaufrufe in 30 Tagen" },
+    bg: "cream" as const,
   },
 ];
 
@@ -185,8 +199,8 @@ function ServiceSection({
 
 
 export const metadata: Metadata = {
-  title: "Leistungen – Website, Reservierung & Dashboard",
-  description: "Webdesign, Reservierungssystem, Admin-Dashboard und Kassensystem-Integration – alles aus einer Hand. Für Gastronomie und lokale Betriebe.",
+  title: "Leistungen – Website, Bestellsystem, Dashboard & SEO",
+  description: "Webdesign, Bestell- und Reservierungssysteme, Admin-Dashboard, Kassensystem-Integration sowie SEO, GEO und Social Media – alles aus einer Hand für lokale Betriebe.",
   alternates: {
     canonical: "https://deploy-change.de/leistungen",
     languages: { "de": "https://deploy-change.de/leistungen", "x-default": "https://deploy-change.de/leistungen" },
@@ -213,8 +227,14 @@ const faqs = [
   },
   {
     q: "Was kostet eine Website bei euch?",
-    a: "Aktuell bieten wir ein Special-Angebot an: Die komplette Landingpage erhalten Sie kostenlos – Sie zahlen lediglich eine monatliche Gebühr zwischen 50 € und 100 €, abhängig vom Umfang der Betreuung und Anforderungen. Zusätzliche Integrationen wie z. B. POS-Systeme, Reservierungssysteme oder individuelle Erweiterungen werden separat berechnet und bewegen sich in der Regel zwischen 500 € und 1.500 € pro Integration – und liegen damit deutlich unter den üblichen Marktpreisen.",
-    bullets: null,
+    a: "Das hängt vom Umfang ab – eine One-Pager-Website ist etwas anderes als ein Bestellsystem über zwei Standorte. Deshalb nennen wir keine Pauschalpreise, sondern schauen uns Ihren Betrieb erst an und machen dann ein konkretes Angebot. Das Modell ist dabei immer gleich aufgebaut:",
+    bullets: [
+      "Ein Projektpreis für die Umsetzung, vorab festgelegt und nicht nach Stunden abgerechnet",
+      "Bei größeren Projekten aufgeteilt in Teilzahlungen — ein Teil zum Start, der Rest nach Abnahme",
+      "Optional eine monatliche Wartung für Betrieb, Updates und Support",
+      "Laufende Betreuung wie SEO, GEO oder Social Media separat und jederzeit kündbar",
+      "Das Angebot nach dem Erstgespräch ist kostenlos und unverbindlich",
+    ],
   },
   {
     q: "Wie läuft die Zusammenarbeit ab und wie lange dauert die Umsetzung?",
@@ -258,22 +278,22 @@ const schemaService = {
       "@type": "Service",
       "@id": "https://deploy-change.de/leistungen#webdesign",
       "name": "Webdesign & Entwicklung",
-      "description": "Custom entwickelte Websites für Gastronomie und lokale KMU — mobile-first, SEO-optimiert und direkt editierbar ohne technisches Vorwissen.",
+      "description": "Custom entwickelte Websites für lokale Betriebe — mobile-first, SEO-optimiert und direkt editierbar ohne technisches Vorwissen.",
       "url": "https://deploy-change.de/leistungen",
       "provider": { "@id": "https://deploy-change.de/#business" },
-      "areaServed": ["DE", "AT", "CH"],
+      "areaServed": ["DE", "Worldwide"],
       "serviceType": "Webentwicklung",
       "inLanguage": "de-DE",
     },
     {
       "@type": "Service",
       "@id": "https://deploy-change.de/leistungen#reservierungssystem",
-      "name": "Reservierungssystem",
-      "description": "Digitales Reservierungssystem mit Live-Auslastung, Walk-in-Erfassung und Tagesübersicht pro Schicht. Für Gastronomie und Cafés.",
+      "name": "Bestell- & Reservierungssystem",
+      "description": "Digitales Bestell- und Reservierungssystem mit Live-Auslastung, Click & Collect, Abhol-Zeitfenstern und Tagesübersicht pro Schicht.",
       "url": "https://deploy-change.de/leistungen",
       "provider": { "@id": "https://deploy-change.de/#business" },
-      "areaServed": ["DE", "AT", "CH"],
-      "serviceType": "Reservierungssystem",
+      "areaServed": ["DE", "Worldwide"],
+      "serviceType": "Bestell- und Reservierungssystem",
       "inLanguage": "de-DE",
     },
     {
@@ -283,7 +303,7 @@ const schemaService = {
       "description": "No-Code Admin-Interface für Speisekarte, Öffnungszeiten und Schichtverwaltung. Änderungen sind sofort live.",
       "url": "https://deploy-change.de/leistungen",
       "provider": { "@id": "https://deploy-change.de/#business" },
-      "areaServed": ["DE", "AT", "CH"],
+      "areaServed": ["DE", "Worldwide"],
       "serviceType": "Admin-Dashboard",
       "inLanguage": "de-DE",
     },
@@ -294,8 +314,19 @@ const schemaService = {
       "description": "Nahtlose Integration von Lightspeed, Square und weiteren POS-Systemen. Umsatz, Inventar und Tagesberichte in einer Ansicht.",
       "url": "https://deploy-change.de/leistungen",
       "provider": { "@id": "https://deploy-change.de/#business" },
-      "areaServed": ["DE", "AT", "CH"],
+      "areaServed": ["DE", "Worldwide"],
       "serviceType": "Kassensystem-Integration",
+      "inLanguage": "de-DE",
+    },
+    {
+      "@type": "Service",
+      "@id": "https://deploy-change.de/leistungen#seo-geo-social",
+      "name": "SEO, GEO & Social Media",
+      "description": "Lokale Google-Optimierung, strukturierte Daten, messbare Sichtbarkeit in KI-Suchen sowie Betreuung von Instagram, TikTok und den Unternehmensprofilen bei Google und Apple.",
+      "url": "https://deploy-change.de/leistungen",
+      "provider": { "@id": "https://deploy-change.de/#business" },
+      "areaServed": ["DE", "Worldwide"],
+      "serviceType": "Suchmaschinenoptimierung",
       "inLanguage": "de-DE",
     },
   ],
@@ -324,13 +355,13 @@ export default function Leistungen() {
               className="text-white/60 leading-snug max-w-2xl"
               style={{ fontSize: "clamp(1.125rem, 1.75vw, 1.5rem)" }}
             >
-              Website, Reservierung, Dashboard, Kasse — alles aus einer Hand, alles aufeinander abgestimmt.
+              Website, Bestellung, Dashboard, Kasse — plus SEO, GEO und Social Media. Alles aus einer Hand, alles aufeinander abgestimmt.
             </p>
           </FadeUp>
         </div>
       </section>
 
-      {/* Four service sections */}
+      {/* Service sections */}
       {services.map((s) => (
         <ServiceSection key={s.id} service={s} />
       ))}

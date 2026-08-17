@@ -22,9 +22,9 @@ export default function StatsSection() {
         viewport={{ once: true, margin: "-60px" }}
         className="max-w-[1366px] mx-auto px-6 md:px-12 py-20 md:py-24 grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-8"
       >
-        <motion.div variants={item}><AnimatedCounter to={14} suffix=" Tage" label="bis zum Launch" /></motion.div>
+        <motion.div variants={item}><AnimatedCounter to={4} suffix=" Tage" label="bis zum Launch" /></motion.div>
         <motion.div variants={item}><AnimatedCounter to={10} suffix="+" label="Projekte umgesetzt" /></motion.div>
-        <motion.div variants={item}><AnimatedCounter to={3} label="Länder: DE, AT, CH" /></motion.div>
+        <motion.div variants={item}><AnimatedCounter to={2} label="Kontinente: DE & Botswana" /></motion.div>
         <motion.div variants={item}><AnimatedCounter to={100} suffix="%" label="selbst editierbar" /></motion.div>
       </motion.div>
     </section>
