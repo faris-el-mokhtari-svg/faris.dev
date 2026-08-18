@@ -81,6 +81,33 @@
   100% { transform: translateX(-50%); }
 }
 
+/* Mobile hero headline — each line is sized to fill the column edge to edge.
+   --line-ratio is the line's width/font-size factor measured in the display
+   face, so 100cqw/ratio is the font-size at which the line spans exactly 100%
+   of the container. cqw resolves against the h1 itself as the query container,
+   which already sits inside the page gutters.
+
+   Phone widths only: filling the width ties height to width, which reads well
+   up to ~430px but would run the headline ~950px tall on a 768px tablet, so
+   those keep the clamp ramp from the utility classes. Because the h1 now takes
+   whatever width the column has, anything that widens that column widens the
+   headline with it — see the min-w-0 tracks on the mobile lede grid. */
+@media (max-width: 539px) {
+  .hero-headline {
+    container-type: inline-size;
+    /* Tighter than the desktop 0.9: at these sizes the stacked lines read as
+       one block, and it keeps the four of them inside the upper half. */
+    line-height: 0.84;
+    min-width: 0;
+  }
+  .hero-headline .hero-line {
+    font-size: calc(100cqw / var(--line-ratio));
+    /* Just enough room for the 'y' descender in "Systeme." — the lines use
+       overflow-hidden for the GSAP reveal, so a descender would clip. */
+    padding-bottom: 0.1em;
+  }
+}
+
 /* Card fan carousel — cards stack on the layout centre and GSAP moves them
    into the fan. Heights match the breakpoints in getHeightMultiplier(). */
 .fan-layout {

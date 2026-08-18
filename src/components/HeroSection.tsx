@@ -34,20 +34,27 @@ export default function HeroSection() {
         <div className="lg:flex-1 flex lg:items-center pt-2 pb-6 md:py-10">
           <div className="w-full grid lg:grid-cols-[1fr_auto] gap-8 xl:gap-14 items-center">
 
-            {/* Mobile keeps the headline deliberately smaller than the desktop
-                ramp: at 21vw it was 82px tall and pushed the subline, CTA and
-                proof shot below the fold on a 390x844 screen. */}
+            {/* On mobile each line gets its own font-size so it spans the full
+                column width — a single size leaves ragged gaps on the right,
+                worst on the short words. `ratio` is the line's measured
+                width-to-font-size factor in the display face, so
+                fontSize = availableWidth / ratio makes it fill exactly.
+                Below lg only; the desktop ramp is untouched. */}
             <h1
-              className="font-medium text-[clamp(2.9rem,13.2vw,4.4rem)] lg:text-[clamp(4rem,11vw,12.5rem)] text-left"
+              className="hero-headline font-medium text-[clamp(2.9rem,13.2vw,4.4rem)] lg:text-[clamp(4rem,11vw,12.5rem)] text-left"
               style={{ fontFamily: "var(--font-display)", lineHeight: 0.9 }}
             >
               {[
-                { text: "Smarte", orange: false },
-                { text: "Systeme.", orange: true },
-                { text: "Starke", orange: false },
-                { text: "Betriebe.", orange: true },
-              ].map(({ text, orange }) => (
-                <span key={text} className="block overflow-hidden pb-[0.14em]">
+                { text: "Smarte", orange: false, ratio: 2.616 },
+                { text: "Systeme.", orange: true, ratio: 3.314 },
+                { text: "Starke", orange: false, ratio: 2.368 },
+                { text: "Betriebe.", orange: true, ratio: 3.274 },
+              ].map(({ text, orange, ratio }) => (
+                <span
+                  key={text}
+                  className="hero-line block overflow-hidden pb-[0.14em]"
+                  style={{ "--line-ratio": ratio } as React.CSSProperties}
+                >
                   <span
                     className={`hero-word block ${
                       orange ? "text-[#FF5500]" : "text-[oklch(12%_0.015_30)]"
@@ -65,14 +72,14 @@ export default function HeroSection() {
             {/* max-w keeps the pair from spreading across a tablet's width,
                 which left the proof shot floating alone in the right margin. */}
             <div className="hero-mobile-lede lg:hidden mt-7 max-w-[30rem]">
-              <div className="grid grid-cols-[1fr_auto] gap-4 sm:gap-6 items-start">
-                <div>
+              <div className="grid grid-cols-[minmax(0,1fr)_auto] gap-4 sm:gap-6 items-start">
+                <div className="min-w-0">
                   <p className="text-black/45 text-sm leading-relaxed max-w-[34ch]">
                     Website, Bestellung und Dashboard in einem. Dazu SEO, GEO und Social Media.
                   </p>
                   <Link
                     href="/kontakt"
-                    className="mt-5 inline-block border border-[oklch(12%_0.015_30)] text-[oklch(12%_0.015_30)] rounded-full px-6 py-2.5 text-sm font-semibold whitespace-nowrap active:bg-[oklch(12%_0.015_30)] active:text-[#FFFCF3] transition-colors"
+                    className="mt-5 inline-block border border-[oklch(12%_0.015_30)] text-[oklch(12%_0.015_30)] rounded-full max-[374px]:px-5 px-6 py-2.5 text-sm font-semibold whitespace-nowrap active:bg-[oklch(12%_0.015_30)] active:text-[#FFFCF3] transition-colors"
                   >
                     Beratung buchen →
                   </Link>
@@ -84,7 +91,7 @@ export default function HeroSection() {
                   href="https://cafe-alte-schule.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hero-mobile-proof relative block w-[7.5rem] sm:w-[9rem] aspect-[680/1190] rounded-xl overflow-hidden shadow-[0_14px_40px_-12px_rgba(0,0,0,0.32)]"
+                  className="hero-mobile-proof relative block max-[374px]:w-[6rem] w-[7.5rem] sm:w-[9rem] aspect-[680/1190] rounded-xl overflow-hidden shadow-[0_14px_40px_-12px_rgba(0,0,0,0.32)]"
                   aria-label="Café Alte Schule — Live-Website ansehen"
                 >
                   <Image
