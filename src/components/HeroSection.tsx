@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { useRef } from "react";
 import { motion } from "framer-motion";
 import { useGSAP } from "@gsap/react";
@@ -16,21 +17,28 @@ export default function HeroSection() {
     tl.from(".hero-label", { opacity: 0, y: 10, duration: 0.55, ease: "power3.out" })
       .from(".hero-word", { yPercent: 112, duration: 1.05, ease: "power4.out", stagger: 0.09 }, "-=0.25")
       .from(".hero-device", { opacity: 0, scale: 0.95, duration: 1.0, ease: "power3.out" }, "-=0.7")
+      .from(".hero-mobile-lede", { opacity: 0, y: 16, duration: 0.7, ease: "power3.out" }, "-=0.75")
+      .from(".hero-mobile-proof", { opacity: 0, x: 28, duration: 0.85, ease: "power3.out" }, "-=0.6")
       .from(".hero-badge", { opacity: 0, scale: 0.88, duration: 0.7, ease: "power3.out" }, "-=0.4")
       .from(".hero-shadow", { opacity: 0, x: 24, duration: 2.0, ease: "power2.out" }, "-=0.9")
       .from(".hero-bottom", { opacity: 0, y: 20, duration: 0.7, ease: "power3.out" }, "-=1.6");
   }, { scope: heroRef });
 
+  // No mobile min-height: forcing a full viewport left dead space under the
+  // stats. Letting the section end naturally pulls the marquee up as a cue.
   return (
-    <section ref={heroRef} className="bg-[#FFFCF3] min-h-screen lg:min-h-[115vh] flex flex-col relative overflow-hidden">
-      <div className="max-w-[1366px] mx-auto px-6 md:px-12 lg:px-16 flex-1 flex flex-col w-full pt-16 md:pt-20">
+    <section ref={heroRef} className="bg-[#FFFCF3] lg:min-h-[115vh] flex flex-col relative overflow-hidden">
+      <div className="max-w-[1366px] mx-auto px-6 md:px-12 lg:px-16 flex-1 flex flex-col w-full pt-14 md:pt-20">
 
         {/* Headline + café preview */}
-        <div className="flex-1 flex items-center py-8 md:py-10">
+        <div className="lg:flex-1 flex lg:items-center pt-2 pb-6 md:py-10">
           <div className="w-full grid lg:grid-cols-[1fr_auto] gap-8 xl:gap-14 items-center">
 
+            {/* Mobile keeps the headline deliberately smaller than the desktop
+                ramp: at 21vw it was 82px tall and pushed the subline, CTA and
+                proof shot below the fold on a 390x844 screen. */}
             <h1
-              className="font-medium text-[clamp(4.2rem,21vw,10rem)] lg:text-[clamp(4rem,11vw,12.5rem)] text-center lg:text-left"
+              className="font-medium text-[clamp(2.9rem,13.2vw,4.4rem)] lg:text-[clamp(4rem,11vw,12.5rem)] text-left"
               style={{ fontFamily: "var(--font-display)", lineHeight: 0.9 }}
             >
               {[
@@ -50,6 +58,46 @@ export default function HeroSection() {
                 </span>
               ))}
             </h1>
+
+            {/* Mobile-only: subline + CTA sit directly under the headline so
+                both clear the fold, with the proof shot peeking in from the
+                right to invite the scroll. Desktop keeps them in .hero-bottom. */}
+            {/* max-w keeps the pair from spreading across a tablet's width,
+                which left the proof shot floating alone in the right margin. */}
+            <div className="hero-mobile-lede lg:hidden mt-7 max-w-[30rem]">
+              <div className="grid grid-cols-[1fr_auto] gap-4 sm:gap-6 items-start">
+                <div>
+                  <p className="text-black/45 text-sm leading-relaxed max-w-[34ch]">
+                    Website, Bestellung und Dashboard in einem. Dazu SEO, GEO und Social Media.
+                  </p>
+                  <Link
+                    href="/kontakt"
+                    className="mt-5 inline-block border border-[oklch(12%_0.015_30)] text-[oklch(12%_0.015_30)] rounded-full px-6 py-2.5 text-sm font-semibold whitespace-nowrap active:bg-[oklch(12%_0.015_30)] active:text-[#FFFCF3] transition-colors"
+                  >
+                    Beratung buchen →
+                  </Link>
+                </div>
+
+                {/* Live client site as proof. Cropped narrow and pushed past the
+                    right gutter so it reads as a peek, not a boxed thumbnail. */}
+                <a
+                  href="https://cafe-alte-schule.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hero-mobile-proof relative block w-[7.5rem] sm:w-[9rem] aspect-[680/1190] rounded-xl overflow-hidden shadow-[0_14px_40px_-12px_rgba(0,0,0,0.32)]"
+                  aria-label="Café Alte Schule — Live-Website ansehen"
+                >
+                  <Image
+                    src="/fan-cafe-alte-schule.jpg"
+                    alt="Café Alte Schule — Live-Website mit Reservierungssystem"
+                    fill
+                    sizes="136px"
+                    priority
+                    className="object-cover object-top"
+                  />
+                </a>
+              </div>
+            </div>
 
             {/* Café preview + reservation badge */}
             <div className="hero-device hidden lg:block lg:flex-shrink-0 relative isolate">
@@ -101,7 +149,8 @@ export default function HeroSection() {
 
         {/* Bottom: desc + CTA + stats */}
         <div className="hero-bottom">
-          <div className="grid md:grid-cols-[1fr_auto] gap-6 items-center border-t border-black/8 py-6">
+          {/* Mobile renders this pair in .hero-mobile-lede above the fold */}
+          <div className="hidden lg:grid md:grid-cols-[1fr_auto] gap-6 items-center border-t border-black/8 py-6">
             <p
               className="text-black/45 leading-relaxed max-w-[54ch]"
               style={{ fontSize: "clamp(0.9rem, 1.35vw, 1.05rem)" }}
@@ -119,26 +168,24 @@ export default function HeroSection() {
           </div>
 
           {/* Inline stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 border-t border-black/8 pb-8">
+          <div className="grid grid-cols-4 border-t border-black/8 pb-6 md:pb-8">
             {[
               { n: "4", suffix: " Tage", label: "bis Launch" },
               { n: "10+", suffix: "", label: "Projekte" },
               { n: "2", suffix: "", label: "Kontinente" },
               { n: "100%", suffix: "", label: "editierbar" },
             ].map(({ n, suffix, label }, i) => (
-              <div key={label} className={`pt-6 pb-2 ${
-                  i === 1 ? "pl-6 border-l border-black/8 md:pl-8" :
-                  i === 2 ? "md:pl-8 md:border-l md:border-black/8" :
-                  i === 3 ? "pl-6 border-l border-black/8 md:pl-8" : ""
+              <div key={label} className={`pt-5 pb-2 md:pt-6 ${
+                  i > 0 ? "pl-3 border-l border-black/8 md:pl-8" : ""
                 }`}>
                 <p
                   className="font-black tracking-tight leading-none text-[oklch(12%_0.015_30)]"
-                  style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)" }}
+                  style={{ fontSize: "clamp(1.15rem, 5vw, 3rem)" }}
                 >
                   {n}
                   {suffix && <span className="text-[#FF5500]">{suffix}</span>}
                 </p>
-                <p className="text-black/28 text-[0.6rem] font-semibold tracking-widest uppercase mt-2">
+                <p className="text-black/28 text-[0.55rem] md:text-[0.6rem] font-semibold tracking-widest uppercase mt-1.5 md:mt-2">
                   {label}
                 </p>
               </div>
