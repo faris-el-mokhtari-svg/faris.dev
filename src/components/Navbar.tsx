@@ -29,9 +29,31 @@ export default function Navbar() {
       (scrolled || pathname !== "/") ? "bg-white/90 backdrop-blur-md border-b border-black/5 shadow-[0_1px_3px_rgba(0,0,0,0.06)]" : ""
     }`}>
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
-        <Link href="/" className="flex items-center gap-1 group">
-          <span className="text-xl font-black tracking-[-0.04em] uppercase leading-none text-[#FF5500]">Deploy</span>
-          <span className="text-xl font-black tracking-[-0.04em] uppercase leading-none text-[#FF5500]/60">&thinsp;Change</span>
+        {/* Monogram mark: DC reversed out of a solid orange punch, so the
+            brand colour carries a surface here rather than just the letters.
+            The full name lives in the sr-only span — the tile is decorative.
+            The negative margin bites 14px into the container's 24px gutter so
+            the mark sits closer to the page edge than the nav's own rhythm
+            allows, while links and CTA keep their inset. */}
+        <Link href="/" className="group inline-flex items-center gap-2.5 -ml-3.5">
+          <span className="grid place-items-center flex-none w-[2.375rem] h-[2.375rem] lg:w-[3.25rem] lg:h-[3.25rem] rounded-[11px] lg:rounded-[15px] bg-[#FF5500] transition-colors duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:bg-[oklch(12%_0.015_30)]">
+            <span
+              className="font-display font-black text-2xl lg:text-[2rem] leading-none tracking-[-0.03em] text-[#FFFCF3] translate-y-[0.5px]"
+              aria-hidden="true"
+            >
+              DC
+            </span>
+          </span>
+          {/* Desktop only: the mark grows by gaining the wordmark rather than
+              by scaling further. Phones keep the bare punch. */}
+          <span
+            className="hidden lg:grid font-display font-black uppercase text-[1.375rem] leading-[0.82] tracking-[-0.02em]"
+            aria-hidden="true"
+          >
+            <span className="text-[oklch(12%_0.015_30)]">Deploy</span>
+            <span className="text-[oklch(12%_0.015_30)]/40">Change</span>
+          </span>
+          <span className="sr-only">Deploy Change</span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
