@@ -5,7 +5,8 @@ import {
   clientIp,
   hasTrustedOrigin,
   inspectSubmission,
-  isRateLimited,
+  hasReachedLimit,
+  recordSubmission,
 } from "@/lib/spam-guard";
 
 let resendClient: Resend | null = null;
@@ -38,7 +39,8 @@ export async function POST(req: NextRequest) {
     }
 
     const now = Date.now();
-    if (isRateLimited(clientIp(req.headers), now)) {
+    const ip = clientIp(req.headers);
+    if (hasReachedLimit(ip, now)) {
       return NextResponse.json(
         { error: "Zu viele Anfragen. Bitte später erneut versuchen." },
         { status: 429 },
@@ -74,6 +76,10 @@ export async function POST(req: NextRequest) {
     }
 
     const { fullName, email, phone, message } = result.payload;
+
+    // Counted only now, so rejected or malformed attempts cost the sender
+    // nothing while genuine sends still consume the window.
+    recordSubmission(ip, now);
 
     await getResend().emails.send({
       from: "Deploy Change <info@deploy-change.de>",

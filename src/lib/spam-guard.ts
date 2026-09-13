@@ -23,7 +23,7 @@ const MIN_MESSAGE_LENGTH = 10;
 const MAX_LINKS = 2;
 
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
-const RATE_LIMIT_MAX = 3;
+const RATE_LIMIT_MAX = 5;
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i;
 const LINK_PATTERN = /(https?:\/\/|www\.|\[url|\[link)/gi;
@@ -98,7 +98,20 @@ const buckets: Map<string, { count: number; resetAt: number }> =
     __contactRateLimit?: Map<string, { count: number; resetAt: number }>;
   }).__contactRateLimit = new Map());
 
-export function isRateLimited(ip: string, now: number): boolean {
+/**
+ * Read-only check. Kept separate from recordSubmission so a user who mistypes
+ * their email and retries does not burn quota — only submissions that actually
+ * reach Resend are counted. Request floods are absorbed by the WAF rule and
+ * platform DDoS mitigation, which sit in front of this function.
+ */
+export function hasReachedLimit(ip: string, now: number): boolean {
+  const bucket = buckets.get(ip);
+  if (!bucket || now > bucket.resetAt) return false;
+  return bucket.count >= RATE_LIMIT_MAX;
+}
+
+/** Counts one accepted submission against the caller's window. */
+export function recordSubmission(ip: string, now: number): void {
   const bucket = buckets.get(ip);
 
   if (!bucket || now > bucket.resetAt) {
@@ -109,11 +122,10 @@ export function isRateLimited(ip: string, now: number): boolean {
         if (now > value.resetAt) buckets.delete(key);
       }
     }
-    return false;
+    return;
   }
 
   bucket.count += 1;
-  return bucket.count > RATE_LIMIT_MAX;
 }
 
 /**
