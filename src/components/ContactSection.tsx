@@ -1,8 +1,16 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function ContactSection() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+  // Round-trips to the server so it can reject submissions that are too fast
+  // to be human. Set on mount rather than on render to stay hydration-safe.
+  const startedAt = useRef(0);
+
+  useEffect(() => {
+    startedAt.current = Date.now();
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -13,17 +21,35 @@ export default function ContactSection() {
       email: (form.elements.namedItem("email") as HTMLInputElement).value,
       phone: (form.elements.namedItem("phone") as HTMLInputElement).value,
       message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+      // Honeypot — real users never see this field, so any value means a bot.
+      company: (form.elements.namedItem("company") as HTMLInputElement).value,
+      startedAt: startedAt.current,
     };
+    // Bot-detection scripts wrap window.fetch to attach a token. If such a
+    // script fails to load, its wrapper can never settle and the submit hangs
+    // silently. The timeout turns that into a visible, retryable error.
+    const timeout = AbortController ? new AbortController() : null;
+    const timer = window.setTimeout(() => timeout?.abort(), 15_000);
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
+        signal: timeout?.signal,
       });
-      if (res.ok) { setStatus("sent"); form.reset(); }
-      else { setStatus("error"); }
+      if (res.ok) {
+        setStatus("sent");
+        form.reset();
+      } else {
+        const body = await res.json().catch(() => null);
+        setErrorMessage(body?.error ?? "Etwas ist schiefgelaufen. Bitte erneut versuchen.");
+        setStatus("error");
+      }
     } catch {
+      setErrorMessage("Etwas ist schiefgelaufen. Bitte erneut versuchen.");
       setStatus("error");
+    } finally {
+      window.clearTimeout(timer);
     }
   };
 
@@ -76,6 +102,22 @@ export default function ContactSection() {
             onSubmit={handleSubmit}
             className="w-full px-8 md:px-12 py-10 md:py-12 flex flex-col gap-4"
           >
+            {/*
+              Honeypot. Moved off-screen instead of display:none — bots detect
+              the latter. aria-hidden + tabIndex keep it out of reach for
+              screen readers and keyboard users.
+            */}
+            <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+              <label htmlFor="company">Firma (bitte leer lassen)</label>
+              <input
+                id="company"
+                name="company"
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+              />
+            </div>
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
                 <label htmlFor="fullName" className={labelClass}>Name</label>
@@ -118,6 +160,7 @@ export default function ContactSection() {
               <textarea
                 id="message"
                 name="message"
+                required
                 rows={5}
                 placeholder="Womit kann ich dir helfen?"
                 className="w-full rounded-lg border border-white/30 bg-transparent px-3 py-2.5 text-sm text-white placeholder:text-white/45 focus:border-white/70 focus:outline-none transition-colors resize-none"
@@ -125,9 +168,7 @@ export default function ContactSection() {
             </div>
 
             {status === "error" && (
-              <p className="text-white/60 text-xs">
-                Etwas ist schiefgelaufen. Bitte erneut versuchen.
-              </p>
+              <p className="text-white/60 text-xs">{errorMessage}</p>
             )}
 
             <button
