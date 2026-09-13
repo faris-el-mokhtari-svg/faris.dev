@@ -25,11 +25,17 @@ export default function ContactSection() {
       company: (form.elements.namedItem("company") as HTMLInputElement).value,
       startedAt: startedAt.current,
     };
+    // Bot-detection scripts wrap window.fetch to attach a token. If such a
+    // script fails to load, its wrapper can never settle and the submit hangs
+    // silently. The timeout turns that into a visible, retryable error.
+    const timeout = AbortController ? new AbortController() : null;
+    const timer = window.setTimeout(() => timeout?.abort(), 15_000);
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
+        signal: timeout?.signal,
       });
       if (res.ok) {
         setStatus("sent");
@@ -42,6 +48,8 @@ export default function ContactSection() {
     } catch {
       setErrorMessage("Etwas ist schiefgelaufen. Bitte erneut versuchen.");
       setStatus("error");
+    } finally {
+      window.clearTimeout(timer);
     }
   };
 
