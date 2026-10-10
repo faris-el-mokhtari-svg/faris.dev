@@ -6,11 +6,12 @@ import RevealText from "@/components/RevealText";
 import SocialCards, { type CardItem } from "@/components/ui/card-fan-carousel";
 
 /** Fan overview above the detailed case studies. Safari Specialists and
- *  Schöne have no public link — they render without one. */
+ *  Schöne have no public link — their cards jump to the case study below. */
 const fanCards: CardItem[] = [
   {
     imgUrl: "/fan-schoene.jpg",
     alt: "David Schöne Brotmanufaktur — Auswertungen im internen Bestellsystem",
+    linkUrl: "#david-schoene",
   },
   {
     imgUrl: "/fan-bachbaecker.jpg",
@@ -30,6 +31,7 @@ const fanCards: CardItem[] = [
   {
     imgUrl: "/fan-safari-specialists.jpg",
     alt: "Safari Specialists — Website-Redesign für einen Safari-Anbieter in Botswana",
+    linkUrl: "#safari-specialists",
   },
 ];
 
@@ -228,7 +230,7 @@ export default function Portfolio() {
       </section>
 
       {/* Project: Safari Specialists */}
-      <section className="bg-[#FFFCF3] py-20 md:py-28 border-b border-black/8">
+      <section id="safari-specialists" className="bg-[#FFFCF3] py-20 md:py-28 border-b border-black/8">
         <div className="max-w-[1366px] mx-auto px-6 md:px-12 lg:px-16">
 
           <FadeUp>
@@ -279,7 +281,7 @@ export default function Portfolio() {
       </section>
 
       {/* Project: David Schöne Brotmanufaktur */}
-      <section className="bg-[#FFFCF3] py-20 md:py-28 border-b border-black/8">
+      <section id="david-schoene" className="bg-[#FFFCF3] py-20 md:py-28 border-b border-black/8">
         <div className="max-w-[1366px] mx-auto px-6 md:px-12 lg:px-16">
 
           <FadeUp>
