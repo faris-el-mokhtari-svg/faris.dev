@@ -113,6 +113,8 @@ export default function SocialCards({ cards }: SocialCardsProps) {
   const totalCards = cards.length;
   const needsPagination = totalCards > MAX_VISIBLE;
   const [centerIndex, setCenterIndex] = useState(needsPagination ? HALF : totalCards >> 1);
+  // Mobile strip: first tap enlarges a card, a second tap on it follows the link.
+  const [activeStripIndex, setActiveStripIndex] = useState<number | null>(null);
 
   const getVisibleMap = useCallback((center: number) => {
     const map = new Map<number, number>();
@@ -292,8 +294,34 @@ export default function SocialCards({ cards }: SocialCardsProps) {
   );
 
   return (
-    <section className="flex flex-col items-center w-full py-4 lg:py-8 px-4 md:px-8 relative z-20">
-      <div className="flex items-center justify-center w-full max-w-[90rem]">
+    <section className="flex flex-col items-center w-full py-4 lg:py-8 md:px-8 relative z-20">
+      <div className="fan-strip flex md:hidden" data-active={activeStripIndex !== null || undefined}>
+        {cards.map((card, index) => {
+          const active = activeStripIndex === index;
+          const image = (
+            <Image
+              src={card.imgUrl}
+              alt={card.alt || `Card ${index}`}
+              fill
+              sizes="60vw"
+              className="object-cover"
+            />
+          );
+          const onClick = (e: React.MouseEvent<HTMLElement>) => {
+            if (active) return;
+            e.preventDefault();
+            setActiveStripIndex(index);
+            e.currentTarget.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+          };
+          return card.linkUrl ? (
+            <a key={index} href={card.linkUrl} target={card.linkUrl.startsWith("http") ? "_blank" : "_self"} rel="noopener noreferrer" className="fan-strip-card" data-active={active || undefined} onClick={onClick}>{image}</a>
+          ) : (
+            <button key={index} type="button" className="fan-strip-card" data-active={active || undefined} aria-pressed={active} onClick={onClick}>{image}</button>
+          );
+        })}
+      </div>
+
+      <div className="hidden md:flex items-center justify-center w-full max-w-[90rem]">
         <div ref={containerRef} className="fan-layout flex relative justify-center items-center w-full max-w-[80rem]">
           {cards.map((card, index) => {
             const image = (
@@ -317,7 +345,7 @@ export default function SocialCards({ cards }: SocialCardsProps) {
       </div>
 
       {needsPagination && (
-        <div className="flex items-center justify-center gap-4 mt-4 md:mt-6 z-30">
+        <div className="hidden md:flex items-center justify-center gap-4 mt-6 z-30">
           <button className={`${ARROW_CLASSES} w-10 h-10 md:w-12 md:h-12`} onClick={() => cycle("left")} aria-label="Previous">
             {chevron("left")}
           </button>
