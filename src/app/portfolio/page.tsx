@@ -82,8 +82,8 @@ const bachbaeckerDetails = [
 
 
 export const metadata: Metadata = {
-  title: "Webdesign-Referenzen aus Kiel – Portfolio",
-  keywords: ["Webdesign Referenzen", "Webdesign Kiel Beispiele", "Restaurant Website", "Café Website", "Barbershop Website", "Bäckerei Website"],
+  title: "Referenzen: Software & Systeme für Betriebe",
+  keywords: ["Software Referenzen", "Individualsoftware Beispiele", "Betriebssoftware Gastronomie", "Reservierungssystem Gastronomie", "Dashboard Beispiele"],
   description: "Café Alte Schule, Safari Specialists, David Schöne, ShaYo Barbershop, Bachbäcker — Systeme, die täglich im Einsatz sind.",
   alternates: {
     canonical: "https://deploy-change.de/portfolio",

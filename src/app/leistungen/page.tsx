@@ -199,9 +199,9 @@ function ServiceSection({
 
 
 export const metadata: Metadata = {
-  title: "Website erstellen lassen in Kiel – Leistungen",
-  keywords: ["Website erstellen lassen Kiel", "Reservierungssystem Restaurant", "Online-Bestellsystem", "Bestellsystem Bäckerei", "Admin-Dashboard", "SEO Kiel", "GEO Optimierung", "Social Media Betreuung"],
-  description: "Webdesign, Bestell- und Reservierungssysteme, Admin-Dashboard, Kassensystem-Integration sowie SEO, GEO und Social Media – alles aus einer Hand für lokale Betriebe.",
+  title: "Interne Software, Prozessautomatisierung & KI",
+  keywords: ["Individualsoftware entwickeln lassen", "interne Tools", "Prozessautomatisierung KMU", "KI-Integration", "KI-Automatisierung", "Workflow-Automatisierung", "Admin-Dashboard", "Kassensystem-Integration"],
+  description: "Interne Software, Dashboards, Kassen-Anbindung, Automatisierung und KI-Integration – plus Website, SEO und GEO. Alles aus einer Hand für Ihren Betrieb.",
   alternates: {
     canonical: "https://deploy-change.de/leistungen",
     languages: { "de": "https://deploy-change.de/leistungen", "x-default": "https://deploy-change.de/leistungen" },

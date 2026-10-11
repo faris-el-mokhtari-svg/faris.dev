@@ -21,9 +21,9 @@ const values = [
 
 
 export const metadata: Metadata = {
-  title: "Faris El Mokhtari – Webentwickler aus Kiel",
-  keywords: ["Faris El Mokhtari", "Webentwickler Kiel", "Webdesigner Kiel", "Freelancer Webentwicklung Kiel"],
-  description: "Faris El Mokhtari baut Systeme für lokale Betriebe: Websites, Bestell- und Reservierungssysteme, Dashboards. Schnell, direkt, ohne Bullshit.",
+  title: "Faris El Mokhtari – Software & KI aus Kiel",
+  keywords: ["Faris El Mokhtari", "Softwareentwickler Kiel", "KI-Entwickler Kiel", "Freelancer Softwareentwicklung Kiel"],
+  description: "Faris El Mokhtari baut interne Software und digitale Betriebssysteme für Unternehmen – Prozesse effizienter, mit KI wo sie hilft. Direkt, ohne Bullshit.",
   alternates: {
     canonical: "https://deploy-change.de/ueber-uns",
     languages: { "de": "https://deploy-change.de/ueber-uns", "x-default": "https://deploy-change.de/ueber-uns" },

@@ -1,6 +1,6 @@
 # Deploy Change
 
-> Web-Entwicklungsstudio für lokale Betriebe: Websites, Bestell- und Reservierungssysteme, Admin-Dashboards, SEO, GEO und Social Media. Sitz in Kiel, Deutschland — Kunden in Deutschland und international.
+> Software-Studio für Unternehmen: interne Software und digitale Betriebssysteme, die bestehende Prozesse effizienter machen — mit Automatisierung und KI-Integration. Dazu Websites, Bestell- und Reservierungssysteme, SEO, GEO und Social Media. Sitz in Kiel, Deutschland — Kunden in Deutschland und international.
 
 Gründer: Faris El Mokhtari
 Kontakt: info@deploy-change.de

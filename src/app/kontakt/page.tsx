@@ -12,8 +12,8 @@ const steps = [
 
 
 export const metadata: Metadata = {
-  title: "Kontakt – kostenlose Website-Beratung in Kiel",
-  keywords: ["Website Beratung kostenlos", "Webdesign Angebot Kiel", "Webdesigner Kiel Kontakt", "Deploy Change Kontakt"],
+  title: "Kontakt – kostenloses Erstgespräch in Kiel",
+  keywords: ["Erstgespräch Softwareentwicklung", "Prozessberatung kostenlos", "KI-Beratung Kiel", "Deploy Change Kontakt"],
   description: "15 Minuten Gespräch, kostenlos. Wir schauen uns deine Situation an und sagen dir direkt, was machbar ist.",
   alternates: {
     canonical: "https://deploy-change.de/kontakt",
