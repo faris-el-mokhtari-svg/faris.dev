@@ -9,7 +9,8 @@ import RevealText from "@/components/RevealText";
 import HeroSection from "@/components/HeroSection";
 
 export const metadata: Metadata = {
-  title: "Deploy Change – Smarte Systeme für lokale Betriebe",
+  title: "Webdesign in Kiel für lokale Betriebe | Deploy Change",
+  keywords: ["Webdesign Kiel", "Webentwicklung Kiel", "Webagentur Kiel", "Website erstellen lassen Kiel", "Website für lokale Betriebe", "Deploy Change"],
   description: "Wir bauen Websites, Bestell- und Reservierungssysteme, Admin-Dashboards und übernehmen SEO, GEO und Social Media. Für lokale Betriebe in Kiel und darüber hinaus.",
   alternates: {
     canonical: "https://deploy-change.de",

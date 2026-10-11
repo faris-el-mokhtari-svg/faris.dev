@@ -48,7 +48,8 @@ const testimonials = [
 
 
 export const metadata: Metadata = {
-  title: "Kundenstimmen & Referenzen",
+  title: "Kundenstimmen & Erfahrungen – Webdesign Kiel",
+  keywords: ["Webdesign Kiel Erfahrungen", "Deploy Change Bewertungen", "Webagentur Kiel Referenzen", "Kundenstimmen Webdesign"],
   description: "Was unsere Kunden über Deploy Change sagen. Referenzen aus Gastronomie, Bäckerei, Dienstleistung und Tourismus.",
   alternates: {
     canonical: "https://deploy-change.de/kundenstimmen",

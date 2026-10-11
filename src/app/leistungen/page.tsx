@@ -199,7 +199,8 @@ function ServiceSection({
 
 
 export const metadata: Metadata = {
-  title: "Leistungen – Website, Bestellsystem, Dashboard & SEO",
+  title: "Website erstellen lassen in Kiel – Leistungen",
+  keywords: ["Website erstellen lassen Kiel", "Reservierungssystem Restaurant", "Online-Bestellsystem", "Bestellsystem Bäckerei", "Admin-Dashboard", "SEO Kiel", "GEO Optimierung", "Social Media Betreuung"],
   description: "Webdesign, Bestell- und Reservierungssysteme, Admin-Dashboard, Kassensystem-Integration sowie SEO, GEO und Social Media – alles aus einer Hand für lokale Betriebe.",
   alternates: {
     canonical: "https://deploy-change.de/leistungen",
