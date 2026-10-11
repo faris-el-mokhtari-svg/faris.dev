@@ -66,7 +66,7 @@ export default function ContactSection() {
         <div className="absolute inset-0 bg-gradient-to-br from-[#ff5500] via-[#ff6b2f] to-[#ff8a3d]" />
         <div className="relative h-full flex flex-col px-8 md:px-12 py-10 md:py-12">
           <p className="text-white/80 text-xs font-semibold tracking-widest uppercase mb-12">
-            Deploy — Web Development
+            Deploy — Software & Systeme
           </p>
           <h2 className="text-3xl md:text-6xl leading-[0.95] font-medium max-w-sm">
             Jede Herausforderung ist individuell. Sprechen wir über Ihre.

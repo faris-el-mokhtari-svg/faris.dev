@@ -41,7 +41,7 @@ export default function OGImage() {
 
         {/* Subline */}
         <p style={{ fontSize: 26, color: "rgba(0,0,0,0.42)", margin: 0, lineHeight: 1.4 }}>
-          Websites, Bestellsysteme und Dashboards für lokale Betriebe. Live in 4 Tagen.
+          Interne Software, Automatisierung und KI-Integration für Betriebe.
         </p>
       </div>
     ),

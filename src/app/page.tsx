@@ -20,11 +20,11 @@ export const metadata: Metadata = {
 };
 
 const services = [
-  { n: "01", title: "Webdesign & Entwicklung", desc: "Custom gebaut, mobile-first. Kein Template, keine Einschränkungen." },
-  { n: "02", title: "Bestell- & Reservierungssysteme", desc: "Live-Auslastung, Abholzeiten, Walk-ins, Kalenderintegration." },
-  { n: "03", title: "Admin-Dashboard & Menü-Editor", desc: "Speisekarte und Öffnungszeiten selbst pflegen — in 10 Sekunden live." },
-  { n: "04", title: "Kassensystem-Integration", desc: "Lightspeed, Square und mehr nahtlos eingebunden." },
-  { n: "05", title: "SEO, GEO & Social Media", desc: "Gefunden werden bei Google und in KI-Antworten. Instagram und TikTok inklusive." },
+  { n: "01", title: "Interne Software & Dashboards", desc: "Ein System statt fünf Tabellen: Aufträge, Bestand, Personal und Zahlen an einem Ort." },
+  { n: "02", title: "Prozessautomatisierung", desc: "Was sich jeden Tag wiederholt, läuft von selbst — Bestätigungen, Erinnerungen, Berichte." },
+  { n: "03", title: "KI-Integration", desc: "KI dort, wo sie Arbeit abnimmt: Anfragen vorsortieren, Dokumente auslesen, Auswertungen schreiben." },
+  { n: "04", title: "Schnittstellen & Kassensysteme", desc: "Lightspeed, Square und bestehende Tools verbunden — keine doppelte Eingabe mehr." },
+  { n: "05", title: "Website, SEO & GEO", desc: "Der sichtbare Teil des Systems. Gefunden werden bei Google und in KI-Antworten." },
 ];
 
 export default function Home() {

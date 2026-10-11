@@ -81,16 +81,16 @@ export default function HeroSection() {
               className="hero-mobile-eyebrow lg:hidden order-1 text-[clamp(1.5rem,7.6vw,2.4rem)] font-bold text-[oklch(12%_0.015_30)]"
               style={{ fontFamily: "var(--font-display)", lineHeight: 0.9 }}
             >
-              Systeme für
+              Interne Software
               <br />
-              lokale Betriebe.
+              für Betriebe.
             </p>
 
             {/* Mobile-only: lede + CTA, full width above the proof shot.
                 Desktop keeps this pair in .hero-bottom. */}
             <div className="hero-mobile-lede lg:hidden order-2 mt-6 pt-5 border-t border-black/12">
               <p className="text-black/45 text-sm leading-[1.45] max-w-[38ch]">
-                Website, Bestellung und Dashboard in einem. Dazu SEO, GEO und Social Media.
+                Bestehende Abläufe neu gedacht: eigene Software, Automatisierung und KI, wo sie hilft.
               </p>
               <Link
                 href="/kontakt"
@@ -184,7 +184,7 @@ export default function HeroSection() {
               className="text-black/45 leading-relaxed max-w-[54ch]"
               style={{ fontSize: "clamp(0.9rem, 1.35vw, 1.05rem)" }}
             >
-              Wir bauen operative Systeme für lokale Betriebe — Website, Bestellung und Dashboard in einem. Dazu SEO, GEO und Social Media.
+              Wir bauen interne Software und digitale Betriebssysteme. Bestehende Abläufe gestalten wir neu, was sich wiederholt, automatisieren wir — und KI setzen wir dort ein, wo sie Arbeit abnimmt.
             </p>
             <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
               <Link

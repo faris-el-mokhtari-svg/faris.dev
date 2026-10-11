@@ -51,6 +51,9 @@ const schemaPerson = {
       "image": "https://deploy-change.de/faris-portrait.png",
       "sameAs": ["https://www.instagram.com/deploy.change/"],
       "knowsAbout": [
+        "Individualsoftware",
+        "Prozessautomatisierung",
+        "KI-Integration",
         "Webentwicklung",
         "Webdesign",
         "Reservierungssysteme",
@@ -112,7 +115,7 @@ export default function UeberUns() {
             </div>
 
             <p className="text-black/52 text-lg leading-relaxed max-w-[52ch]">
-              Ich baue keine Websites als Einzelprodukt. Ich baue Systeme: Reservierungen, Dashboards, Kassensystem-Anbindungen. Die Website ist der Teil davon, den man sieht.
+              Ich baue keine Websites als Einzelprodukt. Ich baue Software für die Abläufe dahinter: interne Tools, Automatisierungen, Kassen-Anbindungen — und KI dort, wo sie Arbeit abnimmt. Die Website ist der Teil davon, den man sieht.
             </p>
 
             <p className="text-black/40 text-base leading-relaxed max-w-[52ch]">

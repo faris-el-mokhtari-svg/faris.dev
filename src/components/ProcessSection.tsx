@@ -10,7 +10,7 @@ const steps = [
   {
     num: "01",
     title: "Erstgespräch",
-    desc: "30 Minuten. Ich verstehe Ihr Geschäft, Ihre Kunden und was Sie wirklich brauchen.",
+    desc: "30 Minuten. Wir gehen Ihre Abläufe durch und finden, wo Zeit und Geld verloren gehen.",
   },
   {
     num: "02",
@@ -20,7 +20,7 @@ const steps = [
   {
     num: "03",
     title: "Umsetzung",
-    desc: "In 4 Tagen live. Sie bekommen wöchentliche Updates — kein Rätselraten über den Fortschritt.",
+    desc: "Schrittweise statt Großprojekt: Was am meisten Zeit kostet, läuft zuerst. Wöchentliche Updates — kein Rätselraten über den Fortschritt.",
   },
   {
     num: "04",

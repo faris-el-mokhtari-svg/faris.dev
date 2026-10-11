@@ -1,13 +1,13 @@
 const items = [
-  "Deploy — Web Development",
-  "4 Tage bis Launch",
-  "Lokale Betriebe",
+  "Deploy — Software & Systeme",
+  "Interne Software",
+  "Prozessautomatisierung",
+  "KI-Integration",
   "GetPacked Partner",
   "Kiel & international",
   "Systeme die laufen",
-  "Webdesign & Entwicklung",
-  "Bestell- & Reservierungssysteme",
   "Admin-Dashboards",
+  "Kassen-Schnittstellen",
   "SEO & GEO",
 ];
 

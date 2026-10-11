@@ -10,7 +10,7 @@ Sprache: Deutsch (de-DE)
 
 ## Leistungen
 
-- /leistungen — Webdesign & Entwicklung, Bestell- & Reservierungssystem, Admin-Dashboard & Menü-Editor, Kassensystem-Integration (Lightspeed, Square), SEO/GEO & Social Media
+- /leistungen — Interne Software & Dashboards, Prozessautomatisierung, KI-Integration, Schnittstellen & Kassensysteme (Lightspeed, Square), Website/SEO/GEO & Social Media
 - /portfolio — Referenzprojekte: Café Alte Schule, Safari Specialists, David Schöne Brotmanufaktur, ShaYo Barbershop, Bachbäcker
 - /ueber-uns — Über den Gründer und die Unternehmensphilosophie
 - /kundenstimmen — Kundenstimmen und Referenzen

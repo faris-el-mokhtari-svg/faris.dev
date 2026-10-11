@@ -14,7 +14,7 @@ const steps = [
 export const metadata: Metadata = {
   title: "Kontakt – kostenloses Erstgespräch in Kiel",
   keywords: ["Erstgespräch Softwareentwicklung", "Prozessberatung kostenlos", "KI-Beratung Kiel", "Deploy Change Kontakt"],
-  description: "15 Minuten Gespräch, kostenlos. Wir schauen uns deine Situation an und sagen dir direkt, was machbar ist.",
+  description: "15 Minuten Gespräch, kostenlos. Wir schauen uns deine Abläufe an und sagen dir direkt, was sich vereinfachen und automatisieren lässt.",
   alternates: {
     canonical: "https://deploy-change.de/kontakt",
     languages: { "de": "https://deploy-change.de/kontakt", "x-default": "https://deploy-change.de/kontakt" },
@@ -54,7 +54,7 @@ export default function Kontakt() {
               </RevealText>
               <FadeUp delay={0.1}>
                 <p className="text-black/42 text-lg leading-relaxed max-w-[44ch]">
-                  15 Minuten Gespräch, kostenlos. Wir schauen uns deine Situation an und sagen dir direkt, was machbar ist.
+                  15 Minuten Gespräch, kostenlos. Wir schauen uns deine Abläufe an und sagen dir direkt, was sich vereinfachen und automatisieren lässt.
                 </p>
               </FadeUp>
             </div>

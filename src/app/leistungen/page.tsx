@@ -15,50 +15,50 @@ const CAFE_IMG =
 const services = [
   {
     id: "01",
-    title: "Webdesign &\nEntwicklung",
-    desc: "Eine Website, die zum Betrieb passt — nicht einfach nur ein Template. Für dich entwickelt, mobile-first und direkt editierbar ohne technisches Vorwissen.",
+    title: "Interne Software\n& Dashboards",
+    desc: "Software, die Ihre Abläufe abbildet — nicht umgekehrt. Aufträge, Bestellungen, Bestand, Personal und Kennzahlen in einem System, das Ihr Team ohne Schulungsmarathon bedient.",
     features: [
-      "Custom Design — kein Template",
-      "Mobile-First Development",
-      "SEO-Optimierung",
-      "Schnelle Ladezeiten",
-      "No-Code Editor inklusive",
+      "Auftrags- & Bestellverwaltung",
+      "Bestandsführung über mehrere Standorte",
+      "Personalkonten mit Rollen",
+      "Auswertungen & Kennzahlen auf einen Blick",
+      "No-Code-Admin für Inhalte, Produkte und Zeiten",
     ],
-    stat: { to: 4, suffix: " Tage", label: "bis zum Live-Launch" },
+    stat: { to: 10, suffix: " Sek.", label: "bis eine Änderung live ist" },
     bg: "cream" as const,
   },
   {
     id: "02",
-    title: "Bestell- &\nReservierungssystem",
-    desc: "Reservierungen und Bestellungen in Echtzeit — mit Live-Auslastung, Abhol-Zeitfenstern und Tagesübersicht pro Schicht. Kein Telefonklingeln mehr.",
+    title: "Prozess\u00ADautomati\u00ADsierung",
+    desc: "Was jeden Tag gleich abläuft, muss niemand mehr von Hand machen. Wir nehmen Ihre Abläufe auseinander, streichen Doppelarbeit und automatisieren den Rest.",
     features: [
-      "Live-Auslastung pro Schicht",
+      "Analyse: Wo geht im Alltag Zeit verloren?",
+      "Automatische Bestätigungen & Erinnerungen",
+      "Reservierungen mit Live-Auslastung",
       "Click & Collect mit Abhol-Zeitfenstern",
-      "Walk-in Erfassung & Tischverwaltung",
-      "Automatische Bestätigung per Mail",
-      "Kalenderintegration",
+      "Berichte, die sich selbst erstellen",
     ],
     stat: { to: 100, suffix: "%", label: "digitale Buchungen" },
     bg: "orange" as const,
   },
   {
     id: "03",
-    title: "Admin-Dashboard\n& Menü-Editor",
-    desc: "Speisekarte und Öffnungszeiten selbst aktualisieren — in zehn Sekunden, ohne technisches Vorwissen. Was sich ändert, ist sofort live.",
+    title: "KI-Integration",
+    desc: "KI dort, wo sie messbar Arbeit abnimmt — eingebaut in Ihre bestehenden Abläufe, nicht als zusätzliches Tool, das niemand öffnet.",
     features: [
-      "No-Code Admin-Interface",
-      "Menü-Editor & Kategorien",
-      "Schicht- & Öffnungszeitverwaltung",
-      "Sofort-Aktualisierung live",
-      "Mehrsprachige Inhalte",
+      "Anfragen & E-Mails automatisch vorsortieren",
+      "Rechnungen, Lieferscheine & Dokumente auslesen",
+      "Zusammenfassungen & Auswertungen aus Ihren Daten",
+      "Assistenten für Team und Kunden",
+      "Klare Regeln, welche Daten die KI sieht",
     ],
-    stat: { to: 10, suffix: " Sek.", label: "bis die Änderung live ist" },
+    stat: null,
     bg: "cream" as const,
   },
   {
     id: "04",
-    title: "Kassensystem-\nIntegration",
-    desc: "Lightspeed, Square und weitere POS-Systeme werden nahtlos eingebunden — Umsatz, Inventar und Tagesbericht in einer einzigen Ansicht.",
+    title: "Schnitt\u00ADstellen\n& Kassen\u00ADsysteme",
+    desc: "Lightspeed, Square und Ihre bestehenden Programme werden verbunden statt ersetzt — Umsatz, Inventar und Tagesbericht in einer Ansicht, ohne doppelte Eingabe.",
     features: [
       "Lightspeed POS Integration",
       "Echtzeit-Bestandstracking",
@@ -70,11 +70,11 @@ const services = [
   },
   {
     id: "05",
-    title: "SEO, GEO &\nSocial Media",
-    desc: "Gefunden werden — bei Google und in KI-Antworten. Wir optimieren die Seite dafür, pflegen Ihre Unternehmensprofile und betreuen auf Wunsch Instagram und TikTok mit.",
+    title: "Website,\nSEO & GEO",
+    desc: "Der sichtbare Teil des Systems: eine Website, die Ihr Team selbst pflegt, dazu Sichtbarkeit bei Google und in KI-Antworten — auf Wunsch inklusive Instagram und TikTok.",
     features: [
+      "Custom Design — kein Template, No-Code-Editor inklusive",
       "Lokale Google-Optimierung (SEO)",
-      "Strukturierte Daten & FAQ-Markup",
       "GEO: Sichtbarkeit in KI-Suchen messbar gemacht",
       "Google- & Apple-Unternehmensprofil",
       "Instagram- & TikTok-Betreuung",
@@ -83,7 +83,6 @@ const services = [
     bg: "cream" as const,
   },
 ];
-
 
 // ─── Section components ───────────────────────────────────────────────────────
 
@@ -211,24 +210,24 @@ export const metadata: Metadata = {
 
 const faqs = [
   {
-    q: "Was bekomme ich konkret – nur eine Website oder auch Systeme dahinter?",
-    a: "Bei uns bekommen Sie nicht nur eine Website, sondern auf Wunsch ein komplettes digitales System für Ihren Betrieb. Wir bauen genau das, was Ihr Unternehmen wirklich braucht – von professionellen Websites bis hin zu integrierten Lösungen wie Reservierungssystemen, POS-Anbindungen, Dashboards, Bewerbungsseiten oder individuellen Betriebsprozessen. Wir analysieren außerdem bestehende Problemstellen in Ihrem Betrieb und zeigen konkrete digitale Lösungen auf, die Zeit sparen, Abläufe vereinfachen und den Umsatz steigern können.",
+    q: "Was baut ihr konkret?",
+    a: "Software für die Abläufe hinter Ihrem Betrieb: interne Tools und Dashboards, automatisierte Prozesse, Schnittstellen zu Kasse und bestehenden Programmen – und KI dort, wo sie Arbeit abnimmt. Die Website gehört auf Wunsch dazu, als sichtbarer Teil desselben Systems. Wir schauen uns zuerst an, wo in Ihrem Betrieb Zeit verloren geht, und bauen dann genau dafür – keine Insellösung neben den Programmen, die Sie schon haben.",
     bullets: null as null | string[],
   },
   {
-    q: "Wie hilft mir eure Lösung konkret, mehr Kunden oder Reservierungen zu bekommen?",
-    a: "Unsere Websites sind nicht nur optisch professionell – sie sind darauf ausgelegt, neue Kunden zu gewinnen und bestehende Prozesse effizienter zu machen.",
+    q: "Was bringt mir das im Alltag?",
+    a: "Weniger Handarbeit, weniger Fehler, mehr Überblick – und mehr Zeit für das eigentliche Geschäft.",
     bullets: [
-      "SEO & lokale Google-Optimierung (GEO), damit Ihr Betrieb besser gefunden wird",
-      "Professionellerer Außenauftritt, der Vertrauen schafft und mehr Anfragen generiert",
-      "Schnellere Ladezeiten und bessere Nutzerführung für höhere Conversion",
-      "Möglichkeit, über Google Ads oder Sponsoring zusätzliche Aufmerksamkeit zu generieren",
-      "Optimierte Reservierungs- oder Kontaktprozesse, damit weniger Kunden abspringen",
+      "Doppelte Eingaben und Zettelwirtschaft fallen weg",
+      "Wiederkehrende Aufgaben wie Bestätigungen und Erinnerungen laufen automatisch",
+      "Umsatz, Bestand und Bestellungen auf einen Blick statt in fünf Programmen",
+      "KI übernimmt Routine wie Vorsortieren, Auslesen und Zusammenfassen",
+      "Kunden reservieren und bestellen online, ohne dass das Telefon klingelt",
     ],
   },
   {
-    q: "Was kostet eine Website bei euch?",
-    a: "Das hängt vom Umfang ab – eine One-Pager-Website ist etwas anderes als ein Bestellsystem über zwei Standorte. Deshalb nennen wir keine Pauschalpreise, sondern schauen uns Ihren Betrieb erst an und machen dann ein konkretes Angebot. Das Modell ist dabei immer gleich aufgebaut:",
+    q: "Was kostet das?",
+    a: "Das hängt vom Umfang ab – ein einzelnes Dashboard ist etwas anderes als ein Bestellsystem über zwei Standorte mit Kassenanbindung. Deshalb nennen wir keine Pauschalpreise, sondern schauen uns Ihre Abläufe erst an und machen dann ein konkretes Angebot. Das Modell ist dabei immer gleich aufgebaut:",
     bullets: [
       "Ein Projektpreis für die Umsetzung, vorab festgelegt und nicht nach Stunden abgerechnet",
       "Bei größeren Projekten aufgeteilt in Teilzahlungen — ein Teil zum Start, der Rest nach Abnahme",
@@ -239,17 +238,17 @@ const faqs = [
   },
   {
     q: "Wie läuft die Zusammenarbeit ab und wie lange dauert die Umsetzung?",
-    a: "Zunächst schauen wir uns Ihren Betrieb genau an und analysieren gemeinsam, welche digitalen Lösungen für Sie wirklich sinnvoll sind. In einem Gespräch besprechen wir Ihre aktuellen Herausforderungen, welche Integrationen sinnvoll wären und den genauen Umfang und Preis der Lösung. Nach Vertragsabschluss geht Ihre Website bereits innerhalb der ersten 4 Tage live. Anschließend arbeiten wir bei Bedarf an weiteren Integrationen und Optimierungen. Sie haben dabei jederzeit einen direkten Ansprechpartner und schnellen Support.",
+    a: "Zunächst gehen wir Ihre Abläufe gemeinsam durch und klären, wo Software, Automatisierung oder KI wirklich etwas bringt – und wo nicht. Daraus entstehen Umfang und Preis. Gebaut wird schrittweise: Was am meisten Zeit kostet, läuft zuerst. Eine Website ist innerhalb der ersten 4 Tage live, interne Systeme und Integrationen wachsen in kurzen Etappen mit wöchentlichen Updates. Sie haben dabei jederzeit einen direkten Ansprechpartner und schnellen Support.",
     bullets: null,
   },
   {
-    q: "Kann ich Inhalte später selbst ändern – und wem gehört die Website?",
-    a: "Ja. Sie können Inhalte jederzeit selbst ändern – ganz ohne technisches Vorwissen. Über ein benutzerfreundliches Admin-System lassen sich Öffnungszeiten, Menüs & Produkte, Jobausschreibungen, Neuigkeiten & Events sowie Betriebsferien eigenständig anpassen. Und das Wichtigste: Die Website gehört Ihnen. Sie bleiben unabhängig und haben jederzeit die volle Kontrolle über Ihre Inhalte.",
+    q: "Kann mein Team das System selbst bedienen – und wem gehört es?",
+    a: "Ja. Alles ist so gebaut, dass Ihr Team es ohne technisches Vorwissen bedient – von Öffnungszeiten, Produkten und Jobausschreibungen bis zu Bestellungen, Bestand und Auswertungen. Und das Wichtigste: Das System gehört Ihnen. Sie bleiben unabhängig und haben jederzeit die volle Kontrolle über Ihre Daten.",
     bullets: null,
   },
   {
     q: "Was passiert nach dem Launch – bietet ihr Support an?",
-    a: "Auch nach dem Launch lassen wir Sie nicht allein. Bei technischen Problemen oder Fragen sind wir jederzeit erreichbar und unterstützen schnell und unkompliziert. Egal ob kleinere Anpassungen oder technische Schwierigkeiten – Sie haben einen direkten Ansprechpartner statt eines anonymen Ticketsystems. So bleibt Ihre Website langfristig funktional, aktuell und performant.",
+    a: "Auch nach dem Launch lassen wir Sie nicht allein. Bei technischen Problemen oder Fragen sind wir jederzeit erreichbar und unterstützen schnell und unkompliziert. Egal ob kleinere Anpassungen oder technische Schwierigkeiten – Sie haben einen direkten Ansprechpartner statt eines anonymen Ticketsystems. So bleibt Ihr System langfristig funktional, aktuell und performant.",
     bullets: null,
   },
 ];
@@ -277,42 +276,42 @@ const schemaService = {
     },
     {
       "@type": "Service",
-      "@id": "https://deploy-change.de/leistungen#webdesign",
-      "name": "Webdesign & Entwicklung",
-      "description": "Custom entwickelte Websites für lokale Betriebe — mobile-first, SEO-optimiert und direkt editierbar ohne technisches Vorwissen.",
+      "@id": "https://deploy-change.de/leistungen#interne-software",
+      "name": "Interne Software & Dashboards",
+      "description": "Individuell entwickelte interne Software: Auftrags- und Bestellverwaltung, Bestandsführung über mehrere Standorte, Personalkonten mit Rollen und Auswertungen.",
       "url": "https://deploy-change.de/leistungen",
       "provider": { "@id": "https://deploy-change.de/#business" },
       "areaServed": ["DE", "Worldwide"],
-      "serviceType": "Webentwicklung",
+      "serviceType": "Individualsoftware",
       "inLanguage": "de-DE",
     },
     {
       "@type": "Service",
-      "@id": "https://deploy-change.de/leistungen#reservierungssystem",
-      "name": "Bestell- & Reservierungssystem",
-      "description": "Digitales Bestell- und Reservierungssystem mit Live-Auslastung, Click & Collect, Abhol-Zeitfenstern und Tagesübersicht pro Schicht.",
+      "@id": "https://deploy-change.de/leistungen#prozessautomatisierung",
+      "name": "Prozessautomatisierung",
+      "description": "Analyse und Automatisierung wiederkehrender Abläufe: Bestätigungen, Erinnerungen, Reservierungen, Click & Collect und automatische Berichte.",
       "url": "https://deploy-change.de/leistungen",
       "provider": { "@id": "https://deploy-change.de/#business" },
       "areaServed": ["DE", "Worldwide"],
-      "serviceType": "Bestell- und Reservierungssystem",
+      "serviceType": "Prozessautomatisierung",
       "inLanguage": "de-DE",
     },
     {
       "@type": "Service",
-      "@id": "https://deploy-change.de/leistungen#admin-dashboard",
-      "name": "Admin-Dashboard & Menü-Editor",
-      "description": "No-Code Admin-Interface für Speisekarte, Öffnungszeiten und Schichtverwaltung. Änderungen sind sofort live.",
+      "@id": "https://deploy-change.de/leistungen#ki-integration",
+      "name": "KI-Integration",
+      "description": "KI in bestehenden Abläufen: Anfragen vorsortieren, Dokumente auslesen, Auswertungen und Assistenten für Team und Kunden.",
       "url": "https://deploy-change.de/leistungen",
       "provider": { "@id": "https://deploy-change.de/#business" },
       "areaServed": ["DE", "Worldwide"],
-      "serviceType": "Admin-Dashboard",
+      "serviceType": "KI-Integration",
       "inLanguage": "de-DE",
     },
     {
       "@type": "Service",
       "@id": "https://deploy-change.de/leistungen#kassensystem",
-      "name": "Kassensystem-Integration",
-      "description": "Nahtlose Integration von Lightspeed, Square und weiteren POS-Systemen. Umsatz, Inventar und Tagesberichte in einer Ansicht.",
+      "name": "Schnittstellen & Kassensysteme",
+      "description": "Anbindung von Lightspeed, Square und bestehenden Programmen. Umsatz, Inventar und Tagesberichte in einer Ansicht.",
       "url": "https://deploy-change.de/leistungen",
       "provider": { "@id": "https://deploy-change.de/#business" },
       "areaServed": ["DE", "Worldwide"],
@@ -321,9 +320,9 @@ const schemaService = {
     },
     {
       "@type": "Service",
-      "@id": "https://deploy-change.de/leistungen#seo-geo-social",
-      "name": "SEO, GEO & Social Media",
-      "description": "Lokale Google-Optimierung, strukturierte Daten, messbare Sichtbarkeit in KI-Suchen sowie Betreuung von Instagram, TikTok und den Unternehmensprofilen bei Google und Apple.",
+      "@id": "https://deploy-change.de/leistungen#website-seo-geo",
+      "name": "Website, SEO & GEO",
+      "description": "Selbst pflegbare Website, lokale Google-Optimierung, messbare Sichtbarkeit in KI-Suchen sowie Betreuung von Instagram, TikTok und den Unternehmensprofilen bei Google und Apple.",
       "url": "https://deploy-change.de/leistungen",
       "provider": { "@id": "https://deploy-change.de/#business" },
       "areaServed": ["DE", "Worldwide"],
@@ -356,7 +355,7 @@ export default function Leistungen() {
               className="text-white/60 leading-snug max-w-2xl"
               style={{ fontSize: "clamp(1.125rem, 1.75vw, 1.5rem)" }}
             >
-              Website, Bestellung, Dashboard, Kasse — plus SEO, GEO und Social Media. Alles aus einer Hand, alles aufeinander abgestimmt.
+              Interne Software, Automatisierung und KI — dazu Kasse, Website und SEO. Wir gestalten bestehende Abläufe neu, statt eine weitere Insellösung danebenzustellen.
             </p>
           </FadeUp>
         </div>
