@@ -1,94 +1,75 @@
 import Link from "next/link";
 
-const navLinks = [
-  { href: "/leistungen", label: "Leistungen" },
-  { href: "/portfolio", label: "Portfolio" },
-  { href: "/kundenstimmen", label: "Kundenstimmen" },
-  { href: "/ueber-uns", label: "Über uns" },
+const pages = [
+  { href: "/#arbeiten", label: "Arbeiten" },
+  { href: "/#leistungen", label: "Leistungen" },
+  { href: "/#studio", label: "Studio" },
   { href: "/kontakt", label: "Kontakt" },
 ];
 
 export default function Footer() {
   return (
-    <footer className="bg-[oklch(12%_0.015_30)] text-white">
-      <div className="max-w-[1366px] mx-auto px-6 md:px-12 py-16 md:py-24">
-        <div className="grid md:grid-cols-3 gap-14 md:gap-20 pb-14 border-b border-white/10">
-          <div className="flex flex-col gap-5">
-            <div className="flex items-center gap-1">
-              <span className="text-base font-black tracking-[-0.04em] text-[#FF5500] uppercase leading-none">Deploy</span>
-              <span className="text-base font-black tracking-[-0.04em] text-[#FF5500]/55 uppercase leading-none">&thinsp;Change</span>
-            </div>
-            <p className="text-white/35 text-sm leading-relaxed max-w-[22ch]">
-              Interne Software, Automatisierung und KI. Kiel und darüber hinaus.
-            </p>
+    <footer className="border-t border-white/10 bg-ink text-paper">
+      <div className="mx-auto max-w-[1600px] px-4 pt-16 md:px-10 md:pt-24">
+        <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr]">
+          <div>
+            <p className="label text-paper/40">{"// "}Neues Projekt</p>
             <a
               href="mailto:info@deploy-change.de"
-              className="text-white/50 text-sm hover:text-white transition-colors"
+              className="mt-4 block text-3xl font-medium tracking-tight transition-colors hover:text-orange md:text-5xl"
             >
               info@deploy-change.de
             </a>
-            <a
-              href="tel:+4915151045345"
-              className="text-white/50 text-sm hover:text-white transition-colors"
-            >
+            <a href="tel:+4915151045345" className="mt-3 block text-paper/60 transition-colors hover:text-paper">
               +49 151 51045345
             </a>
+          </div>
+
+          <div>
+            <p className="label text-paper/40">{"// "}Seiten</p>
+            <ul className="mt-4 space-y-2">
+              {pages.map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href} className="text-paper/70 transition-colors hover:text-paper">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <p className="label text-paper/40">{"// "}Studio</p>
+            <address className="mt-4 not-italic text-paper/70">
+              Holm 17
+              <br />
+              24107 Kiel
+            </address>
             <a
               href="https://www.instagram.com/deploy.change/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white/50 text-sm hover:text-white transition-colors"
+              className="mt-4 block text-paper/70 transition-colors hover:text-paper"
             >
               Instagram ↗
             </a>
           </div>
-
-          <div>
-            <p className="text-white/20 text-[0.65rem] font-semibold tracking-widest uppercase mb-7">
-              Seiten
-            </p>
-            <div className="flex flex-col gap-4">
-              {navLinks.map((l) => (
-                <Link
-                  key={l.href}
-                  href={l.href}
-                  className="text-white/45 text-sm hover:text-white transition-colors"
-                >
-                  {l.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <p className="text-white/20 text-[0.65rem] font-semibold tracking-widest uppercase mb-7">
-              Partner
-            </p>
-            <a
-              href="https://www.getpacked.de"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white/45 text-sm hover:text-white transition-colors block mb-3"
-            >
-              GetPacked
-            </a>
-            <p className="text-white/22 text-xs leading-relaxed max-w-[24ch]">
-              SaaS-Plattform für Bäckereien, Metzgereien und Direktvertriebler.
-            </p>
-          </div>
         </div>
 
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-white/18 text-xs">
-            © {new Date().getFullYear()} Faris El Mokhtari — Deploy Web Development
-          </p>
-          <div className="flex gap-6 text-[0.7rem] text-white/18">
-            <Link href="/impressum" className="hover:text-white/40 transition-colors">
-              Impressum
-            </Link>
-            <Link href="/datenschutz" className="hover:text-white/40 transition-colors">
-              Datenschutz
-            </Link>
+        {/* Wordmark sized to the container width, cropped at the baseline. */}
+        <p
+          aria-hidden="true"
+          className="mt-20 select-none whitespace-nowrap font-semibold leading-[0.75] tracking-[-0.06em] text-paper"
+          style={{ fontSize: "clamp(3rem, 14.2vw, 15rem)" }}
+        >
+          Deploy Change<span className="text-orange">.</span>
+        </p>
+
+        <div className="label flex flex-col gap-3 border-t border-white/10 py-6 text-paper/40 md:flex-row md:justify-between">
+          <p>© {new Date().getFullYear()} Deploy Web Development · Kiel 54.32°N</p>
+          <div className="flex gap-6">
+            <Link href="/impressum" className="hover:text-paper">Impressum</Link>
+            <Link href="/datenschutz" className="hover:text-paper">Datenschutz</Link>
           </div>
         </div>
       </div>

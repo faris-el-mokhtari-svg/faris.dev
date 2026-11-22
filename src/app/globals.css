@@ -6,11 +6,14 @@
 
 @theme inline {
   --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-border: var(--border);
   --color-ring: var(--ring);
   --color-orange: #FF5500;
+  --color-ink: #0A0A09;
+  --color-paper: #EDEBE6;
   --color-cream: #FFFCF3;
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
@@ -19,16 +22,21 @@
   --radius-2xl: calc(var(--radius) * 1.8);
 }
 
+/* Dark is the base tone. Orange is the only accent and the colour of every
+   diagram and image treatment. */
 :root {
-  --background: #FFFCF3;
-  --foreground: #0a0a0a;
-  --border: rgba(0, 0, 0, 0.09);
+  /* Old pages still use .font-display; it now resolves to Geist. */
+  --font-display: var(--font-sans);
+  --background: #0A0A09;
+  --foreground: #EDEBE6;
+  --border: rgba(237, 235, 230, 0.12);
   --ring: #FF5500;
   --radius: 0.75rem;
 }
 
 @layer base {
   * { @apply border-border; }
+  html { color-scheme: dark; }
   body {
     background: var(--background);
     color: var(--foreground);
@@ -36,12 +44,35 @@
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
+  ::selection { background: #FF5500; color: #0A0A09; }
+  :focus-visible { outline: 2px solid #FF5500; outline-offset: 3px; }
 }
 
 @layer utilities {
   .font-display {
     font-family: var(--font-display), system-ui, sans-serif;
   }
+  /* Mono section labels in the form "// 01 — Arbeiten". */
+  .label {
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+}
+
+/* Headline lines rise in once on load. Content is visible without JS and
+   for reduced motion: the animation only runs from translated to rest. */
+@media (prefers-reduced-motion: no-preference) {
+  .rise > span {
+    display: block;
+    animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .rise > span:nth-child(2) { animation-delay: 0.08s; }
+  .rise > span:nth-child(3) { animation-delay: 0.16s; }
+}
+@keyframes rise {
+  from { transform: translateY(0.35em); opacity: 0; }
 }
 
 @layer components {
@@ -73,38 +104,6 @@
   .prose-deploy strong {
     color: oklch(12% 0.015 30);
     font-weight: 600;
-  }
-}
-
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-/* Mobile hero headline — each line is sized to fill the column edge to edge.
-   --line-ratio is the line's width/font-size factor measured in the display
-   face, so 100cqw/ratio is the font-size at which the line spans exactly 100%
-   of the container. cqw resolves against the h1 itself as the query container,
-   which already sits inside the page gutters.
-
-   Phone widths only: filling the width ties height to width, which reads well
-   up to ~430px but would run the headline ~950px tall on a 768px tablet, so
-   those keep the clamp ramp from the utility classes. Because the h1 now takes
-   whatever width the column has, anything that widens that column widens the
-   headline with it — see the min-w-0 tracks on the mobile lede grid. */
-@media (max-width: 539px) {
-  .hero-headline {
-    container-type: inline-size;
-    /* Tighter than the desktop 0.9: at these sizes the stacked lines read as
-       one block, and it keeps the four of them inside the upper half. */
-    line-height: 0.84;
-    min-width: 0;
-  }
-  .hero-headline .hero-line {
-    font-size: calc(100cqw / var(--line-ratio));
-    /* Just enough room for the 'y' descender in "Systeme." — the lines use
-       overflow-hidden for the GSAP reveal, so a descender would clip. */
-    padding-bottom: 0.1em;
   }
 }
 

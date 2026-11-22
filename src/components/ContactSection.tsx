@@ -54,136 +54,92 @@ export default function ContactSection() {
   };
 
   const inputClass =
-    "h-10 w-full rounded-lg border border-white/30 bg-transparent px-3 text-sm text-white placeholder:text-white/45 focus:border-white/70 focus:outline-none transition-colors";
+    "h-12 w-full border-0 border-b border-white/20 bg-transparent px-0 text-base text-paper placeholder:text-paper/30 focus:border-orange focus:outline-none transition-colors";
 
-  const labelClass =
-    "block text-[0.58rem] font-semibold tracking-[0.14em] uppercase text-white/70 mb-1.5";
+  const labelClass = "label block text-paper/50 mb-1";
 
   return (
-    <section className="w-full grid md:grid-cols-2">
-      {/* Left: editorial */}
-      <div className="relative min-h-[420px] md:min-h-[540px] text-white overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#ff5500] via-[#ff6b2f] to-[#ff8a3d]" />
-        <div className="relative h-full flex flex-col px-8 md:px-12 py-10 md:py-12">
-          <p className="text-white/80 text-xs font-semibold tracking-widest uppercase mb-12">
-            Deploy — Software & Systeme
-          </p>
-          <h2 className="text-3xl md:text-6xl leading-[0.95] font-medium max-w-sm">
-            Jede Herausforderung ist individuell. Sprechen wir über Ihre.
+    <section id="kontakt" className="border-t border-white/10 bg-ink">
+      <div className="mx-auto grid max-w-[1600px] gap-14 px-4 py-24 md:grid-cols-2 md:px-10 md:py-32">
+        <div className="flex flex-col">
+          <p className="label text-orange">{"// "}Kontakt</p>
+          <h2 className="mt-6 max-w-[12ch] text-5xl font-medium leading-[0.95] tracking-[-0.04em] text-paper md:text-7xl">
+            Erzählt uns, was ihr vorhabt.
           </h2>
-          <div className="mt-auto flex items-end justify-between text-sm">
+          <p className="mt-6 max-w-[42ch] text-paper/60">
+            Ein Gespräch, 20 Minuten, kostenlos. Danach wisst ihr, was es braucht, was es kostet und wann es live sein kann.
+          </p>
+          <div className="mt-10 md:mt-auto">
             <a
               href="mailto:info@deploy-change.de"
-              className="underline decoration-white/40 underline-offset-4 hover:decoration-white transition-colors"
+              className="text-paper underline decoration-paper/30 underline-offset-4 transition-colors hover:decoration-orange"
             >
               info@deploy-change.de
             </a>
-            <a
-              href="https://www.instagram.com/deploy.change/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline decoration-white/40 underline-offset-4 hover:decoration-white transition-colors"
-            >
-              Instagram
-            </a>
           </div>
         </div>
-      </div>
 
-      {/* Right: form */}
-      <div className="bg-[#FF5500] min-h-[480px] md:min-h-[540px] flex items-center">
-        {status === "sent" ? (
-          <div className="w-full px-8 md:px-12 py-10 flex flex-col gap-3">
-            <p className="text-white text-3xl md:text-4xl font-medium">Nachricht erhalten.</p>
-            <p className="text-white/55 text-sm">Ich melde mich innerhalb von 24 Stunden.</p>
-          </div>
-        ) : (
-          <form
-            onSubmit={handleSubmit}
-            className="w-full px-8 md:px-12 py-10 md:py-12 flex flex-col gap-4"
-          >
-            {/*
-              Honeypot. Moved off-screen instead of display:none — bots detect
-              the latter. aria-hidden + tabIndex keep it out of reach for
-              screen readers and keyboard users.
-            */}
-            <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
-              <label htmlFor="company">Firma (bitte leer lassen)</label>
-              <input
-                id="company"
-                name="company"
-                type="text"
-                tabIndex={-1}
-                autoComplete="off"
-              />
+        <div>
+          {status === "sent" ? (
+            <div role="status" className="flex h-full flex-col justify-center gap-3 border border-white/10 p-8">
+              <p className="text-3xl font-medium tracking-tight text-paper md:text-4xl">Nachricht erhalten.</p>
+              <p className="text-paper/60">Wir melden uns innerhalb von 24 Stunden.</p>
             </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="flex flex-col gap-8">
+              {/*
+                Honeypot. Moved off-screen instead of display:none — bots detect
+                the latter. aria-hidden + tabIndex keep it out of reach for
+                screen readers and keyboard users.
+              */}
+              <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+                <label htmlFor="company">Firma (bitte leer lassen)</label>
+                <input id="company" name="company" type="text" tabIndex={-1} autoComplete="off" />
+              </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="grid gap-8 sm:grid-cols-2">
+                <div>
+                  <label htmlFor="fullName" className={labelClass}>Name</label>
+                  <input id="fullName" name="fullName" type="text" required autoComplete="name" placeholder="Vor- und Nachname" className={inputClass} />
+                </div>
+                <div>
+                  <label htmlFor="phone" className={labelClass}>Telefon (optional)</label>
+                  <input id="phone" name="phone" type="tel" autoComplete="tel" className={inputClass} />
+                </div>
+              </div>
+
               <div>
-                <label htmlFor="fullName" className={labelClass}>Name</label>
-                <input
-                  id="fullName"
-                  name="fullName"
-                  type="text"
+                <label htmlFor="email" className={labelClass}>E-Mail</label>
+                <input id="email" name="email" type="email" required autoComplete="email" placeholder="name@firma.de" className={inputClass} />
+              </div>
+
+              <div>
+                <label htmlFor="message" className={labelClass}>Projekt</label>
+                <textarea
+                  id="message"
+                  name="message"
                   required
-                  placeholder="Max Mustermann"
-                  className={inputClass}
+                  rows={4}
+                  placeholder="Was soll gebaut werden?"
+                  className="w-full resize-none border-0 border-b border-white/20 bg-transparent px-0 py-3 text-base text-paper placeholder:text-paper/30 transition-colors focus:border-orange focus:outline-none"
                 />
               </div>
-              <div>
-                <label htmlFor="phone" className={labelClass}>
-                  Telefon <span className="normal-case tracking-normal opacity-60 font-normal">(opt.)</span>
-                </label>
-                <input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  className={inputClass}
-                />
-              </div>
-            </div>
 
-            <div>
-              <label htmlFor="email" className={labelClass}>E-Mail</label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                required
-                placeholder="max@betrieb.de"
-                className={inputClass}
-              />
-            </div>
+              {status === "error" && (
+                <p role="alert" className="text-sm text-orange">{errorMessage}</p>
+              )}
 
-            <div>
-              <label htmlFor="message" className={labelClass}>Nachricht</label>
-              <textarea
-                id="message"
-                name="message"
-                required
-                rows={5}
-                placeholder="Womit kann ich dir helfen?"
-                className="w-full rounded-lg border border-white/30 bg-transparent px-3 py-2.5 text-sm text-white placeholder:text-white/45 focus:border-white/70 focus:outline-none transition-colors resize-none"
-              />
-            </div>
-
-            {status === "error" && (
-              <p className="text-white/60 text-xs">{errorMessage}</p>
-            )}
-
-            <button
-              type="submit"
-              disabled={status === "sending"}
-              className="h-10 w-full rounded-full bg-[#f9aa2a] text-[#0a0a0a] text-sm font-semibold hover:bg-[#f0a020] transition-colors disabled:opacity-50 mt-1"
-            >
-              {status === "sending" ? "Wird gesendet…" : "Nachricht senden"}
-            </button>
-
-            <p className="text-white/30 text-[0.6rem] tracking-widest uppercase text-center">
-              Antwort innerhalb von 24 Stunden
-            </p>
-          </form>
-        )}
+              <button
+                type="submit"
+                disabled={status === "sending"}
+                className="label group flex items-center justify-between gap-10 self-start bg-orange py-4 pl-6 pr-5 text-ink transition-colors hover:bg-paper disabled:opacity-50"
+              >
+                {status === "sending" ? "Wird gesendet …" : "Nachricht senden"}
+                <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>
+              </button>
+            </form>
+          )}
+        </div>
       </div>
     </section>
   );

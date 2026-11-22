@@ -1,21 +1,19 @@
 import type { Metadata } from "next";
-import { Barlow, Barlow_Condensed } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Analytics } from "@vercel/analytics/next";
 
-const barlow = Barlow({
+const geist = Geist({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
   variable: "--font-sans",
   display: "swap",
 });
 
-const barlowCondensed = Barlow_Condensed({
+const geistMono = Geist_Mono({
   subsets: ["latin"],
-  weight: ["700", "800", "900"],
-  variable: "--font-display",
+  variable: "--font-mono",
   display: "swap",
 });
 
@@ -24,10 +22,10 @@ const BASE_URL = "https://deploy-change.de";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Deploy Change – Interne Software & KI-Integration",
+    default: "Deploy Change – Software & Webdesign Studio",
     template: "%s | Deploy Change",
   },
-  description: "Interne Software und digitale Betriebssysteme für Unternehmen: bestehende Prozesse neu gedacht, automatisiert und mit KI integriert. Aus Kiel.",
+  description: "Studio für Software und Webdesign aus Kiel: interne Systeme, KI-Anwendungen und Websites auf hohem Niveau. Von Botswana bis zur Bäckerei um die Ecke.",
   authors: [{ name: "Faris El Mokhtari" }],
   creator: "Deploy Change",
   publisher: "Deploy Change",
@@ -36,14 +34,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "de_DE",
     siteName: "Deploy Change",
-    title: "Deploy Change – Interne Software & KI-Integration",
-    description: "Interne Software und digitale Betriebssysteme für Unternehmen: bestehende Prozesse neu gedacht, automatisiert und mit KI integriert. Aus Kiel.",
+    title: "Deploy Change – Software & Webdesign Studio",
+    description: "Studio für Software und Webdesign aus Kiel: interne Systeme, KI-Anwendungen und Websites auf hohem Niveau. Von Botswana bis zur Bäckerei um die Ecke.",
     url: BASE_URL,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Deploy Change – Interne Software & KI-Integration",
-    description: "Interne Software und digitale Betriebssysteme für Unternehmen: bestehende Prozesse neu gedacht, automatisiert und mit KI integriert. Aus Kiel.",
+    title: "Deploy Change – Software & Webdesign Studio",
+    description: "Studio für Software und Webdesign aus Kiel: interne Systeme, KI-Anwendungen und Websites auf hohem Niveau. Von Botswana bis zur Bäckerei um die Ecke.",
   },
   alternates: {
     canonical: BASE_URL,
@@ -62,7 +60,7 @@ const schemaOrg = {
       "@id": `${BASE_URL}/#website`,
       "url": BASE_URL,
       "name": "Deploy Change",
-      "description": "Interne Software & KI-Integration für Unternehmen",
+      "description": "Studio für Software, KI und Webdesign",
       "inLanguage": "de-DE",
     },
     {
@@ -70,7 +68,7 @@ const schemaOrg = {
       "@id": `${BASE_URL}/#business`,
       "name": "Deploy Change",
       "legalName": "Deploy Web Development",
-      "description": "Interne Software und digitale Betriebssysteme für Unternehmen — bestehende Prozesse effizienter gestalten, automatisieren und KI integrieren. Dazu Websites, Reservierungssysteme, SEO und GEO.",
+      "description": "Studio für Software und Webdesign: interne Systeme, Admin-Bereiche, KI-Anwendungen und Websites. Dazu SEO, GEO und Film.",
       "url": BASE_URL,
       "telephone": "+49-151-51045345",
       "email": "info@deploy-change.de",
@@ -87,7 +85,7 @@ const schemaOrg = {
         "Webdesign",
         "Suchmaschinenoptimierung",
         "Generative Engine Optimization",
-        "Social-Media-Betreuung",
+        "Werbefilm",
       ],
       "priceRange": "€€",
       "geo": {
@@ -110,7 +108,7 @@ const schemaOrg = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="de" className={`${barlow.variable} ${barlowCondensed.variable}`}>
+    <html lang="de" className={`${geist.variable} ${geistMono.variable}`}>
       <head>
         <script
           type="application/ld+json"
