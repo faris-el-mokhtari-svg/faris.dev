@@ -61,18 +61,58 @@
   }
 }
 
-/* Headline lines rise in once on load. Content is visible without JS and
-   for reduced motion: the animation only runs from translated to rest. */
+/* Intro: orange panel holds, then wipes off along a diagonal edge.
+   Hidden for reduced motion and on repeat visits (data-intro="seen"). */
+.intro { display: none; }
 @media (prefers-reduced-motion: no-preference) {
-  .rise > span {
+  :root:not([data-intro="seen"]) .intro {
     display: block;
-    animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: #FF5500;
+    pointer-events: none;
+    animation: intro-wipe 0.7s cubic-bezier(0.76, 0, 0.24, 1) 0.65s both;
   }
-  .rise > span:nth-child(2) { animation-delay: 0.08s; }
-  .rise > span:nth-child(3) { animation-delay: 0.16s; }
+  .intro-inner { animation: intro-fade 0.3s ease-in 0.55s both; }
 }
-@keyframes rise {
-  from { transform: translateY(0.35em); opacity: 0; }
+@keyframes intro-wipe {
+  from { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 125%); }
+  to { clip-path: polygon(0 0, 100% 0, 100% -25%, 0 0); visibility: hidden; }
+}
+@keyframes intro-fade {
+  to { opacity: 0; transform: translateY(-0.5rem); }
+}
+
+/* Headline: an orange then a paper bar sweep over each line, the text
+   appears while covered. Text stays in the DOM and visible without motion. */
+.reveal > span { display: block; }
+.reveal-line { position: relative; display: inline-block; }
+@media (prefers-reduced-motion: no-preference) {
+  :root { --intro-delay: 0.95s; }
+  :root[data-intro="seen"] { --intro-delay: 0.1s; }
+  .reveal-line::before,
+  .reveal-line::after {
+    content: "";
+    position: absolute;
+    inset: 0.04em -0.04em;
+    transform: scaleX(0);
+    animation: bar 0.8s cubic-bezier(0.76, 0, 0.24, 1) var(--d) both;
+  }
+  .reveal-line::before { background: #FF5500; --d: calc(var(--intro-delay) + var(--i, 0) * 0.12s); }
+  .reveal-line::after { background: #EDEBE6; --d: calc(var(--intro-delay) + var(--i, 0) * 0.12s + 0.08s); }
+  .reveal-text {
+    animation: reveal-text 0.01s linear calc(var(--intro-delay) + var(--i, 0) * 0.12s + 0.45s) both;
+  }
+}
+@keyframes bar {
+  0% { transform: scaleX(0); transform-origin: left; }
+  50% { transform: scaleX(1); transform-origin: left; }
+  50.1% { transform: scaleX(1); transform-origin: right; }
+  100% { transform: scaleX(0); transform-origin: right; }
+}
+@keyframes reveal-text {
+  from { opacity: 0; }
 }
 
 @layer components {

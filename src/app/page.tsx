@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import ContactSection from "@/components/ContactSection";
+import Intro from "@/components/Intro";
 import { work } from "@/lib/work";
 
 export const metadata: Metadata = {
@@ -112,17 +113,26 @@ function ServiceVisual({ kind }: { kind: (typeof services)[number]["visual"] }) 
 export default function Home() {
   return (
     <>
+      <Intro />
       {/* ─── Hero ─────────────────────────────────────────────────── */}
       <section className="pt-28 md:pt-36">
         <div className={wrap}>
           <p className="label text-paper/50">Studio für Software & Webdesign — Kiel, 54.32°N</p>
           <h1
-            className="rise mt-6 font-medium leading-[0.92] tracking-[-0.055em]"
+            className="reveal mt-6 font-medium leading-[0.92] tracking-[-0.055em]"
             style={{ fontSize: "clamp(2.9rem, 7.6vw, 9rem)" }}
           >
-            <span>Software, die arbeitet.</span>
+            <span>
+              <span className="reveal-line">
+                <span className="reveal-text">Software, die arbeitet.</span>
+              </span>
+            </span>
             <span className="text-paper/40">
-              Websites, die wirken<span className="text-orange">.</span>
+              <span className="reveal-line" style={{ "--i": 1 } as React.CSSProperties}>
+                <span className="reveal-text">
+                  Websites, die wirken<span className="text-orange">.</span>
+                </span>
+              </span>
             </span>
           </h1>
 

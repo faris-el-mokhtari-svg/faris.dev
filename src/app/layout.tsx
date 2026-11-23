@@ -108,7 +108,7 @@ const schemaOrg = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="de" className={`${geist.variable} ${geistMono.variable}`}>
+    <html lang="de" suppressHydrationWarning className={`${geist.variable} ${geistMono.variable}`}>
       <head>
         <script
           type="application/ld+json"
